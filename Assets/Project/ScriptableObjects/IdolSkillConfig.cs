@@ -6,5 +6,6 @@ public class IdolSkillConfig : ScriptableObject
   public float damage;
   public float cooldown;
   public float radius;
+  public float duration;
 
 }

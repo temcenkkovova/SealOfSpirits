@@ -1,9 +1,11 @@
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class IdolSkillController : MonoBehaviour, IInteractable
 {
   private IdolSkillConfig skillConfig;
-  public Transform skillPosition;
+  public GameObject skillPosition;
+
   private float timer;
 
 
@@ -21,8 +23,11 @@ public class IdolSkillController : MonoBehaviour, IInteractable
     else
     {
       timer = skillConfig.cooldown;
-      IdolSkill skill = Instantiate(skillConfig.idolSkillPrefab);
-      skill.Initialize(skillConfig);
+      IdolSkill skill = Instantiate(skillConfig.idolSkillPrefab, skillPosition.transform);
+
+      IdolSkillView idolSkillView = skillPosition.GetComponent<IdolSkillView>();
+      idolSkillView.Init(skillConfig.duration);
+      skill.Initialize(skillConfig, idolSkillView);
     }
 
   }
