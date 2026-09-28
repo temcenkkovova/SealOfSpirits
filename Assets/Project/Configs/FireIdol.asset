@@ -13,3 +13,4 @@ MonoBehaviour:
   m_Name: FireIdol
   m_EditorClassIdentifier: Assembly-CSharp::IdolConfig
   elementName: Fire
+  idolSkillConfig: {fileID: 11400000, guid: 48d680d51bea52540bbb9babff0f6203, type: 2}

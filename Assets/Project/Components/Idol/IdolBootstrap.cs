@@ -1,11 +1,19 @@
 using UnityEngine;
 
-public class IdolBootstrap : MonoBehaviour, IInteractable
+public class IdolBootstrap : MonoBehaviour
 {
 
   public IdolConfig idolConfig;
-  public void Interact()
+  private IdolSkillController idolSkillController;
+
+  void Awake()
   {
-    Debug.Log("Hi , I`m + " + gameObject.name);
+    idolSkillController = GetComponent<IdolSkillController>();
+
+  }
+  void Start()
+  {
+    if (idolSkillController != null)
+      idolSkillController.Init(idolConfig.idolSkillConfig);
   }
 }
