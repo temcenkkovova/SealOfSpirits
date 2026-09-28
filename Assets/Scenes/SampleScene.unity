@@ -591,6 +591,7 @@ GameObject:
   - component: {fileID: 1154988455}
   - component: {fileID: 1154988454}
   - component: {fileID: 1154988453}
+  - component: {fileID: 1154988456}
   m_Layer: 6
   m_Name: WaterIdol
   m_TagString: Idol
@@ -628,11 +629,11 @@ SphereCollider:
     serializedVersion: 2
     m_Bits: 0
   m_LayerOverridePriority: 0
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Radius: 0.5
+  m_Radius: 1
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!23 &1154988454
 MeshRenderer:
@@ -691,6 +692,19 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1154988451}
   m_Mesh: {fileID: 10207, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!114 &1154988456
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1154988451}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0efe22be2fa2a434a99287569b1c6582, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::IdolBootstrap
+  idolConfig: {fileID: 11400000, guid: 86f074ab316022c458d75b8bebff1f53, type: 2}
 --- !u!1 &1352150030
 GameObject:
   m_ObjectHideFlags: 0
@@ -703,6 +717,7 @@ GameObject:
   - component: {fileID: 1352150034}
   - component: {fileID: 1352150033}
   - component: {fileID: 1352150032}
+  - component: {fileID: 1352150035}
   m_Layer: 6
   m_Name: EarthIdol
   m_TagString: Idol
@@ -740,11 +755,11 @@ SphereCollider:
     serializedVersion: 2
     m_Bits: 0
   m_LayerOverridePriority: 0
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Radius: 0.5
+  m_Radius: 1
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!23 &1352150033
 MeshRenderer:
@@ -803,6 +818,19 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1352150030}
   m_Mesh: {fileID: 10207, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!114 &1352150035
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1352150030}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0efe22be2fa2a434a99287569b1c6582, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::IdolBootstrap
+  idolConfig: {fileID: 11400000, guid: aa242da1ac5ae194ca247c8758fb1a0c, type: 2}
 --- !u!1 &1513940536
 GameObject:
   m_ObjectHideFlags: 0
@@ -929,8 +957,8 @@ Transform:
   m_GameObject: {fileID: 1513940536}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0.5, z: 0}
-  m_LocalScale: {x: 0.55997, y: 1, z: 0.5492}
+  m_LocalPosition: {x: -6.35, y: 0.5, z: 3.43}
+  m_LocalScale: {x: 0.24412453, y: 1, z: 0.33893877}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
@@ -987,6 +1015,7 @@ GameObject:
   - component: {fileID: 1841754039}
   - component: {fileID: 1841754038}
   - component: {fileID: 1841754037}
+  - component: {fileID: 1841754040}
   m_Layer: 6
   m_Name: FireIdol
   m_TagString: Idol
@@ -1024,11 +1053,11 @@ SphereCollider:
     serializedVersion: 2
     m_Bits: 0
   m_LayerOverridePriority: 0
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Radius: 0.5
+  m_Radius: 1
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!23 &1841754038
 MeshRenderer:
@@ -1087,6 +1116,19 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1841754035}
   m_Mesh: {fileID: 10207, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!114 &1841754040
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1841754035}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0efe22be2fa2a434a99287569b1c6582, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::IdolBootstrap
+  idolConfig: {fileID: 11400000, guid: 4359694a08da47942a0a54bb4881e4e1, type: 2}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
