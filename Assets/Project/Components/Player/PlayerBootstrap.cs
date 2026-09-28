@@ -1,16 +1,18 @@
 using UnityEngine;
 
-public class PlayerBootstrao : MonoBehaviour
+public class PlayerBootstrap : MonoBehaviour
 {
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
+    public float moveSpeed;
+    private PlayerMovement playerMovement;
+
+    void Awake()
+    {
+        playerMovement = GetComponent<PlayerMovement>();
+    }
     void Start()
     {
-        
+        playerMovement.Init(moveSpeed);
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
+
 }
