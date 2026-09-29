@@ -25,7 +25,7 @@ public class MeteorSkill : IdolSkill
   void Start()
   {
 
-    warningSkill.Init(skillData.Duration);
+    warningSkill.Init(skillData.Duration, skillData.Radius);
     meteorCollision.Init(skillData.Duration);
 
     if (warningSkill != null)

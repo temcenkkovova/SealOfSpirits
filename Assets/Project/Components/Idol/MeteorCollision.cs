@@ -33,6 +33,6 @@ public class MeteorCollision : MonoBehaviour
   void Update()
   {
     if (IsOnGround) return;
-    transform.position = Vector3.MoveTowards(transform.position, new Vector3(currentX, 0f, currentZ), (duration - 1.5f) * Time.deltaTime);
+    transform.position = Vector3.MoveTowards(transform.position, new Vector3(currentX, 0f, currentZ), (duration - 2f) * Time.deltaTime);
   }
 }

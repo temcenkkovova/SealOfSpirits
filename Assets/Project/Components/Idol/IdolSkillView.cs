@@ -9,14 +9,18 @@ public class IdolSkillView : MonoBehaviour
   private Vector3 fillFinalScale;
   private Sequence warningSequence;
   private float duration;
+  private float radius;
   void Awake()
   {
-    fillFinalScale = fill.localScale;
+
   }
 
-  public void Init(float duration)
+  public void Init(float duration, float radius)
   {
     this.duration = duration;
+    this.radius = radius;
+    fillFinalScale = fill.localScale * radius;
+    ring.localScale = ring.localScale * radius;
   }
   void Start()
   {

@@ -36,7 +36,7 @@ public class PlayerSkills : MonoBehaviour
 
   public void CastSkill(Vector3 castSkillPosition)
   {
-    Vector3 skillPosition = new Vector3(castSkillPosition.x, 4f, castSkillPosition.z);
+    Vector3 skillPosition = new Vector3(castSkillPosition.x, 0f, castSkillPosition.z);
     IdolSkill idolSkill = Instantiate(currentUseSkill.SkillPrefab, skillPosition, currentUseSkill.SkillPrefab.transform.rotation);
     idolSkill.Initialize(currentUseSkill);
   }
