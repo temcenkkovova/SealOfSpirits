@@ -141,6 +141,16 @@ public partial class @PlayerInputs: IInputActionCollection2, IDisposable
                     ""interactions"": """",
                     ""initialStateCheck"": false,
                     ""priority"": 0
+                },
+                {
+                    ""name"": ""ConfirmSkill"",
+                    ""type"": ""Button"",
+                    ""id"": ""6ee00873-6843-43aa-89a3-e45b129d20a7"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false,
+                    ""priority"": 0
                 }
             ],
             ""bindings"": [
@@ -242,6 +252,17 @@ public partial class @PlayerInputs: IInputActionCollection2, IDisposable
                     ""action"": ""ThirdSkill"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""9861bf5f-30ee-40c9-a383-7676b27154a3"",
+                    ""path"": ""<Mouse>/leftButton"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""ConfirmSkill"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -255,6 +276,7 @@ public partial class @PlayerInputs: IInputActionCollection2, IDisposable
         m_Player_FirstSkill = m_Player.FindAction("FirstSkill", throwIfNotFound: true);
         m_Player_SecondSkill = m_Player.FindAction("SecondSkill", throwIfNotFound: true);
         m_Player_ThirdSkill = m_Player.FindAction("ThirdSkill", throwIfNotFound: true);
+        m_Player_ConfirmSkill = m_Player.FindAction("ConfirmSkill", throwIfNotFound: true);
     }
 
     ~@PlayerInputs()
@@ -340,6 +362,7 @@ public partial class @PlayerInputs: IInputActionCollection2, IDisposable
     private readonly InputAction m_Player_FirstSkill;
     private readonly InputAction m_Player_SecondSkill;
     private readonly InputAction m_Player_ThirdSkill;
+    private readonly InputAction m_Player_ConfirmSkill;
     /// <summary>
     /// Provides access to input actions defined in input action map "Player".
     /// </summary>
@@ -371,6 +394,10 @@ public partial class @PlayerInputs: IInputActionCollection2, IDisposable
         /// Provides access to the underlying input action "Player/ThirdSkill".
         /// </summary>
         public InputAction @ThirdSkill => m_Wrapper.m_Player_ThirdSkill;
+        /// <summary>
+        /// Provides access to the underlying input action "Player/ConfirmSkill".
+        /// </summary>
+        public InputAction @ConfirmSkill => m_Wrapper.m_Player_ConfirmSkill;
         /// <summary>
         /// Provides access to the underlying input action map instance.
         /// </summary>
@@ -412,6 +439,9 @@ public partial class @PlayerInputs: IInputActionCollection2, IDisposable
             @ThirdSkill.started += instance.OnThirdSkill;
             @ThirdSkill.performed += instance.OnThirdSkill;
             @ThirdSkill.canceled += instance.OnThirdSkill;
+            @ConfirmSkill.started += instance.OnConfirmSkill;
+            @ConfirmSkill.performed += instance.OnConfirmSkill;
+            @ConfirmSkill.canceled += instance.OnConfirmSkill;
         }
 
         /// <summary>
@@ -438,6 +468,9 @@ public partial class @PlayerInputs: IInputActionCollection2, IDisposable
             @ThirdSkill.started -= instance.OnThirdSkill;
             @ThirdSkill.performed -= instance.OnThirdSkill;
             @ThirdSkill.canceled -= instance.OnThirdSkill;
+            @ConfirmSkill.started -= instance.OnConfirmSkill;
+            @ConfirmSkill.performed -= instance.OnConfirmSkill;
+            @ConfirmSkill.canceled -= instance.OnConfirmSkill;
         }
 
         /// <summary>
@@ -513,5 +546,12 @@ public partial class @PlayerInputs: IInputActionCollection2, IDisposable
         /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
         /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
         void OnThirdSkill(InputAction.CallbackContext context);
+        /// <summary>
+        /// Method invoked when associated input action "ConfirmSkill" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
+        /// </summary>
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.started" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
+        void OnConfirmSkill(InputAction.CallbackContext context);
     }
 }

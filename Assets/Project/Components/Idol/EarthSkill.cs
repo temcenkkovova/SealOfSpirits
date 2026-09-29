@@ -1,11 +1,11 @@
 public class EarthSkill : IdolSkill
 {
 
-  private IdolSkillConfig idolSkillConfig;
-  private IdolSkillView idolSkillView;
-  public override void Initialize(IdolSkillConfig idolSkillConfig, IdolSkillView idolSkillView)
+  private SkillData skillData;
+
+  public override void Initialize(SkillData skillData)
   {
-    this.idolSkillConfig = idolSkillConfig;
-    this.idolSkillView = idolSkillView;
+    this.skillData = skillData;
+
   }
 }

@@ -12,9 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4a90e7577cf511d4681960656027af66, type: 3}
   m_Name: Meteor
   m_EditorClassIdentifier: Assembly-CSharp::IdolSkillConfig
-  idolSkillPrefab: {fileID: 168526407432212403, guid: ae0fe6422c4654a46b8d2f925e7c7556, type: 3}
+  idolSkillPrefab: {fileID: 3816006534519018163, guid: e37662db7528bec41817c0493871d45e, type: 3}
   damage: 50
   cooldown: 10
-  radius: 10
+  radius: 3
   duration: 3
   icon: {fileID: 21300000, guid: 9643d0b2a7befad468a218648ecfd17b, type: 3}

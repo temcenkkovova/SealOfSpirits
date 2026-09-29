@@ -10,6 +10,8 @@ public class SkillData
   public float Duration { get; private set; }
   public IdolSkill SkillPrefab { get; private set; }
   public bool IsActivated { get; private set; } = false;
+
+  public Sprite icon;
   public event Action OnActivatedSkill;
   public SkillData(IdolSkillConfig skillConfig)
   {
@@ -18,11 +20,13 @@ public class SkillData
     Radius = skillConfig.radius;
     Duration = skillConfig.duration;
     SkillPrefab = skillConfig.idolSkillPrefab;
+    icon = skillConfig.icon;
+
   }
 
   public void ActivateSkill()
   {
-    Debug.Log("skill is activated");
+
     IsActivated = true;
     OnActivatedSkill?.Invoke();
   }

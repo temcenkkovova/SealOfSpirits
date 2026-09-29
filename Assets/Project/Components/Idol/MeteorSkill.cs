@@ -4,59 +4,63 @@ using UnityEngine;
 public class MeteorSkill : IdolSkill
 {
 
-  private IdolSkillConfig idolSkillConfig;
-  private IdolSkillView idolSkillView;
+  private SkillData skillData;
+  public IdolSkillView warningSkill;
   public LayerMask damageMask;
 
-  private float currentZ;
-  private float currentX;
-  private bool IsOnGround = false;
-  public override void Initialize(IdolSkillConfig idolSkillConfig, IdolSkillView idolSkillView)
+
+
+  private MeteorCollision meteorCollision;
+  public override void Initialize(SkillData skillData)
   {
-    this.idolSkillConfig = idolSkillConfig;
-    this.idolSkillView = idolSkillView;
+    this.skillData = skillData;
+
+  }
+
+  void Awake()
+  {
+    meteorCollision = GetComponentInChildren<MeteorCollision>();
   }
 
   void Start()
   {
-    IsOnGround = false;
-    if (idolSkillView != null)
-      idolSkillView.PlayWarning();
 
-    currentZ = transform.position.z;
-    currentX = transform.position.x;
-  }
+    warningSkill.Init(skillData.Duration);
+    meteorCollision.Init(skillData.Duration);
 
-  void Update()
-  {
-    if (IsOnGround) return;
-    transform.position = Vector3.MoveTowards(transform.position, new Vector3(currentX, 0f, currentZ), (idolSkillConfig.duration - 1.5f) * Time.deltaTime);
-  }
+    if (warningSkill != null)
+      warningSkill.PlayWarning();
 
-  void OnTriggerEnter(Collider other)
-  {
 
-    if (IsOnGround) return;
-    if (other.gameObject.tag == "Ground")
+
+    if (meteorCollision != null)
     {
-      IsOnGround = true;
-      Explosion();
+      meteorCollision.OnGround += Explosion;
     }
   }
+
+
+
   public void Explosion()
   {
-
-    Collider[] hits = Physics.OverlapSphere(transform.position, 10f, damageMask);
+    Vector3 vector = new Vector3(transform.position.x, 0f, transform.position.z);
+    Collider[] hits = Physics.OverlapSphere(vector, skillData.Radius, damageMask);
 
     foreach (Collider hit in hits)
     {
       IDamageable damageable = hit.GetComponent<IDamageable>();
       if (damageable == null) return;
-      damageable.TakeDamage(idolSkillConfig.damage);
+      damageable.TakeDamage(skillData.Damage);
     }
     Destroy(gameObject, 2f);
   }
 
-
+  void OnDisable()
+  {
+    if (meteorCollision != null)
+    {
+      meteorCollision.OnGround -= Explosion;
+    }
+  }
 
 }

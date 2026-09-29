@@ -2,5 +2,5 @@ using UnityEngine;
 
 public abstract class IdolSkill : MonoBehaviour
 {
-  public abstract void Initialize(IdolSkillConfig config, IdolSkillView idolSkillView);
+  public abstract void Initialize(SkillData skillData);
 }
