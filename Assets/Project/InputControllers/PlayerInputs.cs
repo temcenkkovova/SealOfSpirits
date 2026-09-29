@@ -111,6 +111,36 @@ public partial class @PlayerInputs: IInputActionCollection2, IDisposable
                     ""interactions"": """",
                     ""initialStateCheck"": false,
                     ""priority"": 0
+                },
+                {
+                    ""name"": ""FirstSkill"",
+                    ""type"": ""Button"",
+                    ""id"": ""da764d11-54d1-4b9a-a28f-8593337574da"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false,
+                    ""priority"": 0
+                },
+                {
+                    ""name"": ""SecondSkill"",
+                    ""type"": ""Button"",
+                    ""id"": ""ee38cb50-4332-4f11-8fad-7bddc24638d4"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false,
+                    ""priority"": 0
+                },
+                {
+                    ""name"": ""ThirdSkill"",
+                    ""type"": ""Button"",
+                    ""id"": ""bd51aa99-0f7a-46e0-a841-99d9c81d2462"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false,
+                    ""priority"": 0
                 }
             ],
             ""bindings"": [
@@ -179,6 +209,39 @@ public partial class @PlayerInputs: IInputActionCollection2, IDisposable
                     ""action"": ""Interact"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""c8500ff3-854c-41c0-b699-671c4881b3db"",
+                    ""path"": ""<Keyboard>/1"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""FirstSkill"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""7a8dbc4c-3898-4590-989d-95a3ea92c11b"",
+                    ""path"": ""<Keyboard>/2"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""SecondSkill"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""d64a324e-6000-4bfd-9c26-861d455902f5"",
+                    ""path"": ""<Keyboard>/3"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""ThirdSkill"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -189,6 +252,9 @@ public partial class @PlayerInputs: IInputActionCollection2, IDisposable
         m_Player = asset.FindActionMap("Player", throwIfNotFound: true);
         m_Player_Move = m_Player.FindAction("Move", throwIfNotFound: true);
         m_Player_Interact = m_Player.FindAction("Interact", throwIfNotFound: true);
+        m_Player_FirstSkill = m_Player.FindAction("FirstSkill", throwIfNotFound: true);
+        m_Player_SecondSkill = m_Player.FindAction("SecondSkill", throwIfNotFound: true);
+        m_Player_ThirdSkill = m_Player.FindAction("ThirdSkill", throwIfNotFound: true);
     }
 
     ~@PlayerInputs()
@@ -271,6 +337,9 @@ public partial class @PlayerInputs: IInputActionCollection2, IDisposable
     private List<IPlayerActions> m_PlayerActionsCallbackInterfaces = new List<IPlayerActions>();
     private readonly InputAction m_Player_Move;
     private readonly InputAction m_Player_Interact;
+    private readonly InputAction m_Player_FirstSkill;
+    private readonly InputAction m_Player_SecondSkill;
+    private readonly InputAction m_Player_ThirdSkill;
     /// <summary>
     /// Provides access to input actions defined in input action map "Player".
     /// </summary>
@@ -290,6 +359,18 @@ public partial class @PlayerInputs: IInputActionCollection2, IDisposable
         /// Provides access to the underlying input action "Player/Interact".
         /// </summary>
         public InputAction @Interact => m_Wrapper.m_Player_Interact;
+        /// <summary>
+        /// Provides access to the underlying input action "Player/FirstSkill".
+        /// </summary>
+        public InputAction @FirstSkill => m_Wrapper.m_Player_FirstSkill;
+        /// <summary>
+        /// Provides access to the underlying input action "Player/SecondSkill".
+        /// </summary>
+        public InputAction @SecondSkill => m_Wrapper.m_Player_SecondSkill;
+        /// <summary>
+        /// Provides access to the underlying input action "Player/ThirdSkill".
+        /// </summary>
+        public InputAction @ThirdSkill => m_Wrapper.m_Player_ThirdSkill;
         /// <summary>
         /// Provides access to the underlying input action map instance.
         /// </summary>
@@ -322,6 +403,15 @@ public partial class @PlayerInputs: IInputActionCollection2, IDisposable
             @Interact.started += instance.OnInteract;
             @Interact.performed += instance.OnInteract;
             @Interact.canceled += instance.OnInteract;
+            @FirstSkill.started += instance.OnFirstSkill;
+            @FirstSkill.performed += instance.OnFirstSkill;
+            @FirstSkill.canceled += instance.OnFirstSkill;
+            @SecondSkill.started += instance.OnSecondSkill;
+            @SecondSkill.performed += instance.OnSecondSkill;
+            @SecondSkill.canceled += instance.OnSecondSkill;
+            @ThirdSkill.started += instance.OnThirdSkill;
+            @ThirdSkill.performed += instance.OnThirdSkill;
+            @ThirdSkill.canceled += instance.OnThirdSkill;
         }
 
         /// <summary>
@@ -339,6 +429,15 @@ public partial class @PlayerInputs: IInputActionCollection2, IDisposable
             @Interact.started -= instance.OnInteract;
             @Interact.performed -= instance.OnInteract;
             @Interact.canceled -= instance.OnInteract;
+            @FirstSkill.started -= instance.OnFirstSkill;
+            @FirstSkill.performed -= instance.OnFirstSkill;
+            @FirstSkill.canceled -= instance.OnFirstSkill;
+            @SecondSkill.started -= instance.OnSecondSkill;
+            @SecondSkill.performed -= instance.OnSecondSkill;
+            @SecondSkill.canceled -= instance.OnSecondSkill;
+            @ThirdSkill.started -= instance.OnThirdSkill;
+            @ThirdSkill.performed -= instance.OnThirdSkill;
+            @ThirdSkill.canceled -= instance.OnThirdSkill;
         }
 
         /// <summary>
@@ -393,5 +492,26 @@ public partial class @PlayerInputs: IInputActionCollection2, IDisposable
         /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
         /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
         void OnInteract(InputAction.CallbackContext context);
+        /// <summary>
+        /// Method invoked when associated input action "FirstSkill" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
+        /// </summary>
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.started" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
+        void OnFirstSkill(InputAction.CallbackContext context);
+        /// <summary>
+        /// Method invoked when associated input action "SecondSkill" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
+        /// </summary>
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.started" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
+        void OnSecondSkill(InputAction.CallbackContext context);
+        /// <summary>
+        /// Method invoked when associated input action "ThirdSkill" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
+        /// </summary>
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.started" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
+        void OnThirdSkill(InputAction.CallbackContext context);
     }
 }

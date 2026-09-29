@@ -13,3 +13,4 @@ MonoBehaviour:
   m_Name: EarthIdol
   m_EditorClassIdentifier: Assembly-CSharp::IdolConfig
   elementName: Earth
+  idolSkillConfig: {fileID: 11400000, guid: 576660e1b4350cf49934e71abaa690ef, type: 2}

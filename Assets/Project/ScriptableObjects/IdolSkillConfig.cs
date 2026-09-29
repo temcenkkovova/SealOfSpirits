@@ -7,5 +7,6 @@ public class IdolSkillConfig : ScriptableObject
   public float cooldown;
   public float radius;
   public float duration;
+  public Sprite icon;
 
 }

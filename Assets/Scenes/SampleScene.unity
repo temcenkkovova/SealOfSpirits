@@ -843,6 +843,7 @@ GameObject:
   - component: {fileID: 1154988454}
   - component: {fileID: 1154988453}
   - component: {fileID: 1154988456}
+  - component: {fileID: 1154988457}
   m_Layer: 6
   m_Name: WaterIdol
   m_TagString: Idol
@@ -956,6 +957,20 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::IdolBootstrap
   idolConfig: {fileID: 11400000, guid: 86f074ab316022c458d75b8bebff1f53, type: 2}
+--- !u!114 &1154988457
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1154988451}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 71eb0bde2f4aa524c92e79eca17243fe, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::IdolSkillController
+  idSkill: 2
+  skillPosition: {fileID: 524886412}
 --- !u!1 &1352150030
 GameObject:
   m_ObjectHideFlags: 0
@@ -969,6 +984,7 @@ GameObject:
   - component: {fileID: 1352150033}
   - component: {fileID: 1352150032}
   - component: {fileID: 1352150035}
+  - component: {fileID: 1352150036}
   m_Layer: 6
   m_Name: EarthIdol
   m_TagString: Idol
@@ -1082,6 +1098,20 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::IdolBootstrap
   idolConfig: {fileID: 11400000, guid: aa242da1ac5ae194ca247c8758fb1a0c, type: 2}
+--- !u!114 &1352150036
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1352150030}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 71eb0bde2f4aa524c92e79eca17243fe, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::IdolSkillController
+  idSkill: 1
+  skillPosition: {fileID: 524886412}
 --- !u!1 &1513940536
 GameObject:
   m_ObjectHideFlags: 0
@@ -1099,6 +1129,7 @@ GameObject:
   - component: {fileID: 1513940544}
   - component: {fileID: 1513940545}
   - component: {fileID: 1513940546}
+  - component: {fileID: 1513940547}
   m_Layer: 7
   m_Name: Player
   m_TagString: Player
@@ -1267,6 +1298,22 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9f0b8cdd9e5fe8e40bb96422dd0b00d2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PlayerHealth
+--- !u!114 &1513940547
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1513940536}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5f331a3614fd46f4990bfee6042f76a6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::PlayerSkills
+  skillConfigs:
+  - {fileID: 11400000, guid: 48d680d51bea52540bbb9babff0f6203, type: 2}
+  - {fileID: 11400000, guid: 576660e1b4350cf49934e71abaa690ef, type: 2}
+  - {fileID: 11400000, guid: bf9ec457c3ad904428add48bb87c7406, type: 2}
 --- !u!1 &1841754035
 GameObject:
   m_ObjectHideFlags: 0
@@ -1406,6 +1453,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 71eb0bde2f4aa524c92e79eca17243fe, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::IdolSkillController
+  idSkill: 0
   skillPosition: {fileID: 524886412}
 --- !u!1 &1906196508
 GameObject:

@@ -5,10 +5,12 @@ public class PlayerCollisionController : MonoBehaviour
   public LayerMask layerMask;
   private IInteractable currentInteractable;
   private PlayerInputController playerInputController;
+  private PlayerSkills playerSkills;
 
   void Awake()
   {
     playerInputController = GetComponent<PlayerInputController>();
+    playerSkills = GetComponent<PlayerSkills>();
   }
 
   void Start()
@@ -38,7 +40,7 @@ public class PlayerCollisionController : MonoBehaviour
   public void HandlePressInteractButton()
   {
     if (currentInteractable == null) return;
-    currentInteractable.Interact();
+    playerSkills.HandleActivatedSkill(currentInteractable.Interact());
   }
 
   void OnDisable()

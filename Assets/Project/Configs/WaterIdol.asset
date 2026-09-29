@@ -13,3 +13,4 @@ MonoBehaviour:
   m_Name: WaterIdol
   m_EditorClassIdentifier: Assembly-CSharp::IdolConfig
   elementName: Water
+  idolSkillConfig: {fileID: 11400000, guid: bf9ec457c3ad904428add48bb87c7406, type: 2}
