@@ -1,7 +1,7 @@
 public interface IStunable
 {
 
-  public void DoStun()
+  public void Stunned(float duration)
   {
 
   }

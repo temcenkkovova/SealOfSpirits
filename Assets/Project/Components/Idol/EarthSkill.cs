@@ -6,6 +6,7 @@ public class EarthSkill : IdolSkill
   private SkillData skillData;
   public IdolSkillView skillView;
   public LayerMask damageMask;
+  private float stunDuration = 2f;
   public override void Initialize(SkillData skillData)
   {
     this.skillData = skillData;
@@ -28,8 +29,8 @@ public class EarthSkill : IdolSkill
     {
       IStunable stunnable = hit.GetComponent<IStunable>();
       if (stunnable == null) continue;
-      stunnable.DoStun();
+      stunnable.Stunned(stunDuration);
     }
-    Destroy(gameObject, 1f);
+    Destroy(gameObject, 0.2f);
   }
 }

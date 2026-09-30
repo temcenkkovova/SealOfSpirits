@@ -6,11 +6,12 @@ public class PlayerMovement : MonoBehaviour
   public float MoveSpeed { get; private set; }
   private PlayerInputController playerInputController;
   private CharacterController characterController;
-
+  private PlayerStatus playerStatus;
   void Awake()
   {
     playerInputController = GetComponent<PlayerInputController>();
     characterController = GetComponent<CharacterController>();
+    playerStatus = GetComponent<PlayerStatus>();
   }
 
   public void Init(float speed)
@@ -22,7 +23,7 @@ public class PlayerMovement : MonoBehaviour
   {
     Vector3 movePos = new Vector3(playerInputController.MoveInput.x, 0f, playerInputController.MoveInput.y);
     if (movePos.sqrMagnitude < 0.01f) return;
-
+    if (playerStatus.IsStunned) return;
     characterController.Move(movePos * MoveSpeed * Time.deltaTime);
   }
 }
