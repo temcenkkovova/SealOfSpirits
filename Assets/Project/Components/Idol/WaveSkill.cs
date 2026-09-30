@@ -12,17 +12,33 @@ public class WaveSkill : IdolSkill
   {
     this.skillData = skillData;
     targetSkillPos = skillPos;
-
+    targetSkillPos.y = transform.position.y;
+    Vector3 direction = targetSkillPos - transform.position;
+    if (direction.sqrMagnitude > 0.0001f)
+    {
+      transform.rotation = Quaternion.LookRotation(
+          direction,
+          Vector3.up
+      );
+    }
   }
 
   void Update()
   {
-    transform.rotation = Quaternion.LookRotation(targetSkillPos);
+
     transform.position = Vector3.MoveTowards(transform.position, targetSkillPos, 3f * Time.deltaTime);
 
     if ((targetSkillPos - transform.position).sqrMagnitude <= 0.01f)
     {
       Destroy(gameObject);
+    }
+  }
+
+  void OnTriggerEnter(Collider other)
+  {
+    if (other.tag == "Enemy")
+    {
+      Debug.Log("Enemy water");
     }
   }
 }

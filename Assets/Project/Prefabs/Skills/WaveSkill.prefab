@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4618656589523162271}
   - component: {fileID: -6047158900557341195}
+  - component: {fileID: 940316255952178985}
   m_Layer: 0
   m_Name: WaveSkill
   m_TagString: Untagged
@@ -45,6 +46,27 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 50f0ac21fed162247aadbd64130e399f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::WaveSkill
+--- !u!65 &940316255952178985
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1841836750294175786}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 5.9087543, y: 2.029275, z: 0.7938061}
+  m_Center: {x: 0.24000001, y: 0.51463777, z: 0.11924839}
 --- !u!1 &7766325885019660140
 GameObject:
   m_ObjectHideFlags: 0
