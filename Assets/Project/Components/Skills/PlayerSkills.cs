@@ -50,9 +50,13 @@ public class PlayerSkills : MonoBehaviour
       {
         CastSkill(transform.position);
       }
-      else
+      if (currentUseSkill.name == "Meteor")
       {
-        skillAimingComponent.StartAiming(currentUseSkill.Radius);
+        skillAimingComponent.StartAimingMeteor(currentUseSkill.Radius);
+      }
+      if (currentUseSkill.name == "Water")
+      {
+        skillAimingComponent.StartAimingWave(currentUseSkill.Radius);
       }
 
 

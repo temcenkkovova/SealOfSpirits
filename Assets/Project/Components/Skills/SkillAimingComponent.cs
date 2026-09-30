@@ -6,8 +6,9 @@ public class SkillAimingComponent : MonoBehaviour
 {
   private float radius;
   public AimingCircle aimingCircle;
-
+  public AimingWave aimingWave;
   private AimingCircle spawnedAimingCircle;
+  private AimingWave spawnedAimingWave;
   public Vector2 MousePosition { get; private set; }
   public bool IsInAimingProcess { get; private set; }
   private PlayerInputController playerInputController;
@@ -28,7 +29,7 @@ public class SkillAimingComponent : MonoBehaviour
     MousePosition = Mouse.current.position.ReadValue();
   }
 
-  public void StartAiming(float radius)
+  public void StartAimingMeteor(float radius)
   {
     StopAiming();
     IsInAimingProcess = true;
@@ -48,22 +49,52 @@ public class SkillAimingComponent : MonoBehaviour
     spawnedAimingCircle.Init(this);
   }
 
+  public void StartAimingWave(float radius)
+  {
+    StopAiming();
+    IsInAimingProcess = true;
+    this.radius = radius;
+
+    spawnedAimingWave = Instantiate(aimingWave, transform.position, aimingWave.transform.rotation);
+    spawnedAimingWave.transform.localScale = spawnedAimingWave.transform.localScale * radius;
+    spawnedAimingWave.Init(this);
+  }
+
   public void StopAiming()
   {
     IsInAimingProcess = false;
-    if (spawnedAimingCircle)
+
+    if (spawnedAimingCircle != null)
     {
       Destroy(spawnedAimingCircle.gameObject);
+      spawnedAimingCircle = null;
+    }
+
+    if (spawnedAimingWave != null)
+    {
+      Destroy(spawnedAimingWave.gameObject);
+      spawnedAimingWave = null;
     }
   }
 
   public void HandleFinishAiming()
   {
     if (!IsInAimingProcess) return;
-    AimingCirclePosition = spawnedAimingCircle.transform.position;
+
+    if (spawnedAimingWave != null)
+    {
+      AimingCirclePosition = spawnedAimingWave.waveTargetPosition;
+    }
+    else if (spawnedAimingCircle != null)
+    {
+      AimingCirclePosition = spawnedAimingCircle.transform.position;
+    }
+    else
+    {
+      return;
+    }
 
     StopAiming();
-
     OnChoosePosition?.Invoke(AimingCirclePosition);
   }
 

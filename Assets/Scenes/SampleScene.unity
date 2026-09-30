@@ -1642,6 +1642,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::SkillAimingComponent
   aimingCircle: {fileID: -3713300714126068239, guid: 3424ac705cc1d9f4ea93376499c8612d, type: 3}
+  aimingWave: {fileID: 1744310056725702918, guid: 798b4cd45d829ef44abb233b7ce33ea2, type: 3}
 --- !u!114 &1513940549
 MonoBehaviour:
   m_ObjectHideFlags: 0

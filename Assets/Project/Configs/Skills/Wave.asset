@@ -15,7 +15,7 @@ MonoBehaviour:
   idolSkillPrefab: {fileID: 168526407432212403, guid: ae0fe6422c4654a46b8d2f925e7c7556, type: 3}
   damage: 20
   cooldown: 5
-  radius: 10
+  radius: 5
   duration: 3
   icon: {fileID: 21300000, guid: bdbfeffed628c254b9be83d2385b0a1b, type: 3}
   nameSkill: Water
