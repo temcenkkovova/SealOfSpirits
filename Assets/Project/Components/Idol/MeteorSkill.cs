@@ -11,7 +11,7 @@ public class MeteorSkill : IdolSkill
 
 
   private MeteorCollision meteorCollision;
-  public override void Initialize(SkillData skillData)
+  public override void Initialize(SkillData skillData, Vector3 skillPos)
   {
     this.skillData = skillData;
 

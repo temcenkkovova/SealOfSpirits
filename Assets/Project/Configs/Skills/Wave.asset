@@ -12,10 +12,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4a90e7577cf511d4681960656027af66, type: 3}
   m_Name: Wave
   m_EditorClassIdentifier: Assembly-CSharp::IdolSkillConfig
-  idolSkillPrefab: {fileID: 168526407432212403, guid: ae0fe6422c4654a46b8d2f925e7c7556, type: 3}
-  damage: 20
+  idolSkillPrefab: {fileID: -6047158900557341195, guid: 55e2e45636bf689428e3885d8e1a1b14, type: 3}
+  damage: 0
   cooldown: 5
-  radius: 5
+  radius: 3
   duration: 3
   icon: {fileID: 21300000, guid: bdbfeffed628c254b9be83d2385b0a1b, type: 3}
   nameSkill: Water

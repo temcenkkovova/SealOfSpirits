@@ -36,10 +36,21 @@ public class PlayerSkills : MonoBehaviour
 
   public void CastSkill(Vector3 castSkillPosition)
   {
-    Vector3 skillPosition = new Vector3(castSkillPosition.x, 0f, castSkillPosition.z);
-    IdolSkill idolSkill = Instantiate(currentUseSkill.SkillPrefab, skillPosition, currentUseSkill.SkillPrefab.transform.rotation);
-    idolSkill.Initialize(currentUseSkill);
+    if (currentUseSkill.name == "Water")
+    {
+      Vector3 skillPosition = new Vector3(castSkillPosition.x, 0f, castSkillPosition.z);
+      IdolSkill idolSkill = Instantiate(currentUseSkill.SkillPrefab, transform.position, currentUseSkill.SkillPrefab.transform.rotation);
+      idolSkill.Initialize(currentUseSkill, skillPosition);
+    }
+    else
+    {
+      Vector3 skillPosition = new Vector3(castSkillPosition.x, 0f, castSkillPosition.z);
+      IdolSkill idolSkill = Instantiate(currentUseSkill.SkillPrefab, skillPosition, currentUseSkill.SkillPrefab.transform.rotation);
+      idolSkill.Initialize(currentUseSkill, Vector3.zero);
+    }
+
   }
+
   public void TryUseSkill(int skillNumber)
   {
 
