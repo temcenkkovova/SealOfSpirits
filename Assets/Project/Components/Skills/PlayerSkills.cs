@@ -46,7 +46,15 @@ public class PlayerSkills : MonoBehaviour
     if (skillsData[skillNumber].IsActivated)
     {
       currentUseSkill = skillsData[skillNumber];
-      skillAimingComponent.StartAiming(currentUseSkill.Radius);
+      if (currentUseSkill.name == "Rock")
+      {
+        CastSkill(transform.position);
+      }
+      else
+      {
+        skillAimingComponent.StartAiming(currentUseSkill.Radius);
+      }
+
 
       Debug.Log("Use skill");
     }

@@ -18,3 +18,4 @@ MonoBehaviour:
   radius: 3
   duration: 3
   icon: {fileID: 21300000, guid: 9643d0b2a7befad468a218648ecfd17b, type: 3}
+  nameSkill: Meteor

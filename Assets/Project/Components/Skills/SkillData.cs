@@ -12,6 +12,7 @@ public class SkillData
   public bool IsActivated { get; private set; } = false;
 
   public Sprite icon;
+  public string name;
   public event Action OnActivatedSkill;
   public SkillData(IdolSkillConfig skillConfig)
   {
@@ -21,6 +22,7 @@ public class SkillData
     Duration = skillConfig.duration;
     SkillPrefab = skillConfig.idolSkillPrefab;
     icon = skillConfig.icon;
+    name = skillConfig.nameSkill;
 
   }
 

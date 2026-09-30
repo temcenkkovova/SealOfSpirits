@@ -1535,7 +1535,6 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 48d680d51bea52540bbb9babff0f6203, type: 2}
   - {fileID: 11400000, guid: 576660e1b4350cf49934e71abaa690ef, type: 2}
   - {fileID: 11400000, guid: bf9ec457c3ad904428add48bb87c7406, type: 2}
-  meteorSkill: {fileID: 3816006534519018163, guid: e37662db7528bec41817c0493871d45e, type: 3}
 --- !u!114 &1513940548
 MonoBehaviour:
   m_ObjectHideFlags: 0

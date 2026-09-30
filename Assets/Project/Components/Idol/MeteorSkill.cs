@@ -49,7 +49,7 @@ public class MeteorSkill : IdolSkill
     foreach (Collider hit in hits)
     {
       IDamageable damageable = hit.GetComponent<IDamageable>();
-      if (damageable == null) return;
+      if (damageable == null) continue;
       damageable.TakeDamage(skillData.Damage);
     }
     Destroy(gameObject, 2f);
