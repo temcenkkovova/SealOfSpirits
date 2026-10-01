@@ -2,10 +2,12 @@ using UnityEngine;
 
 public class EnemyBootstrap : MonoBehaviour
 {
-  private SealComponent target; // Here will be Seal`s transform;  Enemy will go to the seal and destroy it;
+  private SealComponent target;
   private EnemyMovement enemyMovement;
   private EnemyHealth enemyHealth;
   private EnemyConfig enemyConfig;
+
+
 
   void Start()
   {
@@ -22,6 +24,7 @@ public class EnemyBootstrap : MonoBehaviour
   void Awake()
   {
     enemyMovement = GetComponent<EnemyMovement>();
+    enemyHealth = GetComponent<EnemyHealth>();
   }
 
 }

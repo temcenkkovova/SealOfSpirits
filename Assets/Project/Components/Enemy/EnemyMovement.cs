@@ -1,4 +1,5 @@
 using UnityEngine;
+using System.Collections.Generic;
 
 public class EnemyMovement : MonoBehaviour
 {
@@ -9,6 +10,8 @@ public class EnemyMovement : MonoBehaviour
   private float knockbackDuration;
   private float knockbackSpeed;
   private Vector3 knockbackDirection;
+  private static readonly List<EnemyMovement> activeEnemies = new();
+  private float separationRadius = 0.4f;
 
   void Awake()
   {
@@ -38,13 +41,45 @@ public class EnemyMovement : MonoBehaviour
 
 
   }
+  private bool CanMoveTo(Vector3 nextPosition)
+  {
+    foreach (EnemyMovement other in activeEnemies)
+    {
+      if (other == this) continue;
 
-  public void FollowTarget(Vector3 dir)
+      Vector3 currentOffset = transform.position - other.transform.position;
+      Vector3 nextOffset = nextPosition - other.transform.position;
+
+
+      currentOffset.y = 0f;
+      nextOffset.y = 0f;
+
+      float minDistance = separationRadius + other.separationRadius;
+
+
+      if (nextOffset.sqrMagnitude < minDistance * minDistance &&
+          nextOffset.sqrMagnitude < currentOffset.sqrMagnitude)
+      {
+        return false;
+      }
+    }
+
+    return true;
+  }
+  public void FollowTarget(Vector3 targetPosition)
   {
     if (IsKnockingBack) return;
-    transform.position = Vector3.MoveTowards(transform.position, dir, moveSpeed * Time.deltaTime);
-  }
 
+    Vector3 nextPosition = Vector3.MoveTowards(
+        transform.position,
+        targetPosition,
+        moveSpeed * Time.deltaTime);
+
+    if (CanMoveTo(nextPosition))
+    {
+      transform.position = nextPosition;
+    }
+  }
   public void KnockBackFromWave(float knockbackDuration, float knockbackSpeed, Vector3 knockbackDirection)
   {
 
@@ -68,5 +103,17 @@ public class EnemyMovement : MonoBehaviour
     {
       IsKnockingBack = false;
     }
+
+  }
+
+
+  private void OnEnable()
+  {
+    activeEnemies.Add(this);
+  }
+
+  private void OnDisable()
+  {
+    activeEnemies.Remove(this);
   }
 }
