@@ -2,7 +2,7 @@ using UnityEngine;
 
 public class EnemyBootstrap : MonoBehaviour
 {
-  private PlayerBootstrap target;
+  private PlayerBootstrap target; // Here will be Seal`s transform;  Enemy will go to the seal and destroy it;
   private EnemyMovement enemyMovement;
   private float moveSpeed = 3f;
 
