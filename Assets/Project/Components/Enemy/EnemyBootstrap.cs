@@ -14,6 +14,9 @@ public class EnemyBootstrap : MonoBehaviour
 
     enemyMovement.Init(target.transform, enemyConfig.moveSpeed);
     enemyHealth.Init(enemyConfig.health);
+
+    if (enemyHealth == null) return;
+    enemyHealth.OnDead += HandleSealReward;
   }
   public void Init(EnemyConfig enemyConfig, SealComponent target)
   {
@@ -25,6 +28,16 @@ public class EnemyBootstrap : MonoBehaviour
   {
     enemyMovement = GetComponent<EnemyMovement>();
     enemyHealth = GetComponent<EnemyHealth>();
+  }
+
+  public void HandleSealReward()
+  {
+    target.AddProgressAmount(enemyConfig.sealAmountReward);
+  }
+  void OnDisable()
+  {
+    if (enemyHealth == null) return;
+    enemyHealth.OnDead -= HandleSealReward;
   }
 
 }

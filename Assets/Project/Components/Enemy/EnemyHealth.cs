@@ -7,6 +7,7 @@ public class EnemyHealth : MonoBehaviour, IDamageable
   public event Action OnDead;
   public float maxHealth;
 
+
   public void Init(float health)
   {
     maxHealth = health;

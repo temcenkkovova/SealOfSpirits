@@ -4,43 +4,31 @@ using UnityEngine;
 
 public class SealPopupUI : MonoBehaviour
 {
-  public TMP_Text textField;
+  public PopupUI popup;
   public SealComponent sealComponent;
-  private float currentTotalAmount;
+  private Vector3 lastPopupPos;
+
 
 
   void Start()
   {
+    lastPopupPos = transform.position;
     if (sealComponent == null) return;
-    sealComponent.OnCurrentSealProgressChanged += ShowAmount;
+    sealComponent.OnCurrentSealProgressChanged += ShowPopup;
   }
-  public void ShowAmount(float amount)
+  public void ShowPopup(float amount)
   {
-    if (currentTotalAmount > 0)
-    {
-      currentTotalAmount += amount;
-      textField.text = currentTotalAmount.ToString();
-    }
-    else
-    {
-      currentTotalAmount = amount;
-      textField.text = currentTotalAmount.ToString();
-    }
-
-
-    StartCoroutine(hideShowedText());
+    Vector3 currentPopupPos = lastPopupPos + new Vector3(0, 1f, 0);
+    PopupUI popupUI = Instantiate(popup, currentPopupPos, Quaternion.identity);
+    popupUI.Init(amount);
+    lastPopupPos = currentPopupPos;
   }
 
   void OnDisable()
   {
     if (sealComponent == null) return;
-    sealComponent.OnCurrentSealProgressChanged -= ShowAmount;
+    sealComponent.OnCurrentSealProgressChanged -= ShowPopup;
   }
 
-  IEnumerator hideShowedText()
-  {
-    yield return new WaitForSeconds(2f);
-    textField.text = "";
-    currentTotalAmount = 0;
-  }
+
 }

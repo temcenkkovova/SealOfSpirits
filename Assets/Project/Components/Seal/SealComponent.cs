@@ -3,7 +3,7 @@ using UnityEngine;
 
 public class SealComponent : MonoBehaviour
 {
-  private float currentSealProgress = 0;
+  public float currentSealProgress { get; private set; } = 0;
   private float requiredSealProgress = 100f;
   public event Action<float> OnCurrentSealProgressChanged;
   public event Action OnSealProgressCompleted;
@@ -18,6 +18,6 @@ public class SealComponent : MonoBehaviour
       OnSealProgressCompleted?.Invoke();
     }
 
-    OnCurrentSealProgressChanged?.Invoke(currentSealProgress);
+    OnCurrentSealProgressChanged?.Invoke(amount);
   }
 }
