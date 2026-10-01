@@ -2,19 +2,20 @@ using UnityEngine;
 
 public class EnemyBootstrap : MonoBehaviour
 {
-  private PlayerBootstrap target; // Here will be Seal`s transform;  Enemy will go to the seal and destroy it;
+  private SealComponent target; // Here will be Seal`s transform;  Enemy will go to the seal and destroy it;
   private EnemyMovement enemyMovement;
-  private float moveSpeed = 3f;
-
-  public PlayerBootstrap playerBootstrap;
+  private EnemyHealth enemyHealth;
+  private EnemyConfig enemyConfig;
 
   void Start()
   {
-    Init(playerBootstrap);
-    enemyMovement.Init(target.transform, moveSpeed);
+
+    enemyMovement.Init(target.transform, enemyConfig.moveSpeed);
+    enemyHealth.Init(enemyConfig.health);
   }
-  public void Init(PlayerBootstrap target)
+  public void Init(EnemyConfig enemyConfig, SealComponent target)
   {
+    this.enemyConfig = enemyConfig;
     this.target = target;
   }
 
