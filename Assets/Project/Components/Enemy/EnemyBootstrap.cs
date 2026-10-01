@@ -5,7 +5,7 @@ public class EnemyBootstrap : MonoBehaviour
   private SealComponent target;
   private EnemyMovement enemyMovement;
   private EnemyHealth enemyHealth;
-  private EnemyConfig enemyConfig;
+  public EnemyConfig enemyConfig { get; private set; }
 
 
 

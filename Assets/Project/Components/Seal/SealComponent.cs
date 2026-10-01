@@ -10,6 +10,7 @@ public class SealComponent : MonoBehaviour
   public event Action OnSealProgressCompleted;
   public GameObject sealWarningVisual;
   public bool IsInDangerZone { get; private set; }
+  public ChaosComponent chaosComponent;
 
   private List<EnemyBootstrap> enemyDangerZone = new List<EnemyBootstrap>();
 
@@ -47,6 +48,7 @@ public class SealComponent : MonoBehaviour
     if (!enemyDangerZone.Contains(enemyBootstrap))
     {
       enemyDangerZone.Add(enemyBootstrap);
+      chaosComponent.IncreaseChaos(enemyBootstrap.enemyConfig.chaosAmount);
     }
     UpdateDangerZone();
 
@@ -54,18 +56,18 @@ public class SealComponent : MonoBehaviour
 
   void OnTriggerExit(Collider other)
   {
-    if (other.tag == "Enemy")
-    {
-      EnemyBootstrap enemyBootstrap = other.GetComponent<EnemyBootstrap>();
-      if (enemyBootstrap == null) return;
+    if (!other.CompareTag("Enemy")) return;
 
-      foreach (EnemyBootstrap enemy in enemyDangerZone)
-      {
-        if (enemyBootstrap == enemy)
-          enemyDangerZone.Remove(enemy);
-      }
-      UpdateDangerZone();
+    EnemyBootstrap enemyBootstrap = other.GetComponent<EnemyBootstrap>();
+    if (enemyBootstrap == null) return;
+
+    if (enemyDangerZone.Remove(enemyBootstrap))
+    {
+      chaosComponent.DecreaseChaos(
+          enemyBootstrap.enemyConfig.chaosAmount);
     }
+
+    UpdateDangerZone();
   }
   private void UpdateDangerZone()
   {
