@@ -8,6 +8,10 @@ public class EnemySpawn : MonoBehaviour
 
   void Start()
   {
+    //SpawnEnemy();
+  }
+  void OnEnable()
+  {
     SpawnEnemy();
   }
   public void SpawnEnemy()
