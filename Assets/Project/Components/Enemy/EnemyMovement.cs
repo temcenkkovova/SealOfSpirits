@@ -12,7 +12,8 @@ public class EnemyMovement : MonoBehaviour
   private Vector3 knockbackDirection;
   private static readonly List<EnemyMovement> activeEnemies = new();
   private float separationRadius = 0.4f;
-
+  private float stopDistance = 2f;
+  private Vector3 newAngelDirection = new Vector3();
   void Awake()
   {
     enemyStatus = GetComponent<EnemyStatus>();
@@ -35,7 +36,8 @@ public class EnemyMovement : MonoBehaviour
     {
       if (enemyStatus.IsStunned) return;
       Vector3 direction = targetTr.position - transform.position;
-      if (direction.sqrMagnitude <= 0.01f) return;
+      direction.y = 0f;
+      if (direction.sqrMagnitude <= stopDistance * stopDistance) return;
       FollowTarget(targetTr.position);
     }
 
@@ -47,18 +49,18 @@ public class EnemyMovement : MonoBehaviour
     {
       if (other == this) continue;
 
-      Vector3 currentOffset = transform.position - other.transform.position;
-      Vector3 nextOffset = nextPosition - other.transform.position;
+      Vector3 distanceBetweenOther = transform.position - other.transform.position;
+      Vector3 nextDistanceBetweenOther = nextPosition - other.transform.position;
 
 
-      currentOffset.y = 0f;
-      nextOffset.y = 0f;
+      distanceBetweenOther.y = 0f;
+      nextDistanceBetweenOther.y = 0f;
 
       float minDistance = separationRadius + other.separationRadius;
 
 
-      if (nextOffset.sqrMagnitude < minDistance * minDistance &&
-          nextOffset.sqrMagnitude < currentOffset.sqrMagnitude)
+      if (nextDistanceBetweenOther.sqrMagnitude < minDistance * minDistance &&
+          nextDistanceBetweenOther.sqrMagnitude < distanceBetweenOther.sqrMagnitude)
       {
         return false;
       }
@@ -69,16 +71,88 @@ public class EnemyMovement : MonoBehaviour
   public void FollowTarget(Vector3 targetPosition)
   {
     if (IsKnockingBack) return;
-
-    Vector3 nextPosition = Vector3.MoveTowards(
-        transform.position,
+    Vector3 nextPosition = transform.position;
+    Vector3 forwardPosition = Vector3.MoveTowards(
+       transform.position,
         targetPosition,
         moveSpeed * Time.deltaTime);
 
-    if (CanMoveTo(nextPosition))
+    if (CanMoveTo(forwardPosition))
     {
-      transform.position = nextPosition;
+      nextPosition = forwardPosition;
     }
+    else
+    {
+      nextPosition = TryMoveInDirection(targetPosition);
+    }
+    nextPosition.y = 0f;
+    transform.position = nextPosition;
+  }
+
+  public Vector3 TryMoveInDirection(Vector3 targetPosition)
+  {
+    Vector3 stepPosition = transform.position;
+    Vector3 direction = targetPosition - transform.position;
+    direction.y = 0f;
+    direction = direction.normalized;
+
+    newAngelDirection = TryBypass(30, direction);
+    if (CanMoveTo(newAngelDirection))
+    {
+      stepPosition = newAngelDirection;
+      return stepPosition;
+    }
+    newAngelDirection = TryBypass(-30, direction);
+    if (CanMoveTo(newAngelDirection))
+    {
+      stepPosition = newAngelDirection;
+      return stepPosition;
+    }
+
+    newAngelDirection = TryBypass(60, direction);
+    if (CanMoveTo(newAngelDirection))
+    {
+      stepPosition = newAngelDirection;
+      return stepPosition;
+    }
+    newAngelDirection = TryBypass(-60, direction);
+    if (CanMoveTo(newAngelDirection))
+    {
+      stepPosition = newAngelDirection;
+      return stepPosition;
+    }
+    newAngelDirection = TryBypass(90, direction);
+    if (CanMoveTo(newAngelDirection))
+    {
+      stepPosition = newAngelDirection;
+      return stepPosition;
+    }
+    newAngelDirection = TryBypass(-90, direction);
+    if (CanMoveTo(newAngelDirection))
+    {
+      stepPosition = newAngelDirection;
+      return stepPosition;
+    }
+    newAngelDirection = TryBypass(-120, direction);
+    if (CanMoveTo(newAngelDirection))
+    {
+      stepPosition = newAngelDirection;
+      return stepPosition;
+    }
+    newAngelDirection = TryBypass(120, direction);
+    if (CanMoveTo(newAngelDirection))
+    {
+      stepPosition = newAngelDirection;
+      return stepPosition;
+    }
+    return stepPosition;
+  }
+  public Vector3 TryBypass(float angle, Vector3 direction)
+  {
+    Quaternion rotateAngle = Quaternion.AngleAxis(angle, Vector3.up);
+    Vector3 rotateDirection = rotateAngle * direction;
+    Vector3 tryStepPosition = transform.position + rotateDirection * moveSpeed * Time.deltaTime;
+    return tryStepPosition;
   }
   public void KnockBackFromWave(float knockbackDuration, float knockbackSpeed, Vector3 knockbackDirection)
   {
