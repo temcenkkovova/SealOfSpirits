@@ -9,6 +9,7 @@ public class PlayerInputController : MonoBehaviour
   public event Action OnPressInteractButton;
   public event Action<int> OnSkillPressed;
   public event Action OnLeftButtonPressed;
+  public event Action<bool> OnPausePressed;
 
   void Awake()
   {
@@ -27,6 +28,7 @@ public class PlayerInputController : MonoBehaviour
     inputs.Player.SecondSkill.performed += PressSecondSkillButton;
     inputs.Player.ThirdSkill.performed += PressThirdSkillButton;
     inputs.Player.ConfirmSkill.performed += PressLeftButton;
+    inputs.Player.Pause.performed += PressPauseButton;
   }
   void OnDisable()
   {
@@ -36,6 +38,7 @@ public class PlayerInputController : MonoBehaviour
     inputs.Player.SecondSkill.performed -= PressSecondSkillButton;
     inputs.Player.ThirdSkill.performed -= PressThirdSkillButton;
     inputs.Player.ConfirmSkill.performed -= PressLeftButton;
+    inputs.Player.Pause.performed -= PressPauseButton;
     inputs.Disable();
   }
   public void PressFirstSkillButton(InputAction.CallbackContext context)
@@ -57,5 +60,9 @@ public class PlayerInputController : MonoBehaviour
   public void PressLeftButton(InputAction.CallbackContext context)
   {
     OnLeftButtonPressed?.Invoke();
+  }
+  public void PressPauseButton(InputAction.CallbackContext context)
+  {
+    OnPausePressed?.Invoke(!GameStateController.Instance.IsPause);
   }
 }

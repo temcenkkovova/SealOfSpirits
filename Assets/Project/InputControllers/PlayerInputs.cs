@@ -151,6 +151,16 @@ public partial class @PlayerInputs: IInputActionCollection2, IDisposable
                     ""interactions"": """",
                     ""initialStateCheck"": false,
                     ""priority"": 0
+                },
+                {
+                    ""name"": ""Pause"",
+                    ""type"": ""Button"",
+                    ""id"": ""ff00f437-90b6-422e-862f-48c1993cd224"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false,
+                    ""priority"": 0
                 }
             ],
             ""bindings"": [
@@ -263,6 +273,17 @@ public partial class @PlayerInputs: IInputActionCollection2, IDisposable
                     ""action"": ""ConfirmSkill"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""cbea0f2b-8810-4dd6-b9f2-420f7d3320aa"",
+                    ""path"": ""<Keyboard>/escape"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Pause"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -277,6 +298,7 @@ public partial class @PlayerInputs: IInputActionCollection2, IDisposable
         m_Player_SecondSkill = m_Player.FindAction("SecondSkill", throwIfNotFound: true);
         m_Player_ThirdSkill = m_Player.FindAction("ThirdSkill", throwIfNotFound: true);
         m_Player_ConfirmSkill = m_Player.FindAction("ConfirmSkill", throwIfNotFound: true);
+        m_Player_Pause = m_Player.FindAction("Pause", throwIfNotFound: true);
     }
 
     ~@PlayerInputs()
@@ -363,6 +385,7 @@ public partial class @PlayerInputs: IInputActionCollection2, IDisposable
     private readonly InputAction m_Player_SecondSkill;
     private readonly InputAction m_Player_ThirdSkill;
     private readonly InputAction m_Player_ConfirmSkill;
+    private readonly InputAction m_Player_Pause;
     /// <summary>
     /// Provides access to input actions defined in input action map "Player".
     /// </summary>
@@ -398,6 +421,10 @@ public partial class @PlayerInputs: IInputActionCollection2, IDisposable
         /// Provides access to the underlying input action "Player/ConfirmSkill".
         /// </summary>
         public InputAction @ConfirmSkill => m_Wrapper.m_Player_ConfirmSkill;
+        /// <summary>
+        /// Provides access to the underlying input action "Player/Pause".
+        /// </summary>
+        public InputAction @Pause => m_Wrapper.m_Player_Pause;
         /// <summary>
         /// Provides access to the underlying input action map instance.
         /// </summary>
@@ -442,6 +469,9 @@ public partial class @PlayerInputs: IInputActionCollection2, IDisposable
             @ConfirmSkill.started += instance.OnConfirmSkill;
             @ConfirmSkill.performed += instance.OnConfirmSkill;
             @ConfirmSkill.canceled += instance.OnConfirmSkill;
+            @Pause.started += instance.OnPause;
+            @Pause.performed += instance.OnPause;
+            @Pause.canceled += instance.OnPause;
         }
 
         /// <summary>
@@ -471,6 +501,9 @@ public partial class @PlayerInputs: IInputActionCollection2, IDisposable
             @ConfirmSkill.started -= instance.OnConfirmSkill;
             @ConfirmSkill.performed -= instance.OnConfirmSkill;
             @ConfirmSkill.canceled -= instance.OnConfirmSkill;
+            @Pause.started -= instance.OnPause;
+            @Pause.performed -= instance.OnPause;
+            @Pause.canceled -= instance.OnPause;
         }
 
         /// <summary>
@@ -553,5 +586,12 @@ public partial class @PlayerInputs: IInputActionCollection2, IDisposable
         /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
         /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
         void OnConfirmSkill(InputAction.CallbackContext context);
+        /// <summary>
+        /// Method invoked when associated input action "Pause" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
+        /// </summary>
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.started" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
+        void OnPause(InputAction.CallbackContext context);
     }
 }

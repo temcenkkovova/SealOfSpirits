@@ -8,6 +8,8 @@ public class GameStateController : MonoBehaviour
 
   public event Action<GameState> OnGameStateChanged;
   public static GameStateController Instance;
+  public bool IsPause { get; private set; } = false;
+  public event Action<bool> OnPauseChanged;
 
   private void Awake()
   {
@@ -32,5 +34,11 @@ public class GameStateController : MonoBehaviour
     CurrentGameState = newState;
     OnGameStateChanged?.Invoke(CurrentGameState);
   }
-
+  public void SetPause(bool pause)
+  {
+    if (IsPause == pause) return;
+    IsPause = pause;
+    Time.timeScale = IsPause ? 0f : 1f;
+    OnPauseChanged?.Invoke(IsPause);
+  }
 }
