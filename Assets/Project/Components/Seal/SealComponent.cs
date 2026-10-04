@@ -20,7 +20,7 @@ public class SealComponent : MonoBehaviour
     enemyDangerZone.RemoveAll(enemy => enemy == null);
     if (enemyDangerZone.Count == 0)
     {
-      Debug.Log("Zero");
+
       IsInDangerZone = false;
       sealWarningVisual.SetActive(IsInDangerZone);
     }
@@ -49,11 +49,27 @@ public class SealComponent : MonoBehaviour
     {
       enemyDangerZone.Add(enemyBootstrap);
       chaosComponent.IncreaseChaos(enemyBootstrap.enemyConfig.chaosAmount);
+      EnemyHealth enemyHealth = enemyBootstrap.GetComponent<EnemyHealth>();
+      enemyHealth.OnDead += HandleEnemyExit;
     }
     UpdateDangerZone();
 
   }
 
+  public void HandleEnemyExit(EnemyHealth enemyHealth)
+  {
+    enemyHealth.OnDead -= HandleEnemyExit;
+    EnemyBootstrap enemyBootstrap = enemyHealth.GetComponent<EnemyBootstrap>();
+    if (enemyBootstrap == null) return;
+    float chaosAmount = enemyBootstrap.enemyConfig.chaosAmount;
+    if (enemyDangerZone.Remove(enemyBootstrap))
+    {
+      Debug.Log("decrease");
+      chaosComponent.DecreaseChaos(
+         chaosAmount);
+    }
+    UpdateDangerZone();
+  }
   void OnTriggerExit(Collider other)
   {
     if (!other.CompareTag("Enemy")) return;
@@ -63,6 +79,7 @@ public class SealComponent : MonoBehaviour
 
     if (enemyDangerZone.Remove(enemyBootstrap))
     {
+      Debug.Log("decrease");
       chaosComponent.DecreaseChaos(
           enemyBootstrap.enemyConfig.chaosAmount);
     }

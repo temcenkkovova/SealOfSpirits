@@ -5,39 +5,27 @@ using UnityEngine;
 
 public class WaveSystem : MonoBehaviour
 {
-  private float waveDuration = 300;
-  private float waveTimer;
-  public event Action<float> OnTimerChanged;
   public List<EnemySpawn> enemySpawnFaults;
   private int maxCurrentFaults = 0;
-
+  public WaveTimer waveTimer;
 
   void Start()
   {
-    CheckActiveFaultStatus();
+    CheckActiveFaultStatus(1);
+    if (waveTimer == null) return;
+    waveTimer.OnTimerChanged += CheckActiveFaultStatus;
   }
-  void Update()
+  public void CheckActiveFaultStatus(float time)
   {
     if (!IsPlayingGame()) return;
-    waveTimer += Time.deltaTime;
-    OnTimerChanged?.Invoke(waveTimer);
 
-    if (waveTimer >= waveDuration)
-    {
-      Debug.Log("Finish game");
-    }
-    if (waveTimer >= 30) maxCurrentFaults = 2;
-    if (waveTimer >= 90) maxCurrentFaults = 3;
-    if (waveTimer >= 120) maxCurrentFaults = 4;
-    if (waveTimer >= 160) maxCurrentFaults = 6;
-    if (waveTimer >= 230) maxCurrentFaults = 8;
-    if (waveTimer >= 260) maxCurrentFaults = 9;
-    CheckActiveFaultStatus();
-  }
+    if (time >= 30) maxCurrentFaults = 2;
+    if (time >= 90) maxCurrentFaults = 3;
+    if (time >= 120) maxCurrentFaults = 4;
+    if (time >= 160) maxCurrentFaults = 6;
+    if (time >= 230) maxCurrentFaults = 8;
+    if (time >= 260) maxCurrentFaults = 9;
 
-  public void CheckActiveFaultStatus()
-  {
-    if (!IsPlayingGame()) return;
     for (int i = 0; i <= maxCurrentFaults; i++)
     {
       enemySpawnFaults[i].gameObject.SetActive(true);
@@ -49,5 +37,9 @@ public class WaveSystem : MonoBehaviour
     return GamePhaseController.Instance.CurrentGamePhase == GamePhase.Ritual && GameStateController.Instance.CurrentGameState == GameState.Gameplay;
 
   }
-
+  void OnDisable()
+  {
+    if (waveTimer == null) return;
+    waveTimer.OnTimerChanged -= CheckActiveFaultStatus;
+  }
 }

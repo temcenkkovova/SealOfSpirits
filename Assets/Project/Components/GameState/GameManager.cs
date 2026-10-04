@@ -21,4 +21,12 @@ public class GameManager : MonoBehaviour
     if (playerInputController == null) return;
     playerInputController.OnPausePressed -= HandleSetPause;
   }
+  public void RestartGame()
+  {
+
+  }
+  public void HandleGameOver()
+  {
+    GameStateController.Instance.ChangeGameState(GameState.GameOver);
+  }
 }

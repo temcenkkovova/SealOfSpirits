@@ -9,6 +9,7 @@ public class ChaosComponent : MonoBehaviour
   public event Action OnFailed;
 
 
+
   public void IncreaseChaos(float value)
   {
     CurrentChaos += value;

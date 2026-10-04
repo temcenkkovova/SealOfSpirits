@@ -4,14 +4,15 @@ using UnityEngine;
 
 public class WaveSystemUI : MonoBehaviour
 {
-  public WaveSystem waveSystem;
+  public WaveTimer waveTimer;
+
 
   public TMP_Text textField;
 
   void Start()
   {
-    if (waveSystem == null) return;
-    waveSystem.OnTimerChanged += ShowTime;
+    if (waveTimer == null) return;
+    waveTimer.OnTimerChanged += ShowTime;
   }
 
 
@@ -31,7 +32,7 @@ public class WaveSystemUI : MonoBehaviour
 
   void OnDisable()
   {
-    if (waveSystem == null) return;
-    waveSystem.OnTimerChanged -= ShowTime;
+    if (waveTimer == null) return;
+    waveTimer.OnTimerChanged -= ShowTime;
   }
 }
