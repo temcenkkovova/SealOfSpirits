@@ -4,7 +4,7 @@ using UnityEngine;
 public class EnemyHealth : MonoBehaviour, IDamageable
 {
 
-  public event Action OnDead;
+  public event Action<EnemyHealth> OnDead;
   public float maxHealth;
 
 
@@ -17,7 +17,7 @@ public class EnemyHealth : MonoBehaviour, IDamageable
     maxHealth -= damage;
     if (maxHealth <= 0f)
     {
-      OnDead?.Invoke();
+      OnDead?.Invoke(this);
       Destroy(gameObject, 0.5f);
     }
   }

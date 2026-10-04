@@ -12,7 +12,7 @@ public class EnemyBootstrap : MonoBehaviour
   void Start()
   {
 
-    enemyMovement.Init(target.transform, enemyConfig.moveSpeed);
+    //enemyMovement.Init(target.transform, enemyConfig.moveSpeed);
     enemyHealth.Init(enemyConfig.health);
 
     if (enemyHealth == null) return;
@@ -22,6 +22,7 @@ public class EnemyBootstrap : MonoBehaviour
   {
     this.enemyConfig = enemyConfig;
     this.target = target;
+    enemyMovement.Init(target.transform, enemyConfig.moveSpeed);
   }
 
   void Awake()
@@ -30,7 +31,7 @@ public class EnemyBootstrap : MonoBehaviour
     enemyHealth = GetComponent<EnemyHealth>();
   }
 
-  public void HandleSealReward()
+  public void HandleSealReward(EnemyHealth enemyHealth)
   {
     target.AddProgressAmount(enemyConfig.sealAmountReward);
   }

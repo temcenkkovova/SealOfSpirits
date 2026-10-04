@@ -11,13 +11,14 @@ public class WaveSystem : MonoBehaviour
   public List<EnemySpawn> enemySpawnFaults;
   private int maxCurrentFaults = 0;
 
-  private bool gameState = true; // It`s a temporary condition to start spawning enemy; It needs to make introducing history and show how to learn skills
+
   void Start()
   {
     CheckActiveFaultStatus();
   }
   void Update()
   {
+    if (!IsPlayingGame()) return;
     waveTimer += Time.deltaTime;
     OnTimerChanged?.Invoke(waveTimer);
 
@@ -36,11 +37,17 @@ public class WaveSystem : MonoBehaviour
 
   public void CheckActiveFaultStatus()
   {
-    if (!gameState) return;
+    if (!IsPlayingGame()) return;
     for (int i = 0; i <= maxCurrentFaults; i++)
     {
       enemySpawnFaults[i].gameObject.SetActive(true);
     }
+  }
+
+  public bool IsPlayingGame()
+  {
+    return GamePhaseController.Instance.CurrentGamePhase == GamePhase.Ritual && GameStateController.Instance.CurrentGameState == GameState.Gameplay;
+
   }
 
 }

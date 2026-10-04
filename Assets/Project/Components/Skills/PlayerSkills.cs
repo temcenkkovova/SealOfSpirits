@@ -11,6 +11,9 @@ public class PlayerSkills : MonoBehaviour
   private SkillAimingComponent skillAimingComponent;
   private SkillData currentUseSkill;
 
+  public event Action<int> OnSkillActivated;
+  private int currentNumberLearned = 0;
+
 
   void Awake()
   {
@@ -81,9 +84,13 @@ public class PlayerSkills : MonoBehaviour
 
   public void HandleActivatedSkill(int skillNumber)
   {
+    if (skillNumber > currentNumberLearned) return;
     SkillData skill = skillsData[skillNumber];
     if (skill.IsActivated) return;
+    OnSkillActivated?.Invoke(skillNumber);
     skill.ActivateSkill();
+    currentNumberLearned++;
+
   }
 
   void OnDisable()
