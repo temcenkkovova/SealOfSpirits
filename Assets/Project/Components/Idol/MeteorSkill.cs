@@ -44,7 +44,7 @@ public class MeteorSkill : IdolSkill
   public void Explosion()
   {
     Vector3 vector = new Vector3(transform.position.x, 0f, transform.position.z);
-    Collider[] hits = Physics.OverlapSphere(vector, skillData.Radius, damageMask);
+    Collider[] hits = Physics.OverlapSphere(vector, 2 * skillData.Radius, damageMask);
 
     foreach (Collider hit in hits)
     {

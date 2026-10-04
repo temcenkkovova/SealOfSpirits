@@ -18,7 +18,7 @@ public class EnemyHealth : MonoBehaviour, IDamageable
     if (maxHealth <= 0f)
     {
       OnDead?.Invoke(this);
-      Destroy(gameObject, 0.5f);
+      Destroy(gameObject, 0.2f);
     }
   }
 }
