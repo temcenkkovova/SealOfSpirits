@@ -9,36 +9,35 @@ public class TutorialComponent : MonoBehaviour
   public SealComponent sealComponent;
 
   private List<EnemyBootstrap> spawnedEnemies = new List<EnemyBootstrap>();
-  private float tutorialStage = 0;
+
   public EnemySpawn secondFaultTutorialEnemy;
-  public event Action OnTutorialFinished;
-  public event Action FirstSkillTutorialFinished;
-  public event Action SecondSkillTutorialFinished;
+
   public event Action OnEnemiesDead;
 
   private bool isSecondGroupDefeated = false;
-  private bool isTutorialFinished = false;
+
 
   void Update()
   {
-    if (isTutorialFinished) return;
-    if (tutorialStage >= 3 && spawnedEnemies.Count == 0 && isSecondGroupDefeated)
-    {
-      OnTutorialFinished?.Invoke();
-      GamePhaseController.Instance.HandleFinishTutorial(); // I have to create an bridge between tutorial and Main gameplay;
-      isTutorialFinished = true;
-    }
+    // if (isTutorialFinished) return;
+    //if (tutorialStage >= 3 && spawnedEnemies.Count == 0 && isSecondGroupDefeated)
+    //{
+    // isTutorialFinished = true;
+    // OnTutorialFinished?.Invoke();
+    // GamePhaseController.Instance.HandleFinishTutorial(); // I have to create an bridge between tutorial and Main gameplay;
+
+    //}
   }
   void Start()
   {
     secondFaultTutorialEnemy.gameObject.SetActive(false);
   }
-  public void SpawnTutorialEnemy()
+  public void SpawnTutorialEnemy(int stageNumber)
   {
-    if (tutorialStage > 2) return;
+
     Vector3 lastSpawnPos = transform.position;
 
-    for (int i = 0; i <= tutorialStage; i++)
+    for (int i = 0; i <= stageNumber; i++)
     {
       Vector3 nextSpawnPos = lastSpawnPos + new Vector3(2f, 0, 2f);
       EnemyBootstrap enemyBootstrap = Instantiate(enemyConfigs[i].enemyPrefab, nextSpawnPos, Quaternion.identity);
@@ -48,11 +47,10 @@ public class TutorialComponent : MonoBehaviour
       lastSpawnPos = nextSpawnPos;
     }
 
-    if (tutorialStage == 2)
+    if (stageNumber == 2)
     {
       secondFaultTutorialEnemy.gameObject.SetActive(true);
       secondFaultTutorialEnemy.OnEnemiesDefeated += HandleDefeatedSecondGroup;
-
     }
   }
   public void HandleDefeatedSecondGroup()
@@ -67,7 +65,6 @@ public class TutorialComponent : MonoBehaviour
 
     if (spawnedEnemies.Count == 0)
     {
-      tutorialStage++;
       OnEnemiesDead?.Invoke();
     }
   }

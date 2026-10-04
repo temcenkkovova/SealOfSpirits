@@ -8,12 +8,25 @@ public class WaveSystem : MonoBehaviour
   public List<EnemySpawn> enemySpawnFaults;
   private int maxCurrentFaults = 0;
   public WaveTimer waveTimer;
-
+  public TutorialManager tutorialManager;
   void Start()
   {
-    CheckActiveFaultStatus(1);
+    if (GamePhaseController.Instance.IsTutorialCompletedOnce)
+    {
+      CheckActiveFaultStatus(1);
+    }
+    else
+    {
+      if (tutorialManager != null)
+        tutorialManager.OnFinishTutorial += StartWaveAfterTutorial;
+    }
+
     if (waveTimer == null) return;
     waveTimer.OnTimerChanged += CheckActiveFaultStatus;
+  }
+  public void StartWaveAfterTutorial()
+  {
+    CheckActiveFaultStatus(1);
   }
   public void CheckActiveFaultStatus(float time)
   {
@@ -39,7 +52,8 @@ public class WaveSystem : MonoBehaviour
   }
   void OnDisable()
   {
-    if (waveTimer == null) return;
+    if (waveTimer == null || tutorialManager == null) return;
     waveTimer.OnTimerChanged -= CheckActiveFaultStatus;
+    tutorialManager.OnFinishTutorial -= StartWaveAfterTutorial;
   }
 }
