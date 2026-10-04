@@ -64,7 +64,7 @@ public class SealComponent : MonoBehaviour
     float chaosAmount = enemyBootstrap.enemyConfig.chaosAmount;
     if (enemyDangerZone.Remove(enemyBootstrap))
     {
-      Debug.Log("decrease");
+
       chaosComponent.DecreaseChaos(
          chaosAmount);
     }
@@ -79,7 +79,7 @@ public class SealComponent : MonoBehaviour
 
     if (enemyDangerZone.Remove(enemyBootstrap))
     {
-      Debug.Log("decrease");
+
       chaosComponent.DecreaseChaos(
           enemyBootstrap.enemyConfig.chaosAmount);
     }

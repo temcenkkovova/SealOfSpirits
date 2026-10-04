@@ -15,7 +15,11 @@ public class TutorialManager : MonoBehaviour
 
   void Start()
   {
-    if (GamePhaseController.Instance.IsTutorialCompletedOnce) return;
+    if (GamePhaseController.Instance.IsTutorialCompletedOnce)
+    {
+      playerSkills.ActivateAllSkills();
+      return;
+    }
     PlayDialog();
 
     if (playerSkills == null) return;
@@ -31,6 +35,8 @@ public class TutorialManager : MonoBehaviour
 
   public void HandleHideDialog(int numberSkill)
   {
+
+    if (numberSkill != tutorialStage) return;
     if (tutorialStage >= maxCountStage) return;
     tutorialDialogComponent.DestroyDialog();
     tutorialComponent.SpawnTutorialEnemy(tutorialStage);
@@ -38,6 +44,7 @@ public class TutorialManager : MonoBehaviour
   public void HandleCompletedStage()
   {
     tutorialStage++;
+    playerSkills.ChangeNumberLearned();
     if (tutorialStage >= maxCountStage)
     {
       isTutorialFinished = true;
@@ -47,6 +54,7 @@ public class TutorialManager : MonoBehaviour
     {
       PlayDialog();
     }
+
   }
 
   void OnDisable()

@@ -74,7 +74,7 @@ public class PlayerSkills : MonoBehaviour
       }
 
 
-      Debug.Log("Use skill");
+
     }
     else
     {
@@ -87,10 +87,20 @@ public class PlayerSkills : MonoBehaviour
     if (skillNumber > currentNumberLearned) return;
     SkillData skill = skillsData[skillNumber];
     if (skill.IsActivated) return;
-    OnSkillActivated?.Invoke(skillNumber);
-    skill.ActivateSkill();
-    currentNumberLearned++;
 
+    skill.ActivateSkill();
+    OnSkillActivated?.Invoke(skillNumber);
+  }
+  public void ActivateAllSkills()
+  {
+    foreach (SkillData skill in skillsData)
+    {
+      skill.ActivateSkill();
+    }
+  }
+  public void ChangeNumberLearned()
+  {
+    currentNumberLearned++;
   }
 
   void OnDisable()
