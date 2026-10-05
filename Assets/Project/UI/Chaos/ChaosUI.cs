@@ -1,9 +1,11 @@
 using TMPro;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class ChaosUI : MonoBehaviour
 {
   public TMP_Text textField;
+  public Image fillImage;
 
 
   public ChaosComponent chaosComponent;
@@ -16,7 +18,9 @@ public class ChaosUI : MonoBehaviour
 
   public void ShowChaos(float amount)
   {
-    textField.text = amount.ToString();
+    float percentage = amount / chaosComponent.requiredChaosToFail;
+    textField.text = (percentage * 100).ToString() + " %";
+    fillImage.fillAmount = percentage;
   }
 
   void OnDisable()

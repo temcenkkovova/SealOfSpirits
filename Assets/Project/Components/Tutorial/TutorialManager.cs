@@ -49,6 +49,7 @@ public class TutorialManager : MonoBehaviour
     {
       isTutorialFinished = true;
       GamePhaseController.Instance.HandleFinishTutorial();
+
     }
     else
     {

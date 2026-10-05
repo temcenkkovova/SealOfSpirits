@@ -5,7 +5,7 @@ using UnityEngine;
 public class SealComponent : MonoBehaviour
 {
   public float currentSealProgress { get; private set; } = 0;
-  private float requiredSealProgress = 100f;
+  public float requiredSealProgress { get; private set; } = 100f;
   public event Action<float> OnCurrentSealProgressChanged;
   public event Action OnSealProgressCompleted;
   public GameObject sealWarningVisual;

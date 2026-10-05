@@ -1,11 +1,13 @@
 using TMPro;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class SealProgressUI : MonoBehaviour
 {
   public TMP_Text currentProgressField;
 
   public SealComponent sealComponent;
+  public Image fillImage;
 
   void Start()
   {
@@ -15,7 +17,9 @@ public class SealProgressUI : MonoBehaviour
 
   public void ChangeProgress(float amount)
   {
-    currentProgressField.text = sealComponent.currentSealProgress.ToString();
+    float percentage = sealComponent.currentSealProgress / sealComponent.requiredSealProgress;
+    currentProgressField.text = (percentage * 100).ToString() + " %";
+    fillImage.fillAmount = percentage;
   }
 
   void OnDisable()

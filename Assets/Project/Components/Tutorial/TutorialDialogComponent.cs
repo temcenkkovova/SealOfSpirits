@@ -13,6 +13,7 @@ public class TutorialDialogComponent : MonoBehaviour
 
   public void ShowDialog(int stageNumber)
   {
+    dialogParent.gameObject.SetActive(true);
     string message = "";
     if (currentDialog != null) currentDialog = null;
     currentDialog = Instantiate(dialogPrefab, dialogParent);
@@ -23,7 +24,12 @@ public class TutorialDialogComponent : MonoBehaviour
   }
   public void DestroyDialog()
   {
+    dialogParent.gameObject.SetActive(false);
     Destroy(currentDialog.gameObject);
+  }
+  public void DisableDialogParent()
+  {
+    dialogParent.gameObject.SetActive(false);
   }
 
 }

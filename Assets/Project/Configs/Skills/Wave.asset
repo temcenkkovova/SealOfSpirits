@@ -17,5 +17,5 @@ MonoBehaviour:
   cooldown: 5
   radius: 3
   duration: 3
-  icon: {fileID: 21300000, guid: bdbfeffed628c254b9be83d2385b0a1b, type: 3}
+  icon: {fileID: 21300000, guid: d38c605cbeba8284a893a6a622d7879a, type: 3}
   nameSkill: Water

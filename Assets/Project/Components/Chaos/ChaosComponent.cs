@@ -4,7 +4,7 @@ using UnityEngine;
 public class ChaosComponent : MonoBehaviour
 {
   public float CurrentChaos { get; private set; }
-  private float requiredChaosToFail = 100f;
+  public float requiredChaosToFail { get; private set; } = 100f;
   public event Action<float> OnCurrentChaosChanged;
   public event Action OnFailed;
 
