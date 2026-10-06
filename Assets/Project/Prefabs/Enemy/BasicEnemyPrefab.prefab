@@ -189,6 +189,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: VisualEnemy
       objectReference: {fileID: 0}
+    - target: {fileID: 5866666021909216657, guid: 4867d8241a6ad4044a5d18f7c06694f9, type: 3}
+      propertyPath: m_Controller
+      value: 
+      objectReference: {fileID: 9100000, guid: 3cae133ac6924f94cb8e8ced3fa35d88, type: 2}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
