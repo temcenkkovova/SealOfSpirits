@@ -15,6 +15,7 @@ GameObject:
   - component: {fileID: 3559017039216049854}
   - component: {fileID: 5152353460374626347}
   - component: {fileID: 8095933893551756265}
+  - component: {fileID: 1253417720672865645}
   m_Layer: 7
   m_Name: BasicEnemyPrefab
   m_TagString: Enemy
@@ -77,6 +78,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 08d26d39ef14bfe4e8de6ea735514eb9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::EnemyMovement
+  isMoving: 0
 --- !u!114 &4143852111774638242
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -137,6 +139,19 @@ CapsuleCollider:
   m_Height: 2
   m_Direction: 1
   m_Center: {x: 0, y: 1, z: 0}
+--- !u!114 &1253417720672865645
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5758999771948364293}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 975c58966578a854b9266b49e5e4a488, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::EnemyAnimationController
+  animator: {fileID: 1947565666819168844}
 --- !u!1001 &5363137405899532253
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -193,11 +208,24 @@ PrefabInstance:
       propertyPath: m_Controller
       value: 
       objectReference: {fileID: 9100000, guid: 3cae133ac6924f94cb8e8ced3fa35d88, type: 2}
+    - target: {fileID: 5866666021909216657, guid: 4867d8241a6ad4044a5d18f7c06694f9, type: 3}
+      propertyPath: m_CullingMode
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5866666021909216657, guid: 4867d8241a6ad4044a5d18f7c06694f9, type: 3}
+      propertyPath: m_ApplyRootMotion
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 4867d8241a6ad4044a5d18f7c06694f9, type: 3}
+--- !u!95 &1947565666819168844 stripped
+Animator:
+  m_CorrespondingSourceObject: {fileID: 5866666021909216657, guid: 4867d8241a6ad4044a5d18f7c06694f9, type: 3}
+  m_PrefabInstance: {fileID: 5363137405899532253}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &5613464751745859638 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 4867d8241a6ad4044a5d18f7c06694f9, type: 3}

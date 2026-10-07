@@ -77,6 +77,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 08d26d39ef14bfe4e8de6ea735514eb9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::EnemyMovement
+  isMoving: 0
 --- !u!114 &4143852111774638242
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -189,6 +190,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: FastEnemy
       objectReference: {fileID: 0}
+    - target: {fileID: 5866666021909216657, guid: 17031a87fa5c20b4eacebe09c11a4674, type: 3}
+      propertyPath: m_Controller
+      value: 
+      objectReference: {fileID: 9100000, guid: 3cae133ac6924f94cb8e8ced3fa35d88, type: 2}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []

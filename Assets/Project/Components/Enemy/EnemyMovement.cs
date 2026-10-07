@@ -14,6 +14,7 @@ public class EnemyMovement : MonoBehaviour
   private float separationRadius = 0.4f;
   private float stopDistance = 2f;
   private Vector3 newAngelDirection = new Vector3();
+  public bool isMoving;
   void Awake()
   {
     enemyStatus = GetComponent<EnemyStatus>();
@@ -37,7 +38,12 @@ public class EnemyMovement : MonoBehaviour
       if (enemyStatus.IsStunned) return;
       Vector3 direction = targetTr.position - transform.position;
       direction.y = 0f;
-      if (direction.sqrMagnitude <= stopDistance * stopDistance) return;
+      if (direction.sqrMagnitude <= stopDistance * stopDistance)
+      {
+        isMoving = false;
+        return;
+      }
+      isMoving = true;
       FollowTarget(targetTr.position);
     }
 
@@ -86,6 +92,9 @@ public class EnemyMovement : MonoBehaviour
       nextPosition = TryMoveInDirection(targetPosition);
     }
     nextPosition.y = 0f;
+    Vector3 moveDir = nextPosition - transform.position;
+    Quaternion rotateTarget = Quaternion.LookRotation(moveDir);
+    transform.rotation = Quaternion.Slerp(transform.rotation, rotateTarget, 7f * Time.deltaTime);
     transform.position = nextPosition;
   }
 
@@ -145,6 +154,7 @@ public class EnemyMovement : MonoBehaviour
       stepPosition = newAngelDirection;
       return stepPosition;
     }
+
     return stepPosition;
   }
   public Vector3 TryBypass(float angle, Vector3 direction)
