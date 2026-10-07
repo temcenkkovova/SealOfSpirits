@@ -10,6 +10,7 @@ public class PlayerInputController : MonoBehaviour
   public event Action<int> OnSkillPressed;
   public event Action OnLeftButtonPressed;
   public event Action<bool> OnPausePressed;
+  public event Action<bool> OnSprintChanged;
 
   void Awake()
   {
@@ -29,6 +30,8 @@ public class PlayerInputController : MonoBehaviour
     inputs.Player.ThirdSkill.performed += PressThirdSkillButton;
     inputs.Player.ConfirmSkill.performed += PressLeftButton;
     inputs.Player.Pause.performed += PressPauseButton;
+    inputs.Player.Sprint.performed += PressSprintButton;
+    inputs.Player.Sprint.canceled += CanceledSprintButton;
   }
   void OnDisable()
   {
@@ -39,6 +42,8 @@ public class PlayerInputController : MonoBehaviour
     inputs.Player.ThirdSkill.performed -= PressThirdSkillButton;
     inputs.Player.ConfirmSkill.performed -= PressLeftButton;
     inputs.Player.Pause.performed -= PressPauseButton;
+    inputs.Player.Sprint.performed -= PressSprintButton;
+    inputs.Player.Sprint.canceled -= CanceledSprintButton;
     inputs.Disable();
   }
   public void PressFirstSkillButton(InputAction.CallbackContext context)
@@ -64,5 +69,13 @@ public class PlayerInputController : MonoBehaviour
   public void PressPauseButton(InputAction.CallbackContext context)
   {
     OnPausePressed?.Invoke(!GameStateController.Instance.IsPause);
+  }
+  public void PressSprintButton(InputAction.CallbackContext context)
+  {
+    OnSprintChanged?.Invoke(true);
+  }
+  public void CanceledSprintButton(InputAction.CallbackContext context)
+  {
+    OnSprintChanged?.Invoke(false);
   }
 }
