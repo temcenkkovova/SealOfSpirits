@@ -6,6 +6,7 @@ public class PlayerMovement : MonoBehaviour
   public float MoveSpeed { get; private set; }
   public float SprintSpeed { get; private set; } = 7f;
   private PlayerInputController playerInputController;
+  private float speedRotation = 10f;
   private CharacterController characterController;
   private PlayerStatus playerStatus;
   private bool isSprinting = false;
@@ -41,7 +42,7 @@ public class PlayerMovement : MonoBehaviour
     MovePercentage = movePos.sqrMagnitude > 0.01f ? (isSprinting ? 1f : 0.5f) : 0;
     movePos.y = 0f;
     Quaternion targetRotation = Quaternion.LookRotation(movePos);
-    transform.rotation = Quaternion.Slerp(transform.rotation, targetRotation, 5 * Time.deltaTime);
+    transform.rotation = Quaternion.Slerp(transform.rotation, targetRotation, speedRotation * Time.deltaTime);
     characterController.Move(movePos * speed * Time.deltaTime);
   }
 

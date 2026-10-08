@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::EnemyConfig
   enemyPrefab: {fileID: 4143852111774638242, guid: 97480c79e4016ef4e8bedc1d59913c84, type: 3}
   health: 50
-  moveSpeed: 3
+  moveSpeed: 2
   shieldValue: 0
   sealAmountReward: 2.5
   chaosAmount: 10

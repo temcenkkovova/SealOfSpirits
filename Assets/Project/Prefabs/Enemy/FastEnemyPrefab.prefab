@@ -15,6 +15,7 @@ GameObject:
   - component: {fileID: 3559017039216049854}
   - component: {fileID: 5152353460374626347}
   - component: {fileID: 8095933893551756265}
+  - component: {fileID: -5690390206908132622}
   m_Layer: 7
   m_Name: FastEnemyPrefab
   m_TagString: Enemy
@@ -138,6 +139,19 @@ CapsuleCollider:
   m_Height: 2
   m_Direction: 1
   m_Center: {x: 0, y: 1, z: 0}
+--- !u!114 &-5690390206908132622
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5758999771948364293}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 975c58966578a854b9266b49e5e4a488, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::EnemyAnimationController
+  animator: {fileID: 1434312208480615031}
 --- !u!1001 &4795532004558800870
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -193,12 +207,25 @@ PrefabInstance:
     - target: {fileID: 5866666021909216657, guid: 17031a87fa5c20b4eacebe09c11a4674, type: 3}
       propertyPath: m_Controller
       value: 
-      objectReference: {fileID: 9100000, guid: 3cae133ac6924f94cb8e8ced3fa35d88, type: 2}
+      objectReference: {fileID: 9100000, guid: 67aa887257702c24b918329543884bd7, type: 2}
+    - target: {fileID: 5866666021909216657, guid: 17031a87fa5c20b4eacebe09c11a4674, type: 3}
+      propertyPath: m_WarningMessage
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 5866666021909216657, guid: 17031a87fa5c20b4eacebe09c11a4674, type: 3}
+      propertyPath: m_ApplyRootMotion
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 17031a87fa5c20b4eacebe09c11a4674, type: 3}
+--- !u!95 &1434312208480615031 stripped
+Animator:
+  m_CorrespondingSourceObject: {fileID: 5866666021909216657, guid: 17031a87fa5c20b4eacebe09c11a4674, type: 3}
+  m_PrefabInstance: {fileID: 4795532004558800870}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &4974119746594398221 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 17031a87fa5c20b4eacebe09c11a4674, type: 3}
