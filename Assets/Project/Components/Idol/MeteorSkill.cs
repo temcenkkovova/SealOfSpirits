@@ -8,7 +8,7 @@ public class MeteorSkill : IdolSkill
   public IdolSkillView warningSkill;
   public LayerMask damageMask;
   public ParticleSystem rainParticle;
-
+  private AudioSource audioSource;
   private bool isStartExplosion = false;
   private MeteorCollision meteorCollision;
 
@@ -22,6 +22,7 @@ public class MeteorSkill : IdolSkill
   void Awake()
   {
     //meteorCollision = GetComponentInChildren<MeteorCollision>();
+    audioSource = GetComponent<AudioSource>();
   }
 
   void Start()
@@ -52,6 +53,7 @@ public class MeteorSkill : IdolSkill
     {
       isStartExplosion = false;
       rainParticle.Stop();
+      audioSource.Stop();
     }
 
 
@@ -61,6 +63,7 @@ public class MeteorSkill : IdolSkill
   public void StartSkillExplosion()
   {
     rainParticle.Play();
+    audioSource.Play();
     isStartExplosion = true;
   }
   public void Explosion()

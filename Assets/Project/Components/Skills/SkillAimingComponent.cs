@@ -43,7 +43,7 @@ public class SkillAimingComponent : MonoBehaviour
       Vector3 mouseWorldPos = ray.GetPoint(distance);
       mouseDir = mouseWorldPos;
     }
-    mouseDir.y = 0.1f;
+    mouseDir.y = 0.2f;
     spawnedAimingCircle = Instantiate(aimingCircle, mouseDir, aimingCircle.transform.rotation);
     spawnedAimingCircle.transform.localScale = spawnedAimingCircle.transform.localScale * radius;
     spawnedAimingCircle.Init(this);

@@ -27,7 +27,7 @@ public class AimingCircle : MonoBehaviour
     {
       Vector3 mouseWorldPos = ray.GetPoint(distance);
       mouseDir = mouseWorldPos;
-      mouseDir.y = 0.1f;
+      mouseDir.y = 0.2f;
     }
 
 

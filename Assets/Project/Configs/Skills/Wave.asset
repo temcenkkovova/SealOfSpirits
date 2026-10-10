@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4a90e7577cf511d4681960656027af66, type: 3}
   m_Name: Wave
   m_EditorClassIdentifier: Assembly-CSharp::IdolSkillConfig
-  idolSkillPrefab: {fileID: -6047158900557341195, guid: 55e2e45636bf689428e3885d8e1a1b14, type: 3}
+  idolSkillPrefab: {fileID: -6047158900557341195, guid: 5b858961c2b00794dbeb1046da38bbdc, type: 3}
   damage: 0
   cooldown: 5
   radius: 3
