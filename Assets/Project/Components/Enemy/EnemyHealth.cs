@@ -6,6 +6,7 @@ public class EnemyHealth : MonoBehaviour, IDamageable
 
   public event Action<EnemyHealth> OnDead;
   public float maxHealth;
+  public bool isDead { get; private set; }
 
 
   public void Init(float health)
@@ -15,9 +16,10 @@ public class EnemyHealth : MonoBehaviour, IDamageable
   public void TakeDamage(float damage)
   {
     maxHealth -= damage;
-    if (maxHealth <= 0f)
+    if (maxHealth <= 0f && !isDead)
     {
       OnDead?.Invoke(this);
+      isDead = true;
       Destroy(gameObject, 0.2f);
     }
   }

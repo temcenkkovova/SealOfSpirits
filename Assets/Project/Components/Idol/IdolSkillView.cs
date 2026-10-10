@@ -1,3 +1,4 @@
+using System;
 using DG.Tweening;
 using UnityEngine;
 using UnityEngine.UI;
@@ -10,6 +11,7 @@ public class IdolSkillView : MonoBehaviour
   private Sequence warningSequence;
   private float duration;
   private float radius;
+  public event Action OnWarningFinish;
   void Awake()
   {
 
@@ -37,6 +39,7 @@ public class IdolSkillView : MonoBehaviour
 
     warningSequence.OnComplete(() =>
     {
+      OnWarningFinish?.Invoke();
       fill.gameObject.SetActive(false);
       ring.gameObject.SetActive(false);
     });
