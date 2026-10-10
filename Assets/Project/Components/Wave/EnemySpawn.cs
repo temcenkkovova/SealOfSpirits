@@ -1,38 +1,54 @@
 using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class EnemySpawn : MonoBehaviour
 {
-  public List<EnemyConfig> enemyConfigs;
+  private List<EnemyConfig> enemyConfigs;
   public SealComponent sealComponent;
   private List<EnemyBootstrap> spawnedEnemies = new List<EnemyBootstrap>();
   public event Action OnEnemiesDefeated;
 
+  //private Vector3 lastSpawnPos;
+
   void Start()
   {
-    //SpawnEnemy();
+    //lastSpawnPos = transform.position;
   }
-  void OnEnable()
+
+  public void Init(List<EnemyConfig> enemyConfigs)
   {
-    SpawnEnemy();
+    this.enemyConfigs = enemyConfigs;
   }
-  public void SpawnEnemy()
+  // void OnEnable()
+  // {
+  //   SpawnEnemy();
+  // }
+  public void SpawnEnemy(EnemyConfig config)
   {
-    Vector3 lastSpawnPos = transform.position;
+    //Vector3 nextSpawnPos = lastSpawnPos + new Vector3(2f, 0, 2f);
+    EnemyBootstrap enemyBootstrap = Instantiate(config.enemyPrefab, transform.position, Quaternion.identity);
+    enemyBootstrap.Init(config, sealComponent);
+    spawnedEnemies.Add(enemyBootstrap);
+    enemyBootstrap.GetComponent<EnemyHealth>().OnDead += HandleDeathEnemy;
+    //lastSpawnPos = nextSpawnPos;
+  }
+  public void StartSpawnCoroutine(int delay)
+  {
+    StartCoroutine(spawnDelay(delay));
+  }
+  IEnumerator spawnDelay(int delay)
+  {
 
     foreach (EnemyConfig config in enemyConfigs)
     {
-      Vector3 nextSpawnPos = lastSpawnPos + new Vector3(2f, 0, 2f);
-      EnemyBootstrap enemyBootstrap = Instantiate(config.enemyPrefab, nextSpawnPos, Quaternion.identity);
-      enemyBootstrap.Init(config, sealComponent);
-      spawnedEnemies.Add(enemyBootstrap);
-      enemyBootstrap.GetComponent<EnemyHealth>().OnDead += HandleDeathEnemy;
-      lastSpawnPos = nextSpawnPos;
+      SpawnEnemy(config);
+      yield return new WaitForSeconds(delay);
     }
 
-  }
 
+  }
   public void HandleDeathEnemy(EnemyHealth enemyHealth)
   {
     EnemyBootstrap enemyBootstrap = enemyHealth.GetComponent<EnemyBootstrap>();

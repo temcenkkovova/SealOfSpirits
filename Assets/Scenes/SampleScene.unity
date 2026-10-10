@@ -464,7 +464,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 189151400}
-  - component: {fileID: 189151401}
   m_Layer: 0
   m_Name: SecondTutorialFault
   m_TagString: Untagged
@@ -488,23 +487,6 @@ Transform:
   - {fileID: 1728856585}
   m_Father: {fileID: 1893848832}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &189151401
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 189151399}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: be2c65db5affed54aa47e6a42dbd851a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::EnemySpawn
-  enemyConfigs:
-  - {fileID: 11400000, guid: 9e49dba71d9b5d847aec3d9059a7dcbb, type: 2}
-  - {fileID: 11400000, guid: 9e49dba71d9b5d847aec3d9059a7dcbb, type: 2}
-  - {fileID: 11400000, guid: 9e49dba71d9b5d847aec3d9059a7dcbb, type: 2}
-  sealComponent: {fileID: 2072644354}
 --- !u!1 &219746284
 GameObject:
   m_ObjectHideFlags: 0
@@ -590,6 +572,7 @@ GameObject:
   m_Component:
   - component: {fileID: 278645980}
   - component: {fileID: 278645979}
+  - component: {fileID: 278645981}
   m_Layer: 0
   m_Name: SpawnEnemyFault
   m_TagString: Untagged
@@ -609,18 +592,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: be2c65db5affed54aa47e6a42dbd851a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::EnemySpawn
-  enemyConfigs:
-  - {fileID: 11400000, guid: 9e49dba71d9b5d847aec3d9059a7dcbb, type: 2}
-  - {fileID: 11400000, guid: 9e49dba71d9b5d847aec3d9059a7dcbb, type: 2}
-  - {fileID: 11400000, guid: bd28f3549ade69042bc2b06044c2e1e6, type: 2}
-  - {fileID: 11400000, guid: bd28f3549ade69042bc2b06044c2e1e6, type: 2}
-  - {fileID: 11400000, guid: 9e49dba71d9b5d847aec3d9059a7dcbb, type: 2}
-  - {fileID: 11400000, guid: 9e49dba71d9b5d847aec3d9059a7dcbb, type: 2}
-  - {fileID: 11400000, guid: 9e49dba71d9b5d847aec3d9059a7dcbb, type: 2}
-  - {fileID: 11400000, guid: bd28f3549ade69042bc2b06044c2e1e6, type: 2}
-  - {fileID: 11400000, guid: bd28f3549ade69042bc2b06044c2e1e6, type: 2}
-  - {fileID: 11400000, guid: 9e49dba71d9b5d847aec3d9059a7dcbb, type: 2}
-  - {fileID: 11400000, guid: bd28f3549ade69042bc2b06044c2e1e6, type: 2}
   sealComponent: {fileID: 2072644354}
 --- !u!4 &278645980
 Transform:
@@ -638,6 +609,20 @@ Transform:
   - {fileID: 1723913126}
   m_Father: {fileID: 1821036098}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &278645981
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 278645978}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 64d7e6a02533bcb4e8dab3c7f72bcdae, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::FaultComponent
+  faultConfig: {fileID: 11400000, guid: a1e1b5196ac1fa342b4eeedd363af3e0, type: 2}
+  enemySpawn: {fileID: 278645979}
 --- !u!1001 &296357914
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -847,6 +832,7 @@ GameObject:
   m_Component:
   - component: {fileID: 345066500}
   - component: {fileID: 345066501}
+  - component: {fileID: 345066502}
   m_Layer: 0
   m_Name: SpawnEnemyFault-7
   m_TagString: Untagged
@@ -881,11 +867,21 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: be2c65db5affed54aa47e6a42dbd851a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::EnemySpawn
-  enemyConfigs:
-  - {fileID: 11400000, guid: 9e49dba71d9b5d847aec3d9059a7dcbb, type: 2}
-  - {fileID: 11400000, guid: 9e49dba71d9b5d847aec3d9059a7dcbb, type: 2}
-  - {fileID: 11400000, guid: 9e49dba71d9b5d847aec3d9059a7dcbb, type: 2}
   sealComponent: {fileID: 2072644354}
+--- !u!114 &345066502
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 345066499}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 64d7e6a02533bcb4e8dab3c7f72bcdae, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::FaultComponent
+  faultConfig: {fileID: 11400000, guid: a1e1b5196ac1fa342b4eeedd363af3e0, type: 2}
+  enemySpawn: {fileID: 345066501}
 --- !u!1 &410087039
 GameObject:
   m_ObjectHideFlags: 0
@@ -1720,6 +1716,7 @@ GameObject:
   m_Component:
   - component: {fileID: 619411998}
   - component: {fileID: 619411997}
+  - component: {fileID: 619411999}
   m_Layer: 0
   m_Name: SpawnEnemyFault-Second
   m_TagString: Untagged
@@ -1739,10 +1736,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: be2c65db5affed54aa47e6a42dbd851a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::EnemySpawn
-  enemyConfigs:
-  - {fileID: 11400000, guid: 9e49dba71d9b5d847aec3d9059a7dcbb, type: 2}
-  - {fileID: 11400000, guid: 9e49dba71d9b5d847aec3d9059a7dcbb, type: 2}
-  - {fileID: 11400000, guid: 9e49dba71d9b5d847aec3d9059a7dcbb, type: 2}
   sealComponent: {fileID: 2072644354}
 --- !u!4 &619411998
 Transform:
@@ -1759,6 +1752,20 @@ Transform:
   m_Children: []
   m_Father: {fileID: 1821036098}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &619411999
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 619411996}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 64d7e6a02533bcb4e8dab3c7f72bcdae, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::FaultComponent
+  faultConfig: {fileID: 11400000, guid: a1e1b5196ac1fa342b4eeedd363af3e0, type: 2}
+  enemySpawn: {fileID: 345066501}
 --- !u!1 &623015215
 GameObject:
   m_ObjectHideFlags: 0
@@ -2291,6 +2298,7 @@ GameObject:
   m_Component:
   - component: {fileID: 777217871}
   - component: {fileID: 777217872}
+  - component: {fileID: 777217873}
   m_Layer: 0
   m_Name: SpawnEnemyFault-8
   m_TagString: Untagged
@@ -2325,11 +2333,21 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: be2c65db5affed54aa47e6a42dbd851a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::EnemySpawn
-  enemyConfigs:
-  - {fileID: 11400000, guid: 9e49dba71d9b5d847aec3d9059a7dcbb, type: 2}
-  - {fileID: 11400000, guid: 9e49dba71d9b5d847aec3d9059a7dcbb, type: 2}
-  - {fileID: 11400000, guid: 9e49dba71d9b5d847aec3d9059a7dcbb, type: 2}
   sealComponent: {fileID: 2072644354}
+--- !u!114 &777217873
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 777217870}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 64d7e6a02533bcb4e8dab3c7f72bcdae, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::FaultComponent
+  faultConfig: {fileID: 11400000, guid: a1e1b5196ac1fa342b4eeedd363af3e0, type: 2}
+  enemySpawn: {fileID: 345066501}
 --- !u!1 &826467669
 GameObject:
   m_ObjectHideFlags: 0
@@ -3713,6 +3731,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1346120914}
   - component: {fileID: 1346120915}
+  - component: {fileID: 1346120916}
   m_Layer: 0
   m_Name: SpawnEnemyFault-5
   m_TagString: Untagged
@@ -3747,11 +3766,21 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: be2c65db5affed54aa47e6a42dbd851a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::EnemySpawn
-  enemyConfigs:
-  - {fileID: 11400000, guid: 9e49dba71d9b5d847aec3d9059a7dcbb, type: 2}
-  - {fileID: 11400000, guid: 9e49dba71d9b5d847aec3d9059a7dcbb, type: 2}
-  - {fileID: 11400000, guid: 9e49dba71d9b5d847aec3d9059a7dcbb, type: 2}
   sealComponent: {fileID: 2072644354}
+--- !u!114 &1346120916
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1346120913}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 64d7e6a02533bcb4e8dab3c7f72bcdae, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::FaultComponent
+  faultConfig: {fileID: 11400000, guid: a1e1b5196ac1fa342b4eeedd363af3e0, type: 2}
+  enemySpawn: {fileID: 345066501}
 --- !u!1 &1351568472
 GameObject:
   m_ObjectHideFlags: 0
@@ -4350,6 +4379,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1479983445}
   - component: {fileID: 1479983446}
+  - component: {fileID: 1479983447}
   m_Layer: 0
   m_Name: SpawnEnemyFault-10
   m_TagString: Untagged
@@ -4384,11 +4414,21 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: be2c65db5affed54aa47e6a42dbd851a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::EnemySpawn
-  enemyConfigs:
-  - {fileID: 11400000, guid: 9e49dba71d9b5d847aec3d9059a7dcbb, type: 2}
-  - {fileID: 11400000, guid: 9e49dba71d9b5d847aec3d9059a7dcbb, type: 2}
-  - {fileID: 11400000, guid: 9e49dba71d9b5d847aec3d9059a7dcbb, type: 2}
   sealComponent: {fileID: 2072644354}
+--- !u!114 &1479983447
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1479983444}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 64d7e6a02533bcb4e8dab3c7f72bcdae, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::FaultComponent
+  faultConfig: {fileID: 11400000, guid: a1e1b5196ac1fa342b4eeedd363af3e0, type: 2}
+  enemySpawn: {fileID: 345066501}
 --- !u!1 &1493865323
 GameObject:
   m_ObjectHideFlags: 0
@@ -4943,12 +4983,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c6a25ac47d2764442ae469fb8a44b603, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::TutorialComponent
-  enemyConfigs:
-  - {fileID: 11400000, guid: 9e49dba71d9b5d847aec3d9059a7dcbb, type: 2}
-  - {fileID: 11400000, guid: bd28f3549ade69042bc2b06044c2e1e6, type: 2}
-  - {fileID: 11400000, guid: 9e49dba71d9b5d847aec3d9059a7dcbb, type: 2}
+  firstFaultConfig: {fileID: 11400000, guid: 272fc51b91d28a54eae4cd357782393b, type: 2}
+  secondFaultConfig: {fileID: 11400000, guid: e8478e0b6fdd7e24ea41d7c0626b6733, type: 2}
   sealComponent: {fileID: 2072644354}
-  secondFaultTutorialEnemy: {fileID: 189151401}
+  secondFaultTutorialEnemy: {fileID: 189151399}
 --- !u!1 &1682075635
 GameObject:
   m_ObjectHideFlags: 0
@@ -5096,6 +5134,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1700808848}
   - component: {fileID: 1700808849}
+  - component: {fileID: 1700808850}
   m_Layer: 0
   m_Name: SpawnEnemyFault-4
   m_TagString: Untagged
@@ -5130,11 +5169,21 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: be2c65db5affed54aa47e6a42dbd851a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::EnemySpawn
-  enemyConfigs:
-  - {fileID: 11400000, guid: 9e49dba71d9b5d847aec3d9059a7dcbb, type: 2}
-  - {fileID: 11400000, guid: 9e49dba71d9b5d847aec3d9059a7dcbb, type: 2}
-  - {fileID: 11400000, guid: 9e49dba71d9b5d847aec3d9059a7dcbb, type: 2}
   sealComponent: {fileID: 2072644354}
+--- !u!114 &1700808850
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1700808847}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 64d7e6a02533bcb4e8dab3c7f72bcdae, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::FaultComponent
+  faultConfig: {fileID: 11400000, guid: a1e1b5196ac1fa342b4eeedd363af3e0, type: 2}
+  enemySpawn: {fileID: 345066501}
 --- !u!1001 &1723913125
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -5698,6 +5747,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2004596169}
   - component: {fileID: 2004596170}
+  - component: {fileID: 2004596171}
   m_Layer: 0
   m_Name: SpawnEnemyFault-9
   m_TagString: Untagged
@@ -5732,11 +5782,21 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: be2c65db5affed54aa47e6a42dbd851a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::EnemySpawn
-  enemyConfigs:
-  - {fileID: 11400000, guid: 9e49dba71d9b5d847aec3d9059a7dcbb, type: 2}
-  - {fileID: 11400000, guid: 9e49dba71d9b5d847aec3d9059a7dcbb, type: 2}
-  - {fileID: 11400000, guid: 9e49dba71d9b5d847aec3d9059a7dcbb, type: 2}
   sealComponent: {fileID: 2072644354}
+--- !u!114 &2004596171
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2004596168}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 64d7e6a02533bcb4e8dab3c7f72bcdae, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::FaultComponent
+  faultConfig: {fileID: 11400000, guid: a1e1b5196ac1fa342b4eeedd363af3e0, type: 2}
+  enemySpawn: {fileID: 345066501}
 --- !u!1 &2014742973
 GameObject:
   m_ObjectHideFlags: 0
@@ -5877,6 +5937,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2051212197}
   - component: {fileID: 2051212198}
+  - component: {fileID: 2051212199}
   m_Layer: 0
   m_Name: SpawnEnemyFault-6
   m_TagString: Untagged
@@ -5911,11 +5972,21 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: be2c65db5affed54aa47e6a42dbd851a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::EnemySpawn
-  enemyConfigs:
-  - {fileID: 11400000, guid: 9e49dba71d9b5d847aec3d9059a7dcbb, type: 2}
-  - {fileID: 11400000, guid: 9e49dba71d9b5d847aec3d9059a7dcbb, type: 2}
-  - {fileID: 11400000, guid: 9e49dba71d9b5d847aec3d9059a7dcbb, type: 2}
   sealComponent: {fileID: 2072644354}
+--- !u!114 &2051212199
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2051212196}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 64d7e6a02533bcb4e8dab3c7f72bcdae, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::FaultComponent
+  faultConfig: {fileID: 11400000, guid: a1e1b5196ac1fa342b4eeedd363af3e0, type: 2}
+  enemySpawn: {fileID: 345066501}
 --- !u!1 &2058138196
 GameObject:
   m_ObjectHideFlags: 0
@@ -6150,6 +6221,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2073031029}
   - component: {fileID: 2073031030}
+  - component: {fileID: 2073031031}
   m_Layer: 0
   m_Name: SpawnEnemyFault-3
   m_TagString: Untagged
@@ -6184,11 +6256,21 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: be2c65db5affed54aa47e6a42dbd851a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::EnemySpawn
-  enemyConfigs:
-  - {fileID: 11400000, guid: 9e49dba71d9b5d847aec3d9059a7dcbb, type: 2}
-  - {fileID: 11400000, guid: 9e49dba71d9b5d847aec3d9059a7dcbb, type: 2}
-  - {fileID: 11400000, guid: 9e49dba71d9b5d847aec3d9059a7dcbb, type: 2}
   sealComponent: {fileID: 2072644354}
+--- !u!114 &2073031031
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2073031028}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 64d7e6a02533bcb4e8dab3c7f72bcdae, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::FaultComponent
+  faultConfig: {fileID: 11400000, guid: a1e1b5196ac1fa342b4eeedd363af3e0, type: 2}
+  enemySpawn: {fileID: 345066501}
 --- !u!1001 &2802705274851600185
 PrefabInstance:
   m_ObjectHideFlags: 0

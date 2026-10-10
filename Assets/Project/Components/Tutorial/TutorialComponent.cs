@@ -4,30 +4,18 @@ using UnityEngine;
 
 public class TutorialComponent : MonoBehaviour
 {
-  public List<EnemyConfig> enemyConfigs;
+  public FaultConfig firstFaultConfig;
+  public FaultConfig secondFaultConfig;
 
   public SealComponent sealComponent;
 
   private List<EnemyBootstrap> spawnedEnemies = new List<EnemyBootstrap>();
 
-  public EnemySpawn secondFaultTutorialEnemy;
+  public GameObject secondFaultTutorialEnemy;
 
   public event Action OnEnemiesDead;
 
-  private bool isSecondGroupDefeated = false;
 
-
-  void Update()
-  {
-    // if (isTutorialFinished) return;
-    //if (tutorialStage >= 3 && spawnedEnemies.Count == 0 && isSecondGroupDefeated)
-    //{
-    // isTutorialFinished = true;
-    // OnTutorialFinished?.Invoke();
-    // GamePhaseController.Instance.HandleFinishTutorial(); // I have to create an bridge between tutorial and Main gameplay;
-
-    //}
-  }
   void Start()
   {
     secondFaultTutorialEnemy.gameObject.SetActive(false);
@@ -36,12 +24,12 @@ public class TutorialComponent : MonoBehaviour
   {
 
     Vector3 lastSpawnPos = transform.position;
-
+    Vector3 lastSpawnPosSecondFault = secondFaultTutorialEnemy.transform.position;
     for (int i = 0; i <= stageNumber; i++)
     {
       Vector3 nextSpawnPos = lastSpawnPos + new Vector3(2f, 0, 2f);
-      EnemyBootstrap enemyBootstrap = Instantiate(enemyConfigs[i].enemyPrefab, nextSpawnPos, Quaternion.identity);
-      enemyBootstrap.Init(enemyConfigs[i], sealComponent);
+      EnemyBootstrap enemyBootstrap = Instantiate(firstFaultConfig.enemyConfigs[i].enemyPrefab, nextSpawnPos, Quaternion.identity);
+      enemyBootstrap.Init(firstFaultConfig.enemyConfigs[i], sealComponent);
       spawnedEnemies.Add(enemyBootstrap);
       enemyBootstrap.GetComponent<EnemyHealth>().OnDead += HandleTutorialEnemyDeath;
       lastSpawnPos = nextSpawnPos;
@@ -50,13 +38,18 @@ public class TutorialComponent : MonoBehaviour
     if (stageNumber == 2)
     {
       secondFaultTutorialEnemy.gameObject.SetActive(true);
-      secondFaultTutorialEnemy.OnEnemiesDefeated += HandleDefeatedSecondGroup;
+      for (int i = 0; i <= stageNumber; i++)
+      {
+        Vector3 nextSpawnPos = lastSpawnPosSecondFault + new Vector3(2f, 0, 2f);
+        EnemyBootstrap enemyBootstrap = Instantiate(secondFaultConfig.enemyConfigs[i].enemyPrefab, nextSpawnPos, Quaternion.identity);
+        enemyBootstrap.Init(secondFaultConfig.enemyConfigs[i], sealComponent);
+        spawnedEnemies.Add(enemyBootstrap);
+        enemyBootstrap.GetComponent<EnemyHealth>().OnDead += HandleTutorialEnemyDeath;
+        lastSpawnPosSecondFault = nextSpawnPos;
+      }
     }
   }
-  public void HandleDefeatedSecondGroup()
-  {
-    isSecondGroupDefeated = true;
-  }
+
   public void HandleTutorialEnemyDeath(EnemyHealth enemyHealth)
   {
     enemyHealth.OnDead -= HandleTutorialEnemyDeath;
@@ -70,7 +63,14 @@ public class TutorialComponent : MonoBehaviour
   }
   void OnDisable()
   {
-    if (secondFaultTutorialEnemy != null)
-      secondFaultTutorialEnemy.OnEnemiesDefeated -= HandleDefeatedSecondGroup;
+
+
+  }
+
+  public void HandleDestroyTutorialFaults()
+  {
+
+    Destroy(secondFaultTutorialEnemy.gameObject);
+    Destroy(gameObject);
   }
 }

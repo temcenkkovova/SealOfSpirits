@@ -93,8 +93,14 @@ public class EnemyMovement : MonoBehaviour
     }
     nextPosition.y = 0f;
     Vector3 moveDir = nextPosition - transform.position;
-    Quaternion rotateTarget = Quaternion.LookRotation(moveDir);
-    transform.rotation = Quaternion.Slerp(transform.rotation, rotateTarget, 7f * Time.deltaTime);
+
+    moveDir.y = 0f;
+    if (moveDir.sqrMagnitude > 0.000001f)
+    {
+      Quaternion rotateTarget = Quaternion.LookRotation(moveDir);
+      transform.rotation = Quaternion.Slerp(transform.rotation, rotateTarget, 7f * Time.deltaTime);
+    }
+
     transform.position = nextPosition;
   }
 

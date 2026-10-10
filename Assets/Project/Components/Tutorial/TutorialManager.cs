@@ -48,6 +48,7 @@ public class TutorialManager : MonoBehaviour
     if (tutorialStage >= maxCountStage)
     {
       isTutorialFinished = true;
+      tutorialComponent.HandleDestroyTutorialFaults();
       GamePhaseController.Instance.HandleFinishTutorial();
 
     }
