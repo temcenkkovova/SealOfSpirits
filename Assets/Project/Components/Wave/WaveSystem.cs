@@ -5,10 +5,11 @@ using UnityEngine;
 
 public class WaveSystem : MonoBehaviour
 {
-  public List<EnemySpawn> enemySpawnFaults;
+  public List<EnemySpawn> enemySpawnFaults = new List<EnemySpawn>();
   private int maxCurrentFaults = 0;
   public WaveTimer waveTimer;
   public TutorialManager tutorialManager;
+  private bool wasChecked = false;
   void Start()
   {
     if (GamePhaseController.Instance.IsTutorialCompletedOnce)
@@ -30,19 +31,52 @@ public class WaveSystem : MonoBehaviour
   }
   public void CheckActiveFaultStatus(float time)
   {
+
+    int newMaxNumberFaults = 0;
     if (!IsPlayingGame()) return;
 
-    if (time >= 30) maxCurrentFaults = 2;
-    if (time >= 90) maxCurrentFaults = 3;
-    if (time >= 120) maxCurrentFaults = 4;
-    if (time >= 160) maxCurrentFaults = 6;
-    if (time >= 230) maxCurrentFaults = 8;
-    if (time >= 260) maxCurrentFaults = 9;
+    if (time >= 30)
+    {
+      newMaxNumberFaults = 2;
+      wasChecked = false;
+    }
 
+    if (time >= 90)
+    {
+      newMaxNumberFaults = 3;
+      wasChecked = false;
+    }
+
+    if (time >= 120)
+    {
+      newMaxNumberFaults = 4;
+      wasChecked = false;
+    }
+    if (time >= 160)
+    {
+      newMaxNumberFaults = 6;
+      wasChecked = false;
+    }
+    if (time >= 230)
+    {
+      newMaxNumberFaults = 8;
+      wasChecked = false;
+    }
+    if (time >= 260)
+    {
+      newMaxNumberFaults = 9;
+      wasChecked = false;
+    }
+
+
+    maxCurrentFaults = newMaxNumberFaults;
+
+    if (wasChecked) return;
     for (int i = 0; i <= maxCurrentFaults; i++)
     {
       enemySpawnFaults[i].gameObject.SetActive(true);
     }
+    wasChecked = true;
   }
 
   public bool IsPlayingGame()

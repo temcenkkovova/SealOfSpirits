@@ -54,8 +54,8 @@ public class SkillAimingComponent : MonoBehaviour
     StopAiming();
     IsInAimingProcess = true;
     this.radius = radius;
-
-    spawnedAimingWave = Instantiate(aimingWave, transform.position, aimingWave.transform.rotation);
+    Vector3 viewPos = new Vector3(transform.position.x, 0.1f, transform.position.z);
+    spawnedAimingWave = Instantiate(aimingWave, viewPos, aimingWave.transform.rotation);
     spawnedAimingWave.transform.localScale = spawnedAimingWave.transform.localScale * radius;
     spawnedAimingWave.Init(this);
   }

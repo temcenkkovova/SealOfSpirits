@@ -31,6 +31,6 @@ public class EarthSkill : IdolSkill
       if (stunnable == null) continue;
       stunnable.Stunned(stunDuration);
     }
-    Destroy(gameObject, 0.2f);
+    Destroy(gameObject, 0.5f);
   }
 }

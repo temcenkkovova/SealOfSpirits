@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 using UnityEngine;
 
 public class TutorialManager : MonoBehaviour
@@ -11,6 +12,7 @@ public class TutorialManager : MonoBehaviour
 
   public TutorialDialogComponent tutorialDialogComponent;
   public TutorialComponent tutorialComponent;
+  public List<IdolBootstrap> idolBootstraps = new List<IdolBootstrap>();
 
 
   void Start()
@@ -48,6 +50,12 @@ public class TutorialManager : MonoBehaviour
     if (tutorialStage >= maxCountStage)
     {
       isTutorialFinished = true;
+
+      foreach (IdolBootstrap idolBootstrap in idolBootstraps)
+      {
+        Destroy(idolBootstrap.gameObject);
+      }
+
       tutorialComponent.HandleDestroyTutorialFaults();
       GamePhaseController.Instance.HandleFinishTutorial();
 
