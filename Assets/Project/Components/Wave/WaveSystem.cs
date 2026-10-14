@@ -5,7 +5,7 @@ using UnityEngine;
 
 public class WaveSystem : MonoBehaviour
 {
-  public List<EnemySpawn> enemySpawnFaults = new List<EnemySpawn>();
+  public List<FaultComponent> enemySpawnFaults = new List<FaultComponent>();
   private int maxCurrentFaults = 0;
   public WaveTimer waveTimer;
   public TutorialManager tutorialManager;

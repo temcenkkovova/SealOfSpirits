@@ -12,7 +12,7 @@ public class EnemyMovement : MonoBehaviour
   private Vector3 knockbackDirection;
   private static readonly List<EnemyMovement> activeEnemies = new();
   private float separationRadius = 0.4f;
-  private float stopDistance = 2f;
+  private float stopDistance = 3.5f;
   private Vector3 newAngelDirection = new Vector3();
   public bool isMoving;
   void Awake()

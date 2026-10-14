@@ -6,7 +6,7 @@ public class SkillUI : MonoBehaviour
 {
   public Image imageField;
   private SkillData data;
-  public TMP_Text numberSkillField;
+
 
   void Start()
   {
@@ -16,7 +16,7 @@ public class SkillUI : MonoBehaviour
   {
     this.data = data;
     imageField.sprite = data.icon;
-    numberSkillField.text = idNumber.ToString();
+
     this.data.OnActivatedSkill += ChangeActiveState;
   }
 

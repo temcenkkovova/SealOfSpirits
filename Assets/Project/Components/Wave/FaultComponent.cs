@@ -4,10 +4,13 @@ using UnityEngine;
 public class FaultComponent : MonoBehaviour
 {
   public FaultConfig faultConfig;
-  public EnemySpawn enemySpawn;
+  private EnemySpawn enemySpawn;
   private int delayStartSpawnEnemies = 2;
 
-
+  void Awake()
+  {
+    enemySpawn = GetComponent<EnemySpawn>();
+  }
 
   void Start()
   {
