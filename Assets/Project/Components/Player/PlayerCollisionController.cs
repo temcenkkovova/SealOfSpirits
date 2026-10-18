@@ -23,6 +23,7 @@ public class PlayerCollisionController : MonoBehaviour
     if (!IsInteractMask(other.gameObject)) return;
 
     IInteractable interactable = other.GetComponent<IInteractable>();
+    interactable.SetNewInteractVisual();
     currentInteractable = interactable;
   }
 
@@ -30,6 +31,8 @@ public class PlayerCollisionController : MonoBehaviour
   void OnTriggerExit(Collider other)
   {
     if (!IsInteractMask(other.gameObject)) return;
+    IInteractable interactable = other.GetComponent<IInteractable>();
+    interactable.ResetInteractVisual();
     currentInteractable = null;
   }
   public bool IsInteractMask(GameObject target)

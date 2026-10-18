@@ -1,4 +1,5 @@
-using Unity.VisualScripting;
+
+using System;
 using UnityEngine;
 
 public class IdolSkillController : MonoBehaviour, IInteractable
@@ -6,9 +7,14 @@ public class IdolSkillController : MonoBehaviour, IInteractable
   private IdolSkillConfig skillConfig;
   public int idSkill;
   public GameObject skillPosition;
+  public IdolBootstrap idolBootstrap;
 
+  public event Action<string> OnSetNewInteractVisual;
   private float timer;
-
+  void Awake()
+  {
+    idolBootstrap = GetComponent<IdolBootstrap>();
+  }
 
   public void Init(IdolSkillConfig idolSkillConfig)
   {
@@ -16,27 +22,22 @@ public class IdolSkillController : MonoBehaviour, IInteractable
   }
   public int Interact()
   {
+    if (idolBootstrap.IsCurrentActive)
+    {
+      SetNewInteractVisual();
+    }
     return idSkill;
 
   }
-  // public void Interact()
-  // {
-  //   if (timer > 0)
-  //   {
-  //     Debug.Log("Cooldown skill");
-  //     return;
-  //   }
-  //   else
-  //   {
-  //     timer = skillConfig.cooldown;
-  //     IdolSkill skill = Instantiate(skillConfig.idolSkillPrefab, skillPosition.transform);
+  public void SetNewInteractVisual()
+  {
+    OnSetNewInteractVisual?.Invoke("Press E");
+  }
+  public void ResetInteractVisual()
+  {
+    OnSetNewInteractVisual?.Invoke("Learn");
+  }
 
-  //     IdolSkillView idolSkillView = skillPosition.GetComponent<IdolSkillView>();
-  //     idolSkillView.Init(skillConfig.duration);
-  //     skill.Initialize(skillConfig, idolSkillView);
-  //   }
-
-  // }
 
   void Update()
   {

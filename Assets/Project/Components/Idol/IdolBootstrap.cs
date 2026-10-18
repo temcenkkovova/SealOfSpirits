@@ -7,6 +7,7 @@ public class IdolBootstrap : MonoBehaviour
   private IdolSkillController idolSkillController;
   public GameObject tutorialTargetVisual;
   public int ownNumber;
+  public bool IsCurrentActive { get; private set; } = false;
 
   void Awake()
   {
@@ -25,10 +26,12 @@ public class IdolBootstrap : MonoBehaviour
     if (ownNumber == stageNumber)
     {
       tutorialTargetVisual.SetActive(true);
+      IsCurrentActive = true;
     }
     else
     {
       tutorialTargetVisual.SetActive(false);
+      IsCurrentActive = false;
     }
   }
 }
