@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: -6047158900557341195}
   - component: {fileID: 4194061543425436584}
   - component: {fileID: 4694221330444039239}
+  - component: {fileID: 8923599440969830520}
   m_Layer: 0
   m_Name: TornadoSkill
   m_TagString: Untagged
@@ -165,6 +166,18 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &8923599440969830520
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1841836750294175786}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 56ab61c86862f0c4b86bc49e9f1f33ee, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::LookAtCamera
 --- !u!1001 &1722879550445600565
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -173,6 +186,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 4618656589523162271}
     m_Modifications:
+    - target: {fileID: 4174147558781449270, guid: 460babe280fe4aa41adc3fefd46f0c0b, type: 3}
+      propertyPath: m_SortingOrder
+      value: 10
+      objectReference: {fileID: 0}
     - target: {fileID: 4174147558781449270, guid: 460babe280fe4aa41adc3fefd46f0c0b, type: 3}
       propertyPath: m_RenderAlignment
       value: 2
