@@ -31,7 +31,13 @@ public class TutorialManager : MonoBehaviour
   }
   void PlayDialog()
   {
+
     if (tutorialStage >= maxCountStage) return;
+
+    foreach (IdolBootstrap idol in idolBootstraps)
+    {
+      idol.ChangeTargetVisualStatus(tutorialStage);
+    }
     tutorialDialogComponent.ShowDialog(tutorialStage);
   }
 
@@ -42,6 +48,10 @@ public class TutorialManager : MonoBehaviour
     if (tutorialStage >= maxCountStage) return;
     tutorialDialogComponent.ChangeDialogPanelState(false);
     tutorialComponent.SpawnTutorialEnemy(tutorialStage);
+    foreach (IdolBootstrap idol in idolBootstraps)
+    {
+      idol.ChangeTargetVisualStatus(99);
+    }
   }
   public void HandleCompletedStage()
   {

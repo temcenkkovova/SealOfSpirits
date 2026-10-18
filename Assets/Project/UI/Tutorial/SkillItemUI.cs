@@ -20,9 +20,9 @@ public class SkillItemUI : MonoBehaviour
 
     if (number > ownNumber)
     {
-      title.color = Color.green;
-      image.color = Color.green;
-      numberField.color = Color.green;
+      title.color = Color.greenYellow;
+      image.color = Color.greenYellow;
+      numberField.color = Color.greenYellow;
       return;
     }
     if (number < ownNumber)
