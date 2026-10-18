@@ -1,3 +1,5 @@
+
+using System.Collections.Generic;
 using UnityEngine;
 
 public class TutorialDialogComponent : MonoBehaviour
@@ -5,31 +7,34 @@ public class TutorialDialogComponent : MonoBehaviour
   public Dialog dialogPrefab;
   public Transform dialogParent;
   private Dialog currentDialog;
+  public GameObject dialogPanel;
 
-  private string firstMessage = "Learn Meteor at the idol, then destroy the enemy before it reaches the seal!";
-  private string secondMessage = "Learn Wave at the idol to push enemies back. Use it to keep them away from the seal!";
-  private string thirdMessage = "Learn Stone at the idol to stun a group of enemies. Use it to buy time while Meteor recharges!";
+  public List<SkillItemUIConfig> skillUIConfigs;
+
+
   public TutorialComponent tutorialComponent;
 
   public void ShowDialog(int stageNumber)
   {
-    dialogParent.gameObject.SetActive(true);
-    string message = "";
-    if (currentDialog != null) currentDialog = null;
+    ChangeDialogPanelState(true);
+    if (currentDialog != null)
+    {
+      Destroy(currentDialog.gameObject);
+    }
     currentDialog = Instantiate(dialogPrefab, dialogParent);
-    if (stageNumber == 0) message = firstMessage;
-    if (stageNumber == 1) message = secondMessage;
-    if (stageNumber == 2) message = thirdMessage;
-    currentDialog.Init(message, 3f);
+    SkillItemUIConfig config = skillUIConfigs[stageNumber];
+    currentDialog.Init(config);
   }
   public void DestroyDialog()
   {
     dialogParent.gameObject.SetActive(false);
     Destroy(currentDialog.gameObject);
   }
-  public void DisableDialogParent()
+
+
+  public void ChangeDialogPanelState(bool state)
   {
-    dialogParent.gameObject.SetActive(false);
+    dialogPanel.gameObject.SetActive(state);
   }
 
 }

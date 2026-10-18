@@ -1,16 +1,20 @@
 using System;
 using TMPro;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class Dialog : MonoBehaviour
 {
 
-  public TMP_Text textField;
+  public TMP_Text titleField;
+  public TMP_Text descriptionField;
+  public Image image;
 
-  public void Init(string text, float time)
+  public void Init(SkillItemUIConfig config)
   {
-    textField.text = text;
-
+    titleField.text = config.title;
+    descriptionField.text = config.description;
+    image.sprite = config.image;
 
   }
 

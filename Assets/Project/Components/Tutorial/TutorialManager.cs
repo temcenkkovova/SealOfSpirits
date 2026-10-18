@@ -40,7 +40,7 @@ public class TutorialManager : MonoBehaviour
 
     if (numberSkill != tutorialStage) return;
     if (tutorialStage >= maxCountStage) return;
-    tutorialDialogComponent.DestroyDialog();
+    tutorialDialogComponent.ChangeDialogPanelState(false);
     tutorialComponent.SpawnTutorialEnemy(tutorialStage);
   }
   public void HandleCompletedStage()
@@ -50,7 +50,8 @@ public class TutorialManager : MonoBehaviour
     if (tutorialStage >= maxCountStage)
     {
       isTutorialFinished = true;
-
+      tutorialDialogComponent.ChangeDialogPanelState(false);
+      tutorialDialogComponent.DestroyDialog();
       foreach (IdolBootstrap idolBootstrap in idolBootstraps)
       {
         Destroy(idolBootstrap.gameObject);
