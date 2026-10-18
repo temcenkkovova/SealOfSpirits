@@ -1,4 +1,5 @@
 
+using System;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -10,6 +11,7 @@ public class TutorialDialogComponent : MonoBehaviour
   public GameObject dialogPanel;
 
   public List<SkillItemUIConfig> skillUIConfigs;
+  public event Action<int> OnShowDialogSkill;
 
 
   public TutorialComponent tutorialComponent;
@@ -24,6 +26,7 @@ public class TutorialDialogComponent : MonoBehaviour
     currentDialog = Instantiate(dialogPrefab, dialogParent);
     SkillItemUIConfig config = skillUIConfigs[stageNumber];
     currentDialog.Init(config);
+    OnShowDialogSkill?.Invoke(stageNumber);
   }
   public void DestroyDialog()
   {

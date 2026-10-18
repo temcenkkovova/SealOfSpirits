@@ -1158,6 +1158,7 @@ GameObject:
   - component: {fileID: 283211112}
   - component: {fileID: 283211114}
   - component: {fileID: 283211113}
+  - component: {fileID: 283211115}
   m_Layer: 5
   m_Name: SkillItem-Tornado
   m_TagString: Untagged
@@ -1225,6 +1226,22 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 283211111}
   m_CullTransparentMesh: 1
+--- !u!114 &283211115
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 283211111}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b2e19dfd0c7ca204b9c1354defe53bc1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::SkillItemUI
+  title: {fileID: 70960699}
+  image: {fileID: 687890866}
+  numberField: {fileID: 1713278697}
+  ownNumber: 1
 --- !u!1 &286304844
 GameObject:
   m_ObjectHideFlags: 0
@@ -4335,6 +4352,7 @@ GameObject:
   - component: {fileID: 881961263}
   - component: {fileID: 881961265}
   - component: {fileID: 881961264}
+  - component: {fileID: 881961266}
   m_Layer: 5
   m_Name: SkillItem-Rock
   m_TagString: Untagged
@@ -4402,6 +4420,22 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 881961262}
   m_CullTransparentMesh: 1
+--- !u!114 &881961266
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 881961262}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b2e19dfd0c7ca204b9c1354defe53bc1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::SkillItemUI
+  title: {fileID: 1389124329}
+  image: {fileID: 1875116712}
+  numberField: {fileID: 1207219801}
+  ownNumber: 2
 --- !u!1 &882868062
 GameObject:
   m_ObjectHideFlags: 0
@@ -4550,6 +4584,7 @@ GameObject:
   - component: {fileID: 908822202}
   - component: {fileID: 908822204}
   - component: {fileID: 908822203}
+  - component: {fileID: 908822205}
   m_Layer: 5
   m_Name: SkillItem-Meteor
   m_TagString: Untagged
@@ -4617,6 +4652,22 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 908822201}
   m_CullTransparentMesh: 1
+--- !u!114 &908822205
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 908822201}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b2e19dfd0c7ca204b9c1354defe53bc1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::SkillItemUI
+  title: {fileID: 403548207}
+  image: {fileID: 1375024066}
+  numberField: {fileID: 702629108}
+  ownNumber: 0
 --- !u!1 &934676732
 GameObject:
   m_ObjectHideFlags: 0
@@ -6688,6 +6739,7 @@ GameObject:
   - component: {fileID: 1428621910}
   - component: {fileID: 1428621911}
   - component: {fileID: 1428621912}
+  - component: {fileID: 1428621913}
   m_Layer: 5
   m_Name: Canvas
   m_TagString: Untagged
@@ -6831,6 +6883,23 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::VictoryUI
   victoryPanel: {fileID: 1873128092}
+--- !u!114 &1428621913
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1428621904}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9c45b8c31d415c64394a5d646c13fc4c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::TutorialManagerUI
+  skillItemUIs:
+  - {fileID: 908822205}
+  - {fileID: 283211115}
+  - {fileID: 881961266}
+  dialogComponent: {fileID: 1893848833}
 --- !u!1 &1445966395
 GameObject:
   m_ObjectHideFlags: 0
