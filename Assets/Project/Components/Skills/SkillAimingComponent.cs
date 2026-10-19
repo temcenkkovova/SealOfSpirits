@@ -45,7 +45,7 @@ public class SkillAimingComponent : MonoBehaviour
     }
     mouseDir.y = 0.2f;
     spawnedAimingCircle = Instantiate(aimingCircle, mouseDir, aimingCircle.transform.rotation);
-    spawnedAimingCircle.transform.localScale = spawnedAimingCircle.transform.localScale * radius;
+    spawnedAimingCircle.transform.localScale = spawnedAimingCircle.transform.localScale * (radius - 0.8f);
     spawnedAimingCircle.Init(this);
   }
 
