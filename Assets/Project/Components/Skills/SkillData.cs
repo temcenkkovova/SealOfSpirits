@@ -10,7 +10,8 @@ public class SkillData
   public float Duration { get; private set; }
   public IdolSkill SkillPrefab { get; private set; }
   public bool IsActivated { get; private set; } = false;
-
+  public float cooldownTimer;
+  public bool CanUseSkill { get; private set; }
   public Sprite icon;
   public string name;
   public event Action OnActivatedSkill;
@@ -31,5 +32,23 @@ public class SkillData
 
     IsActivated = true;
     OnActivatedSkill?.Invoke();
+  }
+  public void SetCooldownTimer()
+  {
+
+    cooldownTimer = Cooldown;
+  }
+  public void ResetCooldown()
+  {
+    if (cooldownTimer > 0)
+    {
+      CanUseSkill = false;
+      cooldownTimer -= Time.deltaTime;
+    }
+    else
+    {
+      CanUseSkill = true;
+    }
+
   }
 }

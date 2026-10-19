@@ -20,6 +20,17 @@ public class PlayerSkills : MonoBehaviour
     playerInputController = GetComponent<PlayerInputController>();
     skillAimingComponent = GetComponent<SkillAimingComponent>();
   }
+
+  void Update()
+  {
+    if (skillsData.Count > 0)
+    {
+      foreach (SkillData skill in skillsData)
+      {
+        skill.ResetCooldown();
+      }
+    }
+  }
   void Start()
   {
     foreach (IdolSkillConfig skill in skillConfigs)
@@ -39,18 +50,27 @@ public class PlayerSkills : MonoBehaviour
 
   public void CastSkill(Vector3 castSkillPosition)
   {
-    if (currentUseSkill.name == "Water")
+    if (currentUseSkill.CanUseSkill)
     {
-      Vector3 skillPosition = new Vector3(castSkillPosition.x, 0f, castSkillPosition.z);
-      IdolSkill idolSkill = Instantiate(currentUseSkill.SkillPrefab, transform.position, currentUseSkill.SkillPrefab.transform.rotation);
-      idolSkill.Initialize(currentUseSkill, skillPosition);
+      if (currentUseSkill.name == "Water")
+      {
+        Vector3 skillPosition = new Vector3(castSkillPosition.x, 0f, castSkillPosition.z);
+        IdolSkill idolSkill = Instantiate(currentUseSkill.SkillPrefab, transform.position, currentUseSkill.SkillPrefab.transform.rotation);
+        idolSkill.Initialize(currentUseSkill, skillPosition);
+      }
+      else
+      {
+        Vector3 skillPosition = new Vector3(castSkillPosition.x, 0f, castSkillPosition.z);
+        IdolSkill idolSkill = Instantiate(currentUseSkill.SkillPrefab, skillPosition, currentUseSkill.SkillPrefab.transform.rotation);
+        idolSkill.Initialize(currentUseSkill, Vector3.zero);
+      }
+      currentUseSkill.SetCooldownTimer();
     }
     else
     {
-      Vector3 skillPosition = new Vector3(castSkillPosition.x, 0f, castSkillPosition.z);
-      IdolSkill idolSkill = Instantiate(currentUseSkill.SkillPrefab, skillPosition, currentUseSkill.SkillPrefab.transform.rotation);
-      idolSkill.Initialize(currentUseSkill, Vector3.zero);
+      Debug.Log("Skill is reloading");
     }
+
 
   }
 

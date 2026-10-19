@@ -171,6 +171,16 @@ public partial class @PlayerInputs: IInputActionCollection2, IDisposable
                     ""interactions"": """",
                     ""initialStateCheck"": false,
                     ""priority"": 0
+                },
+                {
+                    ""name"": ""CanceledSkill"",
+                    ""type"": ""Button"",
+                    ""id"": ""72e42e45-f737-4afa-b36c-48e7cfb533d4"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false,
+                    ""priority"": 0
                 }
             ],
             ""bindings"": [
@@ -305,6 +315,17 @@ public partial class @PlayerInputs: IInputActionCollection2, IDisposable
                     ""action"": ""Sprint"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""4dac28bb-66f0-473b-ab94-9304c02d2434"",
+                    ""path"": ""<Mouse>/rightButton"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""CanceledSkill"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -321,6 +342,7 @@ public partial class @PlayerInputs: IInputActionCollection2, IDisposable
         m_Player_ConfirmSkill = m_Player.FindAction("ConfirmSkill", throwIfNotFound: true);
         m_Player_Pause = m_Player.FindAction("Pause", throwIfNotFound: true);
         m_Player_Sprint = m_Player.FindAction("Sprint", throwIfNotFound: true);
+        m_Player_CanceledSkill = m_Player.FindAction("CanceledSkill", throwIfNotFound: true);
     }
 
     ~@PlayerInputs()
@@ -409,6 +431,7 @@ public partial class @PlayerInputs: IInputActionCollection2, IDisposable
     private readonly InputAction m_Player_ConfirmSkill;
     private readonly InputAction m_Player_Pause;
     private readonly InputAction m_Player_Sprint;
+    private readonly InputAction m_Player_CanceledSkill;
     /// <summary>
     /// Provides access to input actions defined in input action map "Player".
     /// </summary>
@@ -452,6 +475,10 @@ public partial class @PlayerInputs: IInputActionCollection2, IDisposable
         /// Provides access to the underlying input action "Player/Sprint".
         /// </summary>
         public InputAction @Sprint => m_Wrapper.m_Player_Sprint;
+        /// <summary>
+        /// Provides access to the underlying input action "Player/CanceledSkill".
+        /// </summary>
+        public InputAction @CanceledSkill => m_Wrapper.m_Player_CanceledSkill;
         /// <summary>
         /// Provides access to the underlying input action map instance.
         /// </summary>
@@ -502,6 +529,9 @@ public partial class @PlayerInputs: IInputActionCollection2, IDisposable
             @Sprint.started += instance.OnSprint;
             @Sprint.performed += instance.OnSprint;
             @Sprint.canceled += instance.OnSprint;
+            @CanceledSkill.started += instance.OnCanceledSkill;
+            @CanceledSkill.performed += instance.OnCanceledSkill;
+            @CanceledSkill.canceled += instance.OnCanceledSkill;
         }
 
         /// <summary>
@@ -537,6 +567,9 @@ public partial class @PlayerInputs: IInputActionCollection2, IDisposable
             @Sprint.started -= instance.OnSprint;
             @Sprint.performed -= instance.OnSprint;
             @Sprint.canceled -= instance.OnSprint;
+            @CanceledSkill.started -= instance.OnCanceledSkill;
+            @CanceledSkill.performed -= instance.OnCanceledSkill;
+            @CanceledSkill.canceled -= instance.OnCanceledSkill;
         }
 
         /// <summary>
@@ -633,5 +666,12 @@ public partial class @PlayerInputs: IInputActionCollection2, IDisposable
         /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
         /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
         void OnSprint(InputAction.CallbackContext context);
+        /// <summary>
+        /// Method invoked when associated input action "CanceledSkill" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
+        /// </summary>
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.started" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
+        void OnCanceledSkill(InputAction.CallbackContext context);
     }
 }

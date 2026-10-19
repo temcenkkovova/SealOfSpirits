@@ -15,6 +15,7 @@ public class SkillAimingComponent : MonoBehaviour
   public Vector3 AimingCirclePosition { get; private set; }
   public event Action<Vector3> OnChoosePosition;
 
+
   void Awake()
   {
     playerInputController = GetComponent<PlayerInputController>();
@@ -23,6 +24,7 @@ public class SkillAimingComponent : MonoBehaviour
   {
     if (playerInputController)
       playerInputController.OnLeftButtonPressed += HandleFinishAiming;
+    playerInputController.OnRightButtonPressed += StopAiming;
   }
   void Update()
   {
@@ -62,6 +64,7 @@ public class SkillAimingComponent : MonoBehaviour
 
   public void StopAiming()
   {
+    if (!IsInAimingProcess) return;
     IsInAimingProcess = false;
 
     if (spawnedAimingCircle != null)
