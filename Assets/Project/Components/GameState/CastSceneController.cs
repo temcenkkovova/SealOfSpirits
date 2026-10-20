@@ -15,7 +15,7 @@ public class CastSceneController : MonoBehaviour
     sealComponent.OnSealProgressCompleted += StartVictoryScene;
     chaosComponent.OnFailed += HandleChaosGameOver;
     waveTimer.OnTimerFinished += HandleFinishTimerGameOver;
-
+    Debug.Log("t");
   }
 
 
