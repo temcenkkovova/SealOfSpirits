@@ -15,6 +15,10 @@ public class SkillData
   public Sprite icon;
   public string name;
   public event Action OnActivatedSkill;
+
+  public event Action<float> OnChangeTimer;
+  public event Action OnStartedTimer;
+  public event Action OnFinishedTimer;
   public SkillData(IdolSkillConfig skillConfig)
   {
     Damage = skillConfig.damage;
@@ -37,6 +41,7 @@ public class SkillData
   {
 
     cooldownTimer = Cooldown;
+    OnStartedTimer?.Invoke();
   }
   public void ResetCooldown()
   {
@@ -44,10 +49,12 @@ public class SkillData
     {
       CanUseSkill = false;
       cooldownTimer -= Time.deltaTime;
+      OnChangeTimer?.Invoke(cooldownTimer);
     }
     else
     {
       CanUseSkill = true;
+      OnFinishedTimer?.Invoke();
     }
 
   }
