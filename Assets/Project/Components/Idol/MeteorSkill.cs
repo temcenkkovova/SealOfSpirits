@@ -49,7 +49,7 @@ public class MeteorSkill : IdolSkill
 
     timer += Time.deltaTime;
     Explosion();
-    if (timer == 3f)
+    if (timer >= 3f)
     {
       isStartExplosion = false;
       rainParticle.Stop();

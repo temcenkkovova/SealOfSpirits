@@ -33,7 +33,7 @@ public class SkillUI : MonoBehaviour
 
   public void ShowCooldownPanel()
   {
-    Debug.Log("ee");
+
     cooldownPanel.SetActive(true);
   }
   public void HideCooldownPanel()

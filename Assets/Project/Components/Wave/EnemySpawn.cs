@@ -9,6 +9,7 @@ public class EnemySpawn : MonoBehaviour
   public SealComponent sealComponent;
   private List<EnemyBootstrap> spawnedEnemies = new List<EnemyBootstrap>();
   public event Action OnEnemiesDefeated;
+  private bool isFinishSpawn = false;
 
   //private Vector3 lastSpawnPos;
 
@@ -47,6 +48,8 @@ public class EnemySpawn : MonoBehaviour
       yield return new WaitForSeconds(delay);
     }
 
+    isFinishSpawn = true;
+
 
   }
   public void HandleDeathEnemy(EnemyHealth enemyHealth)
@@ -54,7 +57,7 @@ public class EnemySpawn : MonoBehaviour
     EnemyBootstrap enemyBootstrap = enemyHealth.GetComponent<EnemyBootstrap>();
     enemyHealth.OnDead -= HandleDeathEnemy;
     spawnedEnemies.Remove(enemyBootstrap);
-    if (spawnedEnemies.Count == 0)
+    if (spawnedEnemies.Count == 0 && isFinishSpawn)
     {
       OnEnemiesDefeated?.Invoke();
     }
