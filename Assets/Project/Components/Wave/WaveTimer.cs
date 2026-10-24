@@ -22,6 +22,7 @@ public class WaveTimer : MonoBehaviour
   }
   public bool IsPlayingGame()
   {
+
     return GamePhaseController.Instance.CurrentGamePhase == GamePhase.Ritual && GameStateController.Instance.CurrentGameState == GameState.Gameplay;
 
   }

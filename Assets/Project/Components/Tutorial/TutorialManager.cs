@@ -13,6 +13,7 @@ public class TutorialManager : MonoBehaviour
   public TutorialDialogComponent tutorialDialogComponent;
   public TutorialComponent tutorialComponent;
   public List<IdolBootstrap> idolBootstraps = new List<IdolBootstrap>();
+  public List<GameObject> tutorialFaults = new List<GameObject>();
 
 
   void Start()
@@ -20,14 +21,27 @@ public class TutorialManager : MonoBehaviour
     if (GamePhaseController.Instance.IsTutorialCompletedOnce)
     {
       playerSkills.ActivateAllSkills();
+      foreach (IdolBootstrap idolBootstrap in idolBootstraps)
+      {
+        Destroy(idolBootstrap.gameObject);
+      }
+
+      foreach (GameObject fault in tutorialFaults)
+      {
+        Destroy(fault);
+      }
       return;
     }
-    PlayDialog();
+    else
+    {
+      PlayDialog();
 
-    if (playerSkills == null) return;
-    playerSkills.OnSkillActivated += HandleHideDialog;
-    if (tutorialComponent == null) return;
-    tutorialComponent.OnEnemiesDead += HandleCompletedStage;
+      if (playerSkills == null) return;
+      playerSkills.OnSkillActivated += HandleHideDialog;
+      if (tutorialComponent == null) return;
+      tutorialComponent.OnEnemiesDead += HandleCompletedStage;
+    }
+
   }
   void PlayDialog()
   {

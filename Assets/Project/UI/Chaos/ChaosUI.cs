@@ -12,7 +12,15 @@ public class ChaosUI : MonoBehaviour
 
   void Start()
   {
-    chaosPanel.SetActive(false);
+    if (GamePhaseController.Instance.IsTutorialCompletedOnce)
+    {
+      chaosPanel.SetActive(true);
+    }
+    else
+    {
+      chaosPanel.SetActive(false);
+    }
+
     if (chaosComponent == null || GamePhaseController.Instance == null) return;
     chaosComponent.OnCurrentChaosChanged += ShowChaos;
     GamePhaseController.Instance.OnGamePhaseChanged += ShowChaosPanel;
@@ -21,15 +29,18 @@ public class ChaosUI : MonoBehaviour
   public void ShowChaos(float amount)
   {
     float percentage = amount / chaosComponent.requiredChaosToFail;
-    textField.text = (percentage * 100).ToString() + " %";
+    textField.text = (percentage * 100).ToString("F1") + " %";
     fillImage.fillAmount = percentage;
   }
 
   void OnDisable()
   {
-    if (chaosComponent == null || GamePhaseController.Instance == null) return;
-    chaosComponent.OnCurrentChaosChanged -= ShowChaos;
-    GamePhaseController.Instance.OnGamePhaseChanged -= ShowChaosPanel;
+
+    if (chaosComponent != null)
+      chaosComponent.OnCurrentChaosChanged -= ShowChaos;
+
+    if (GamePhaseController.Instance != null)
+      GamePhaseController.Instance.OnGamePhaseChanged -= ShowChaosPanel;
   }
   public void ShowChaosPanel(GamePhase gamePhase)
   {

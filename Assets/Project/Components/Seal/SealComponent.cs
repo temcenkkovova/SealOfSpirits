@@ -38,7 +38,7 @@ public class SealComponent : MonoBehaviour
 
   void OnTriggerEnter(Collider other)
   {
-
+    if (other == null) return;
     if (other.tag != "Enemy") return;
 
 
@@ -72,6 +72,7 @@ public class SealComponent : MonoBehaviour
   }
   void OnTriggerExit(Collider other)
   {
+    if (other == null) return;
     if (!other.CompareTag("Enemy")) return;
 
     EnemyBootstrap enemyBootstrap = other.GetComponent<EnemyBootstrap>();

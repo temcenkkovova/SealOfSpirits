@@ -18,7 +18,7 @@ public class SealProgressUI : MonoBehaviour
   public void ChangeProgress(float amount)
   {
     float percentage = sealComponent.currentSealProgress / sealComponent.requiredSealProgress;
-    currentProgressField.text = (percentage * 100).ToString() + " %";
+    currentProgressField.text = (percentage * 100).ToString("F1") + " %";
     fillImage.fillAmount = percentage;
   }
 

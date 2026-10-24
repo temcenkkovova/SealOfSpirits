@@ -17,7 +17,7 @@ public class FaultComponent : MonoBehaviour
     if (faultConfig == null) return;
     if (enemySpawn == null) return;
     enemySpawn.Init(faultConfig.enemyConfigs);
-    enemySpawn.OnEnemiesDefeated += HandleDestroyFault;
+    //enemySpawn.OnEnemiesDefeated += HandleDestroyFault;
     SpawnFaultEnemies();
   }
 
@@ -35,7 +35,7 @@ public class FaultComponent : MonoBehaviour
   void OnDisable()
   {
     if (enemySpawn == null) return;
-    enemySpawn.OnEnemiesDefeated -= HandleDestroyFault;
+    //enemySpawn.OnEnemiesDefeated -= HandleDestroyFault;
   }
 
   public void HandleDestroyFault()

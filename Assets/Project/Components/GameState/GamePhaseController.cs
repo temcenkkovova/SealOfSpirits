@@ -9,7 +9,7 @@ public class GamePhaseController : MonoBehaviour
   public GamePhase CurrentGamePhase { get; private set; }
   public event Action<GamePhase> OnGamePhaseChanged;
   public static GamePhaseController Instance;
-  public bool IsTutorialCompletedOnce { get; private set; } = false;
+  public bool IsTutorialCompletedOnce = false;
 
   private void Awake()
   {
@@ -26,7 +26,15 @@ public class GamePhaseController : MonoBehaviour
 
   void Start()
   {
-    ChangeGamePhase(GamePhase.Tutorial);
+    if (IsTutorialCompletedOnce)
+    {
+      ChangeGamePhase(GamePhase.Ritual);
+    }
+    else
+    {
+      ChangeGamePhase(GamePhase.Tutorial);
+    }
+
 
   }
   public void ChangeGamePhase(GamePhase newPhase)
@@ -34,10 +42,6 @@ public class GamePhaseController : MonoBehaviour
     if (newPhase == CurrentGamePhase) return;
     CurrentGamePhase = newPhase;
     OnGamePhaseChanged?.Invoke(CurrentGamePhase);
-    // if (CurrentGamePhase == GamePhase.Victory || CurrentGamePhase == GamePhase.Defeat)
-    //{
-    //GameStateController.Instance.ChangeGameState(GameState.Finished);
-    //}
   }
 
   public void HandleFinishTutorial()

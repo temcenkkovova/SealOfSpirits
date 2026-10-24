@@ -10,7 +10,7 @@ public class SkillUI : MonoBehaviour
   public TMP_Text cooldownField;
 
 
-  void Start()
+  void OnEnable()
   {
     imageField.color = Color.gray3;
     HideCooldownPanel();
@@ -28,6 +28,7 @@ public class SkillUI : MonoBehaviour
 
   public void ChangeActiveState()
   {
+    Debug.Log("tq");
     imageField.color = Color.white;
   }
 

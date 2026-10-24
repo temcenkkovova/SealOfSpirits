@@ -25,9 +25,12 @@ public class GameManager : MonoBehaviour
   public void RestartGame()
   {
     SceneManager.LoadScene("SampleScene");
+    GamePhaseController.Instance.ChangeGamePhase(GamePhase.Ritual);
+    GameStateController.Instance.ChangeGameState(GameState.Gameplay);
   }
   public void HandleFinishGame()
   {
     GameStateController.Instance.ChangeGameState(GameState.Finished);
   }
 }
+
