@@ -4,7 +4,7 @@ using UnityEngine;
 public class ChaosComponent : MonoBehaviour
 {
   public float CurrentChaos { get; private set; }
-  public float requiredChaosToFail { get; private set; } = 100f;
+  public float requiredChaosToFail { get; private set; } = 30f; // 100f
   public event Action<float> OnCurrentChaosChanged;
   public event Action OnFailed;
 
@@ -12,6 +12,7 @@ public class ChaosComponent : MonoBehaviour
 
   public void IncreaseChaos(float value)
   {
+    if (IsTutorialStage()) return;
     CurrentChaos += value;
     OnCurrentChaosChanged?.Invoke(CurrentChaos);
 
@@ -22,7 +23,14 @@ public class ChaosComponent : MonoBehaviour
   }
   public void DecreaseChaos(float value)
   {
+    if (IsTutorialStage()) return;
     CurrentChaos -= value;
     OnCurrentChaosChanged?.Invoke(CurrentChaos);
+  }
+
+  public bool IsTutorialStage()
+  {
+
+    return GamePhaseController.Instance.CurrentGamePhase == GamePhase.Tutorial;
   }
 }

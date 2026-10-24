@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 
 public class CastSceneController : MonoBehaviour
@@ -8,6 +9,7 @@ public class CastSceneController : MonoBehaviour
   public ChaosComponent chaosComponent;
   public WaveTimer waveTimer;
   public SealComponent sealComponent;
+  public event Action<string> OnShowDefeatedInfo;
 
   void Start()
   {
@@ -15,7 +17,7 @@ public class CastSceneController : MonoBehaviour
     sealComponent.OnSealProgressCompleted += StartVictoryScene;
     chaosComponent.OnFailed += HandleChaosGameOver;
     waveTimer.OnTimerFinished += HandleFinishTimerGameOver;
-    Debug.Log("t");
+
   }
 
 
@@ -23,18 +25,23 @@ public class CastSceneController : MonoBehaviour
   {
     Debug.Log("Here will be victory scene , after victory scene will be menu panel");
     GamePhaseController.Instance.ChangeGamePhase(GamePhase.Victory);
+    GameStateController.Instance.ChangeGameState(GameState.Finished);
 
   }
 
   public void HandleChaosGameOver()
   {
-    Debug.Log("Here will be chaos game over  scene , after this  scene will be game over panel");
-    GameStateController.Instance.ChangeGameState(GameState.GameOver);
+
+    GamePhaseController.Instance.ChangeGamePhase(GamePhase.Defeat);
+    OnShowDefeatedInfo?.Invoke($"The seal was destroyed , you have got {sealComponent.currentSealProgress} %");
+    GameStateController.Instance.ChangeGameState(GameState.Finished);
   }
   public void HandleFinishTimerGameOver()
   {
-    Debug.Log("Here will be timer game over scene , after this scene will be game over panel");
-    GameStateController.Instance.ChangeGameState(GameState.GameOver);
+
+    GamePhaseController.Instance.ChangeGamePhase(GamePhase.Defeat);
+    OnShowDefeatedInfo?.Invoke($"Time was run out");
+    GameStateController.Instance.ChangeGameState(GameState.Finished);
   }
   void OnDisable()
   {

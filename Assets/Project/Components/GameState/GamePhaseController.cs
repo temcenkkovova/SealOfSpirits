@@ -34,10 +34,10 @@ public class GamePhaseController : MonoBehaviour
     if (newPhase == CurrentGamePhase) return;
     CurrentGamePhase = newPhase;
     OnGamePhaseChanged?.Invoke(CurrentGamePhase);
-    if (CurrentGamePhase == GamePhase.Victory)
-    {
-      GameStateController.Instance.ChangeGameState(GameState.Pause);
-    }
+    // if (CurrentGamePhase == GamePhase.Victory || CurrentGamePhase == GamePhase.Defeat)
+    //{
+    //GameStateController.Instance.ChangeGameState(GameState.Finished);
+    //}
   }
 
   public void HandleFinishTutorial()

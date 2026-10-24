@@ -6,14 +6,16 @@ public class ChaosUI : MonoBehaviour
 {
   public TMP_Text textField;
   public Image fillImage;
-
+  public GameObject chaosPanel;
 
   public ChaosComponent chaosComponent;
 
   void Start()
   {
-    if (chaosComponent == null) return;
+    chaosPanel.SetActive(false);
+    if (chaosComponent == null || GamePhaseController.Instance == null) return;
     chaosComponent.OnCurrentChaosChanged += ShowChaos;
+    GamePhaseController.Instance.OnGamePhaseChanged += ShowChaosPanel;
   }
 
   public void ShowChaos(float amount)
@@ -25,7 +27,15 @@ public class ChaosUI : MonoBehaviour
 
   void OnDisable()
   {
-    if (chaosComponent == null) return;
+    if (chaosComponent == null || GamePhaseController.Instance == null) return;
     chaosComponent.OnCurrentChaosChanged -= ShowChaos;
+    GamePhaseController.Instance.OnGamePhaseChanged -= ShowChaosPanel;
+  }
+  public void ShowChaosPanel(GamePhase gamePhase)
+  {
+    if (gamePhase == GamePhase.Ritual)
+    {
+      chaosPanel.SetActive(true);
+    }
   }
 }

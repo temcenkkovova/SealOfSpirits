@@ -26,8 +26,8 @@ public class GameManager : MonoBehaviour
   {
     SceneManager.LoadScene("SampleScene");
   }
-  public void HandleGameOver()
+  public void HandleFinishGame()
   {
-    GameStateController.Instance.ChangeGameState(GameState.GameOver);
+    GameStateController.Instance.ChangeGameState(GameState.Finished);
   }
 }

@@ -1,6 +1,6 @@
 using System;
 using UnityEngine;
-public enum GameState { Gameplay, Pause, Dialogue, GameOver }
+public enum GameState { Gameplay, Pause, Dialogue, Finished }
 
 public class GameStateController : MonoBehaviour
 {
