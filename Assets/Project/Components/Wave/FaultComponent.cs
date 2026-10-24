@@ -5,41 +5,41 @@ public class FaultComponent : MonoBehaviour
 {
   public FaultConfig faultConfig;
   private EnemySpawn enemySpawn;
-  private int delayStartSpawnEnemies = 2;
+  private bool isInitialized;
 
   void Awake()
   {
+    TryInitialize();
+  }
+  private bool TryInitialize()
+  {
+    if (isInitialized)
+      return true;
+
     enemySpawn = GetComponent<EnemySpawn>();
-  }
 
-  void Start()
-  {
-    if (faultConfig == null) return;
-    if (enemySpawn == null) return;
+    if (enemySpawn == null || faultConfig == null)
+    {
+      return false;
+    }
+
     enemySpawn.Init(faultConfig.enemyConfigs);
-    //enemySpawn.OnEnemiesDefeated += HandleDestroyFault;
-    SpawnFaultEnemies();
+    isInitialized = true;
+
+    return true;
   }
 
-  public void SpawnFaultEnemies()
+  public void InitMaxNumberEnemy(int maxNumberEnemy)
   {
-    StartCoroutine(delaySpawn());
-  }
+    if (!isActiveAndEnabled || maxNumberEnemy <= 0)
 
-  IEnumerator delaySpawn()
-  {
-    yield return new WaitForSeconds(delayStartSpawnEnemies);
-    enemySpawn.StartSpawnCoroutine(faultConfig.spawnDelay);
+      return;
 
-  }
-  void OnDisable()
-  {
-    if (enemySpawn == null) return;
-    //enemySpawn.OnEnemiesDefeated -= HandleDestroyFault;
-  }
+    if (!TryInitialize())
+      return;
 
-  public void HandleDestroyFault()
-  {
-    Destroy(gameObject, 1f);
+    enemySpawn.StartSpawnCoroutine(
+        faultConfig.spawnDelay,
+        maxNumberEnemy);
   }
 }

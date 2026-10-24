@@ -6,6 +6,6 @@ public class FaultConfig : ScriptableObject
 {
   public List<EnemyConfig> enemyConfigs;
 
-  public int spawnDelay;
+  public float spawnDelay;
 
 }
