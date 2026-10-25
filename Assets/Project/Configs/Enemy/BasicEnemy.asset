@@ -17,4 +17,4 @@ MonoBehaviour:
   moveSpeed: 2
   shieldValue: 0
   sealAmountReward: 2.5
-  chaosAmount: 10
+  chaosAmount: 0.45

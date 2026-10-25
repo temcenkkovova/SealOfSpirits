@@ -1,4 +1,5 @@
 using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -11,19 +12,48 @@ public class SealComponent : MonoBehaviour
   public GameObject sealWarningVisual;
   public bool IsInDangerZone { get; private set; }
   public ChaosComponent chaosComponent;
+  private Coroutine resetChaosCoroutine;
 
+  private bool isClearZone = false;
   private List<EnemyBootstrap> enemyDangerZone = new List<EnemyBootstrap>();
 
 
   void Update()
   {
+
     enemyDangerZone.RemoveAll(enemy => enemy == null);
-    if (enemyDangerZone.Count == 0)
+    UpdateDangerZone();
+    sealWarningVisual.SetActive(IsInDangerZone);
+
+    if (IsInDangerZone)
     {
 
-      IsInDangerZone = false;
-      sealWarningVisual.SetActive(IsInDangerZone);
+      if (resetChaosCoroutine != null)
+      {
+        StopCoroutine(resetChaosCoroutine);
+        resetChaosCoroutine = null;
+      }
+
+      isClearZone = false;
+      return;
     }
+
+    chaosComponent.ResetChaosMultiply();
+    if (!isClearZone && resetChaosCoroutine == null)
+    {
+      resetChaosCoroutine = StartCoroutine(ClearZoneCoroutine());
+    }
+
+    if (isClearZone)
+    {
+      chaosComponent.DecreaseChaosValue(2f * Time.deltaTime);
+    }
+  }
+  public IEnumerator ClearZoneCoroutine()
+  {
+    yield return new WaitForSeconds(2f);
+    isClearZone = true;
+    resetChaosCoroutine = null;
   }
   public void AddProgressAmount(float amount)
   {
@@ -43,12 +73,14 @@ public class SealComponent : MonoBehaviour
 
 
     EnemyBootstrap enemyBootstrap = other.GetComponent<EnemyBootstrap>();
-    if (enemyBootstrap == null) return;
+    EnemyStatus enemyStatus = other.GetComponent<EnemyStatus>();
+    if (enemyBootstrap == null || enemyStatus == null) return;
 
     if (!enemyDangerZone.Contains(enemyBootstrap))
     {
       enemyDangerZone.Add(enemyBootstrap);
-      chaosComponent.IncreaseChaos(enemyBootstrap.enemyConfig.chaosAmount);
+      enemyStatus.ChangeSealRadiusStatus(true);
+      chaosComponent.IncreaseChaosMultiply(enemyBootstrap.enemyConfig.chaosAmount);
       EnemyHealth enemyHealth = enemyBootstrap.GetComponent<EnemyHealth>();
       enemyHealth.OnDead += HandleEnemyExit;
     }
@@ -65,7 +97,7 @@ public class SealComponent : MonoBehaviour
     if (enemyDangerZone.Remove(enemyBootstrap))
     {
 
-      chaosComponent.DecreaseChaos(
+      chaosComponent.DecreaseChaosMultiply(
          chaosAmount);
     }
     UpdateDangerZone();
@@ -76,12 +108,13 @@ public class SealComponent : MonoBehaviour
     if (!other.CompareTag("Enemy")) return;
 
     EnemyBootstrap enemyBootstrap = other.GetComponent<EnemyBootstrap>();
-    if (enemyBootstrap == null) return;
+    EnemyStatus enemyStatus = other.GetComponent<EnemyStatus>();
+    if (enemyBootstrap == null || enemyStatus == null) return;
 
     if (enemyDangerZone.Remove(enemyBootstrap))
     {
-
-      chaosComponent.DecreaseChaos(
+      enemyStatus.ChangeSealRadiusStatus(false);
+      chaosComponent.DecreaseChaosMultiply(
           enemyBootstrap.enemyConfig.chaosAmount);
     }
 

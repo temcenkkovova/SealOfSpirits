@@ -7,6 +7,7 @@ public class EnemySpawn : MonoBehaviour
 {
   private List<EnemyConfig> enemyConfigs;
   public SealComponent sealComponent;
+
   private List<EnemyBootstrap> spawnedEnemies = new List<EnemyBootstrap>();
   public event Action OnEnemiesDefeated;
   private bool isSpawning = false;
@@ -74,9 +75,11 @@ public class EnemySpawn : MonoBehaviour
   public void HandleDeathEnemy(EnemyHealth enemyHealth)
   {
     EnemyBootstrap enemyBootstrap = enemyHealth.GetComponent<EnemyBootstrap>();
+    EnemyStatus enemyStatus = enemyHealth.GetComponent<EnemyStatus>();
     enemyHealth.OnDead -= HandleDeathEnemy;
     spawnedEnemies.Remove(enemyBootstrap);
     CheckEnemiesDefeated();
+
   }
   private void OnDestroy()
   {

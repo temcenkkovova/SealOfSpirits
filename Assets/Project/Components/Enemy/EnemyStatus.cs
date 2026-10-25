@@ -6,6 +6,7 @@ public class EnemyStatus : MonoBehaviour, IStunable
 {
   public bool IsStunned { get; private set; } = false;
   public event Action<bool> OnStunStatusChanged;
+  public bool IsInSealRadius { get; private set; } = false;
 
   public void Stunned(float duration)
   {
@@ -25,5 +26,10 @@ public class EnemyStatus : MonoBehaviour, IStunable
   {
     yield return new WaitForSeconds(duration);
     ChangeStunnedStatus(false);
+  }
+
+  public void ChangeSealRadiusStatus(bool newStatus)
+  {
+    IsInSealRadius = newStatus;
   }
 }
