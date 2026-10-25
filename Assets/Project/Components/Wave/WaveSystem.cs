@@ -17,6 +17,7 @@ public class WaveSystem : MonoBehaviour
   private int intervalBudget;
   private int nextSpawnStage;
   private int nextFaultIndex;
+  public event Action<int> OnRequiredFaultsChanged;
 
 
   private List<FaultComponent> activeFaults = new List<FaultComponent>();
@@ -104,6 +105,7 @@ public class WaveSystem : MonoBehaviour
       requiredFaults = 6;
       enemiesPerInterval = 12;
     }
+    OnRequiredFaultsChanged?.Invoke(requiredFaults);
   }
   public void ActivateRequiredFaults()
   {

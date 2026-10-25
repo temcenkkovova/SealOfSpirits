@@ -6,23 +6,31 @@ public class WaveSystemUI : MonoBehaviour
 {
   public WaveTimer waveTimer;
   public GameObject timerPanel;
+  public WaveSystem waveSystem;
 
   public TMP_Text textField;
+
+  public TMP_Text requiredFaultsField;
 
   void Start()
   {
     if (waveTimer == null || GamePhaseController.Instance == null) return;
 
-    Debug.Log("sub");
+
     waveTimer.OnTimerChanged += ShowTime;
     GamePhaseController.Instance.OnGamePhaseChanged += ShowTimerPanel;
     bool gamePhaseState = GamePhaseController.Instance.IsTutorialCompletedOnce;
     timerPanel.SetActive(gamePhaseState);
+
+    if (waveSystem != null) waveSystem.OnRequiredFaultsChanged += ShowRequiredFaultsCount;
   }
 
 
 
-
+  public void ShowRequiredFaultsCount(int required)
+  {
+    requiredFaultsField.text = required.ToString();
+  }
   public void ShowTime(float time)
   {
     int number = (int)time;
@@ -53,6 +61,8 @@ public class WaveSystemUI : MonoBehaviour
     {
       GamePhaseController.Instance.OnGamePhaseChanged -= ShowTimerPanel;
     }
+
+    if (waveSystem != null) waveSystem.OnRequiredFaultsChanged -= ShowRequiredFaultsCount;
 
   }
 }
