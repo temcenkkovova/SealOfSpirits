@@ -32,18 +32,23 @@ public class EnemyMovement : MonoBehaviour
     if (IsKnockingBack)
     {
       KnockBackMovement();
+      isMoving = false;
     }
     else
     {
-      if (enemyStatus.IsStunned) return;
-      Vector3 direction = targetTr.position - transform.position;
-      direction.y = 0f;
-      if (direction.sqrMagnitude <= stopDistance * stopDistance)
+      if (enemyStatus.IsStunned)
       {
         isMoving = false;
         return;
       }
-      isMoving = true;
+      Vector3 direction = targetTr.position - transform.position;
+      direction.y = 0f;
+      isMoving = direction.sqrMagnitude > stopDistance * stopDistance;
+      if (direction.sqrMagnitude <= stopDistance * stopDistance)
+      {
+        return;
+      }
+
       FollowTarget(targetTr.position);
     }
 
@@ -68,9 +73,11 @@ public class EnemyMovement : MonoBehaviour
       if (nextDistanceBetweenOther.sqrMagnitude < minDistance * minDistance &&
           nextDistanceBetweenOther.sqrMagnitude < distanceBetweenOther.sqrMagnitude)
       {
+
         return false;
       }
     }
+
 
     return true;
   }
@@ -97,9 +104,13 @@ public class EnemyMovement : MonoBehaviour
     moveDir.y = 0f;
     if (moveDir.sqrMagnitude > 0.000001f)
     {
+
       Quaternion rotateTarget = Quaternion.LookRotation(moveDir);
       transform.rotation = Quaternion.Slerp(transform.rotation, rotateTarget, 7f * Time.deltaTime);
     }
+    isMoving = moveDir.sqrMagnitude > 0.000001f;
+
+
 
     transform.position = nextPosition;
   }
@@ -148,18 +159,54 @@ public class EnemyMovement : MonoBehaviour
       stepPosition = newAngelDirection;
       return stepPosition;
     }
-    newAngelDirection = TryBypass(-120, direction);
-    if (CanMoveTo(newAngelDirection))
-    {
-      stepPosition = newAngelDirection;
-      return stepPosition;
-    }
-    newAngelDirection = TryBypass(120, direction);
-    if (CanMoveTo(newAngelDirection))
-    {
-      stepPosition = newAngelDirection;
-      return stepPosition;
-    }
+    // newAngelDirection = TryBypass(-120, direction);
+    // if (CanMoveTo(newAngelDirection))
+    // {
+    //   stepPosition = newAngelDirection;
+    //   return stepPosition;
+    // }
+    // newAngelDirection = TryBypass(120, direction);
+    // if (CanMoveTo(newAngelDirection))
+    // {
+    //   stepPosition = newAngelDirection;
+    //   return stepPosition;
+    // }
+    // newAngelDirection = TryBypass(180, direction);
+    // if (CanMoveTo(newAngelDirection))
+    // {
+    //   stepPosition = newAngelDirection;
+    //   return stepPosition;
+    // }
+    // newAngelDirection = TryBypass(-180, direction);
+    // if (CanMoveTo(newAngelDirection))
+    // {
+    //   stepPosition = newAngelDirection;
+    //   return stepPosition;
+    // }
+    // newAngelDirection = TryBypass(240, direction);
+    // if (CanMoveTo(newAngelDirection))
+    // {
+    //   stepPosition = newAngelDirection;
+    //   return stepPosition;
+    // }
+    // newAngelDirection = TryBypass(-240, direction);
+    // if (CanMoveTo(newAngelDirection))
+    // {
+    //   stepPosition = newAngelDirection;
+    //   return stepPosition;
+    // }
+    // newAngelDirection = TryBypass(360, direction);
+    // if (CanMoveTo(newAngelDirection))
+    // {
+    //   stepPosition = newAngelDirection;
+    //   return stepPosition;
+    // }
+    // newAngelDirection = TryBypass(-360, direction);
+    // if (CanMoveTo(newAngelDirection))
+    // {
+    //   stepPosition = newAngelDirection;
+    //   return stepPosition;
+    // }
 
     return stepPosition;
   }
@@ -183,7 +230,7 @@ public class EnemyMovement : MonoBehaviour
   public void KnockBackMovement()
   {
     float stepTime = Mathf.Min(Time.deltaTime, knockbackDuration);
-
+    isMoving = false;
     transform.position +=
         knockbackDirection * knockbackSpeed * stepTime;
 
@@ -192,6 +239,7 @@ public class EnemyMovement : MonoBehaviour
     if (knockbackDuration <= 0f)
     {
       IsKnockingBack = false;
+
     }
 
   }
