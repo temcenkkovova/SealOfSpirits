@@ -7,7 +7,8 @@ public class WaveSkill : IdolSkill
 
   private SkillData skillData;
   private Vector3 targetSkillPos;
-
+  private float knockSpeed = 4f;
+  private float skillSpeed = 10f;
   public override void Initialize(SkillData skillData, Vector3 skillPos)
   {
     this.skillData = skillData;
@@ -26,7 +27,7 @@ public class WaveSkill : IdolSkill
   void Update()
   {
 
-    transform.position = Vector3.MoveTowards(transform.position, targetSkillPos, 8f * Time.deltaTime);
+    transform.position = Vector3.MoveTowards(transform.position, targetSkillPos, skillSpeed * Time.deltaTime);
 
     if ((targetSkillPos - transform.position).sqrMagnitude <= 0.01f)
     {
@@ -39,7 +40,7 @@ public class WaveSkill : IdolSkill
     if (other.tag == "Enemy")
     {
 
-      other.GetComponent<EnemyMovement>().KnockBackFromWave(2f, 3f, transform.forward);
+      other.GetComponent<EnemyMovement>().KnockBackFromWave(2f, knockSpeed, transform.forward);
       Debug.Log("Enemy water");
     }
   }

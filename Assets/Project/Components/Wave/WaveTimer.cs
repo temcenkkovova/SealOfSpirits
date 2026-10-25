@@ -3,7 +3,7 @@ using UnityEngine;
 
 public class WaveTimer : MonoBehaviour
 {
-  private float waveDuration = 300;
+  private float waveDuration = 210;
   private float waveTimer;
   public event Action<float> OnTimerChanged;
   public event Action OnTimerFinished;

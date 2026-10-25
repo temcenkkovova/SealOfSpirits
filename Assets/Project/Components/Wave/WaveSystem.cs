@@ -83,12 +83,12 @@ public class WaveSystem : MonoBehaviour
     else if (currentWaveTimer < 180f)
     {
       requiredFaults = 3;
-      enemiesPerInterval = 7;
+      enemiesPerInterval = 6;
     }
     else if (currentWaveTimer < 240f)
     {
       requiredFaults = 4;
-      enemiesPerInterval = 8;
+      enemiesPerInterval = 7;
     }
     else if (currentWaveTimer < 360f)
     {
@@ -98,7 +98,7 @@ public class WaveSystem : MonoBehaviour
     else if (currentWaveTimer < 480f)
     {
       requiredFaults = 5;
-      enemiesPerInterval = 10;
+      enemiesPerInterval = 11;
     }
     else
     {

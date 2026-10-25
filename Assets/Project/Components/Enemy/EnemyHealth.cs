@@ -18,8 +18,9 @@ public class EnemyHealth : MonoBehaviour, IDamageable
     maxHealth -= damage;
     if (maxHealth <= 0f && !isDead)
     {
-      OnDead?.Invoke(this);
       isDead = true;
+      OnDead?.Invoke(this);
+
       Destroy(gameObject, 0.2f);
     }
   }

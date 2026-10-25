@@ -9,7 +9,7 @@ public class ChaosComponent : MonoBehaviour
   public event Action OnFailed;
   public float currentMultiplyChaos { get; private set; } = 0f;
   private float maxMultiplyChaos = 6; // 6 sec
-
+  private float totalMultiplyChaos;
 
   void Update()
   {
@@ -18,30 +18,23 @@ public class ChaosComponent : MonoBehaviour
   public void IncreaseChaosMultiply(float multiply)
   {
     if (IsTutorialStage()) return;
+    totalMultiplyChaos += multiply;
 
-    if (currentMultiplyChaos >= 6) return;
-    currentMultiplyChaos += multiply;
-
-    if (currentMultiplyChaos >= maxMultiplyChaos)
-    {
-      currentMultiplyChaos = maxMultiplyChaos;
-    }
+    currentMultiplyChaos = totalMultiplyChaos <= 6 ? totalMultiplyChaos : 6;
 
   }
   public void DecreaseChaosMultiply(float multiply)
   {
     if (IsTutorialStage()) return;
-    currentMultiplyChaos -= multiply;
-
-    if (currentMultiplyChaos < 0)
-    {
-      currentMultiplyChaos = 0;
-    }
+    totalMultiplyChaos -= multiply;
+    if (totalMultiplyChaos < 0) totalMultiplyChaos = 0;
+    currentMultiplyChaos = totalMultiplyChaos <= 6 ? totalMultiplyChaos : 6;
   }
 
   public void ResetChaosMultiply()
   {
     currentMultiplyChaos = 0;
+    totalMultiplyChaos = 0;
   }
 
 
