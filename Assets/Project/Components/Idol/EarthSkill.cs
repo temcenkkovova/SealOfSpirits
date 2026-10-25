@@ -6,7 +6,7 @@ public class EarthSkill : IdolSkill
   private SkillData skillData;
   public IdolSkillView skillView;
   public LayerMask damageMask;
-  private float stunDuration = 2f;
+  private float stunDuration = 3f;
   public override void Initialize(SkillData skillData, Vector3 skillPos)
   {
     this.skillData = skillData;
