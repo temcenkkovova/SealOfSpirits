@@ -211,6 +211,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::EnemyHealth
   maxHealth: 0
+  orbEffectPrefab: {fileID: 5885576261887896982, guid: 94517b38df45a4f4585ad7abb7d163db, type: 3}
+  sealTransform: {fileID: 0}
 --- !u!136 &8095933893551756265
 CapsuleCollider:
   m_ObjectHideFlags: 0

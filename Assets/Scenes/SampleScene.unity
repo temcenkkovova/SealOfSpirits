@@ -7165,10 +7165,10 @@ RectTransform:
   m_Children: []
   m_Father: {fileID: 1561718628}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.09531945, y: 0.291}
-  m_AnchorMax: {x: 0.9013403, y: 0.82400006}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 0}
+  m_AnchorMin: {x: 0.09531945, y: 0.26576513}
+  m_AnchorMax: {x: 0.90565974, y: 0.80064744}
+  m_AnchoredPosition: {x: -0.5, y: 0}
+  m_SizeDelta: {x: -1, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &963810485
 MonoBehaviour:
@@ -7183,7 +7183,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.Image
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 0.3254902}
+  m_Color: {r: 1, g: 1, b: 1, a: 0.7529412}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -9235,6 +9235,81 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1375024064}
   m_CullTransparentMesh: 1
+--- !u!1 &1385634625
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1385634626}
+  - component: {fileID: 1385634628}
+  - component: {fileID: 1385634627}
+  m_Layer: 5
+  m_Name: ArrivalGlow
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 0
+--- !u!224 &1385634626
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1385634625}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1561718628}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.36131942, y: 0.102000006}
+  m_AnchorMax: {x: 0.63434035, y: 0.20558856}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 0, y: 0}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &1385634627
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1385634625}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.Image
+  m_Material: {fileID: 0}
+  m_Color: {r: 0, g: 0.82800007, b: 1, a: 0.44705883}
+  m_RaycastTarget: 0
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_Sprite: {fileID: 21300000, guid: ba5e5f01a074fcd43901d48600b87ba5, type: 3}
+  m_Type: 0
+  m_PreserveAspect: 0
+  m_FillCenter: 1
+  m_FillMethod: 4
+  m_FillAmount: 1
+  m_FillClockwise: 1
+  m_FillOrigin: 0
+  m_UseSpriteMesh: 0
+  m_PixelsPerUnitMultiplier: 1
+--- !u!222 &1385634628
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1385634625}
+  m_CullTransparentMesh: 1
 --- !u!1 &1389124327
 GameObject:
   m_ObjectHideFlags: 0
@@ -9390,6 +9465,7 @@ GameObject:
   - component: {fileID: 1428621912}
   - component: {fileID: 1428621913}
   - component: {fileID: 1428621914}
+  - component: {fileID: 1428621915}
   m_Layer: 5
   m_Name: Canvas
   m_TagString: Untagged
@@ -9573,6 +9649,23 @@ MonoBehaviour:
   fillImage: {fileID: 826467671}
   chaosPanel: {fileID: 707249865}
   chaosComponent: {fileID: 2014742974}
+--- !u!114 &1428621915
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1428621904}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 335043528139dcf4c915dd3ca74d74be, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::SoulToSealEffect
+  canvas: {fileID: 1428621907}
+  canvasSealTr: {fileID: 963810484}
+  orbEffectPrefab: {fileID: -6501775864264402732, guid: 94517b38df45a4f4585ad7abb7d163db, type: 3}
+  mainCamera: {fileID: 330585545}
+  arriveOrbEffect: {fileID: 1561718632}
 --- !u!1 &1445966395
 GameObject:
   m_ObjectHideFlags: 0
@@ -10653,6 +10746,7 @@ GameObject:
   - component: {fileID: 1561718630}
   - component: {fileID: 1561718629}
   - component: {fileID: 1561718631}
+  - component: {fileID: 1561718632}
   m_Layer: 5
   m_Name: SealProgress
   m_TagString: Untagged
@@ -10674,6 +10768,7 @@ RectTransform:
   m_Children:
   - {fileID: 101512321}
   - {fileID: 963810484}
+  - {fileID: 1385634626}
   m_Father: {fileID: 1474201944}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
@@ -10734,6 +10829,19 @@ MonoBehaviour:
   currentProgressField: {fileID: 101512322}
   sealComponent: {fileID: 2072644354}
   fillImage: {fileID: 963810485}
+--- !u!114 &1561718632
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1561718627}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d9a6f319325558847bd5b4a748a26629, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::ArriveOrbEffect
+  arrivalGlow: {fileID: 1385634627}
 --- !u!1 &1567215822
 GameObject:
   m_ObjectHideFlags: 0
