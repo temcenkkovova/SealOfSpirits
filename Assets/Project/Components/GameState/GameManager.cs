@@ -24,7 +24,7 @@ public class GameManager : MonoBehaviour
   }
   public void RestartGame()
   {
-    SceneManager.LoadScene("SampleScene");
+    SceneManager.LoadScene("Main");
     GamePhaseController.Instance.ChangeGamePhase(GamePhase.Ritual);
     GameStateController.Instance.ChangeGameState(GameState.Gameplay);
   }
