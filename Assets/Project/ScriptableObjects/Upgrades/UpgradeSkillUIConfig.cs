@@ -8,6 +8,8 @@ public class UpgradeSkillUIConfig : ScriptableObject
   public string description;
   public string tip;
   public Color elementColor;
+  public string elementIconTitle;
+  public Sprite background;
 
 
 

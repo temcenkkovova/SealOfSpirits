@@ -515,6 +515,7 @@ GameObject:
   - component: {fileID: 6542850621173885439}
   - component: {fileID: 1062411262894557204}
   - component: {fileID: 1601990350658418197}
+  - component: {fileID: 3707072867252840629}
   m_Layer: 5
   m_Name: UpgradeCard
   m_TagString: Untagged
@@ -631,6 +632,26 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls: []
+--- !u!114 &3707072867252840629
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4436912259801599362}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3cac9ecd507a05c43ac2b50d7e53af94, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::UpgradeCardUI
+  elementIconTitle: {fileID: 3598973351920548252}
+  elemIcon: {fileID: 6160772860587360646}
+  upgradeTitle: {fileID: 4268374287917107610}
+  upgradeBonus: {fileID: 8211715621079084292}
+  description: {fileID: 5640539582739509570}
+  tip: {fileID: 3585421444144980735}
+  number: {fileID: 7222931288539695681}
+  background: {fileID: 8062777993701641939}
 --- !u!1 &5978985869749905092
 GameObject:
   m_ObjectHideFlags: 0
