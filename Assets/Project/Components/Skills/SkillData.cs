@@ -20,6 +20,11 @@ public class SkillData
   public event Action<float> OnChangeTimer;
   public event Action OnStartedTimer;
   public event Action OnFinishedTimer;
+  public bool IsReduceChaosActive { get; private set; } = false;
+  public float ReduceChaosValue { get; private set; }
+  public bool IsSlowMovement { get; private set; } = false;
+  public float SlowMovementValue { get; private set; }
+  public float SlowDuration { get; private set; }
   public SkillData(IdolSkillConfig skillConfig)
   {
     Damage = skillConfig.damage;
@@ -32,6 +37,22 @@ public class SkillData
 
   }
 
+  public void IncreaseRadius(float value)
+  {
+    Radius *= 1f + value / 100f;
+  }
+  public void SetNewReduceChaosValue(float newValue)
+  {
+    IsReduceChaosActive = true;
+    ReduceChaosValue = newValue;
+  }
+
+  public void SetNewSlowValue(float newValue, float slowDuration)
+  {
+    IsSlowMovement = true;
+    SlowMovementValue = newValue;
+    SlowDuration = slowDuration;
+  }
   public void ActivateSkill()
   {
 

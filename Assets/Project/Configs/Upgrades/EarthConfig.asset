@@ -13,4 +13,5 @@ MonoBehaviour:
   m_Name: EarthConfig
   m_EditorClassIdentifier: Assembly-CSharp::UpgradeEarth
   upgradeSkillUIConfig: {fileID: 11400000, guid: 9c9007174ceca5043be6946b60de5ba4, type: 2}
+  upgradeStat: 1
   reduceChaosPercentage: 50

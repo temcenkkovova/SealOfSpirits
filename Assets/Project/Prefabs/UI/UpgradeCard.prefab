@@ -517,6 +517,8 @@ GameObject:
   - component: {fileID: 1601990350658418197}
   - component: {fileID: 3707072867252840629}
   - component: {fileID: 8066901602232498441}
+  - component: {fileID: 8717399603200435686}
+  - component: {fileID: 7353305001728820069}
   m_Layer: 5
   m_Name: UpgradeCard
   m_TagString: Untagged
@@ -666,6 +668,33 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e651aae159ff53b458d05bb254a7e210, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::CardUpgradeHover
+--- !u!114 &8717399603200435686
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4436912259801599362}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2aaf90d213b465b40a089f51af298c7b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::ActiveCard
+  button: {fileID: 0}
+--- !u!114 &7353305001728820069
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4436912259801599362}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 88b546ae81b252943ae73f405bc88e2e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::ActiveCardUI
+  activeCardImage: {fileID: 9067971971209915229}
+  activeCard: {fileID: 8717399603200435686}
 --- !u!1 &5978985869749905092
 GameObject:
   m_ObjectHideFlags: 0

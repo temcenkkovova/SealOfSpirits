@@ -9,6 +9,7 @@ public class WaveSkill : IdolSkill
   private Vector3 targetSkillPos;
   private float knockSpeed = 4f;
   private float skillSpeed = 10f;
+  public bool IsSlowUpgrade { get; private set; }
   public override void Initialize(SkillData skillData, Vector3 skillPos)
   {
     this.skillData = skillData;
@@ -41,7 +42,12 @@ public class WaveSkill : IdolSkill
     {
 
       other.GetComponent<EnemyMovement>().KnockBackFromWave(2f, knockSpeed, transform.forward);
-      Debug.Log("Enemy water");
+
     }
+  }
+
+  public void HandleSlowUpgrade()
+  {
+    IsSlowUpgrade = true;
   }
 }

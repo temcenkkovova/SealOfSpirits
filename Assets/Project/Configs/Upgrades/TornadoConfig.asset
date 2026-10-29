@@ -13,5 +13,6 @@ MonoBehaviour:
   m_Name: TornadoConfig
   m_EditorClassIdentifier: Assembly-CSharp::UpgradeTornado
   upgradeSkillUIConfig: {fileID: 11400000, guid: 697aa08b383295e4f809e90d5fa5ce1c, type: 2}
+  upgradeStat: 2
   slowDuration: 2
   slowPercentage: 30

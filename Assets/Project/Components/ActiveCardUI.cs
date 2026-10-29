@@ -11,18 +11,18 @@ public class ActiveCardUI : MonoBehaviour
   {
     if (activeCard != null)
     {
-      activeCard.OnClickedFirst += ChangeActiveCardImageStatus;
+      activeCard.OnActiveCard += ChangeActiveStatus;
     }
   }
-  public void ChangeActiveCardImageStatus()
+  public void ChangeActiveStatus(bool status)
   {
-    activeCardImage.gameObject.SetActive(true);
+    activeCardImage.gameObject.SetActive(status);
   }
   void OnDisable()
   {
     if (activeCard != null)
     {
-      activeCard.OnClickedFirst -= ChangeActiveCardImageStatus;
+      activeCard.OnActiveCard -= ChangeActiveStatus;
     }
   }
 }

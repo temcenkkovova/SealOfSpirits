@@ -13,8 +13,10 @@ public class UpgradeCardUI : MonoBehaviour
   public TMP_Text number;
   public Image background;
 
+  public UpgradeSkillConfig config { get; private set; }
 
-  public void Init(UpgradeSkillUIConfig configUI)
+
+  public void Init(UpgradeSkillUIConfig configUI, UpgradeSkillConfig config)
   {
     elementIconTitle.text = configUI.elementIconTitle;
     elemIcon.sprite = configUI.elementIcon;
@@ -28,5 +30,6 @@ public class UpgradeCardUI : MonoBehaviour
     background.sprite = configUI.background;
     number.text = "1";
     tip.color = configUI.elementColor;
+    this.config = config;
   }
 }
