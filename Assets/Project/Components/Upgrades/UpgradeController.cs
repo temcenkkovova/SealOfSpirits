@@ -23,7 +23,7 @@ public class UpgradeController : MonoBehaviour
 
   public void TryShowUpgrades(float time)
   {
-    if (time >= 30 && !IsShowingUpgrade)
+    if (time >= 10 && !IsShowingUpgrade)
     {
       IsShowingUpgrade = true;
       OnShowUpgrade?.Invoke();
