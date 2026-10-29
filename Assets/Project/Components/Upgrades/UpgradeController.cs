@@ -16,6 +16,11 @@ public class UpgradeController : MonoBehaviour
       waveTimer.OnTimerChanged += TryShowUpgrades;
   }
 
+  void Update()
+  {
+    Time.timeScale = IsShowingUpgrade ? 0 : 1;
+  }
+
   public void TryShowUpgrades(float time)
   {
     if (time >= 30 && !IsShowingUpgrade)
