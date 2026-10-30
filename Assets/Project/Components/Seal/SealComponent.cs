@@ -74,13 +74,19 @@ public class SealComponent : MonoBehaviour
 
     EnemyBootstrap enemyBootstrap = other.GetComponent<EnemyBootstrap>();
     EnemyStatus enemyStatus = other.GetComponent<EnemyStatus>();
+    float chaosValue = enemyBootstrap.enemyConfig.chaosAmount;
     if (enemyBootstrap == null || enemyStatus == null) return;
 
     if (!enemyDangerZone.Contains(enemyBootstrap))
     {
       enemyDangerZone.Add(enemyBootstrap);
       enemyStatus.ChangeSealRadiusStatus(true);
-      chaosComponent.IncreaseChaosMultiply(enemyBootstrap.enemyConfig.chaosAmount);
+      if (enemyStatus.IsChaosDecreased)
+      {
+        chaosValue *= 0.5f;
+      }
+      Debug.Log(chaosValue);
+      chaosComponent.IncreaseChaosMultiply(chaosValue);
       EnemyHealth enemyHealth = enemyBootstrap.GetComponent<EnemyHealth>();
       enemyHealth.OnDead += HandleEnemyExit;
     }

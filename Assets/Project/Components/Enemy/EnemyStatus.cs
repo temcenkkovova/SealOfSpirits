@@ -5,15 +5,16 @@ using UnityEngine;
 public class EnemyStatus : MonoBehaviour, IStunable
 {
   public bool IsStunned { get; private set; } = false;
+  public bool IsChaosDecreased { get; private set; } = false;
   public event Action<bool> OnStunStatusChanged;
   public bool IsInSealRadius { get; private set; } = false;
   public GameObject stunVisualParent;
 
-  public void Stunned(float duration)
+  public void Stunned(float duration, bool chaosStatus)
   {
     if (IsStunned) return;
     ChangeStunnedStatus(true);
-
+    IsChaosDecreased = chaosStatus;
     StartCoroutine(stunDurationTimer(duration));
 
     OnStunStatusChanged?.Invoke(IsStunned);
