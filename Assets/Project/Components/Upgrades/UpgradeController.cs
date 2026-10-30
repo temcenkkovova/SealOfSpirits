@@ -35,6 +35,7 @@ public class UpgradeController : MonoBehaviour
       nextUpgradeTime++;
       IsShowingUpgrade = true;
       Time.timeScale = 0f;
+      AudioListener.pause = true;
       OnShowUpgrade?.Invoke();
     }
 
@@ -43,6 +44,7 @@ public class UpgradeController : MonoBehaviour
   {
     IsShowingUpgrade = false;
     Time.timeScale = 1f;
+    AudioListener.pause = false;
   }
   void OnDisable()
   {

@@ -39,6 +39,7 @@ public class GameStateController : MonoBehaviour
     if (IsPause == pause) return;
     IsPause = pause;
     Time.timeScale = IsPause ? 0f : 1f;
+    AudioListener.pause = IsPause;
     OnPauseChanged?.Invoke(IsPause);
   }
 }
