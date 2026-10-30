@@ -11262,7 +11262,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: daa5672408278ba40aaa82f5099bcba8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::SkillAimingComponent
-  aimingCircle: {fileID: -3713300714126068239, guid: 3424ac705cc1d9f4ea93376499c8612d, type: 3}
+  aimingCircle: {fileID: 3091538832959815164, guid: 3424ac705cc1d9f4ea93376499c8612d, type: 3}
   aimingWave: {fileID: 1744310056725702918, guid: 798b4cd45d829ef44abb233b7ce33ea2, type: 3}
 --- !u!114 &1513940549
 MonoBehaviour:
@@ -14956,6 +14956,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: f5e64ce69b7a1244991ba96c75b9cf78, type: 2}
   - {fileID: 11400000, guid: c57cc82c54917ac4e969a0ace9d86ae3, type: 2}
   waveTimer: {fileID: 2014742978}
+  cardsController: {fileID: 2014742983}
 --- !u!114 &2014742983
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -14983,6 +14984,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::UpgradeManager
   currentUpgrades: []
+  playerSkills: {fileID: 1513940547}
 --- !u!1 &2037459577
 GameObject:
   m_ObjectHideFlags: 0

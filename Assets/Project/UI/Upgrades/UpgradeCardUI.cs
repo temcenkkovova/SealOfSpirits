@@ -16,7 +16,7 @@ public class UpgradeCardUI : MonoBehaviour
   public UpgradeSkillConfig config { get; private set; }
 
 
-  public void Init(UpgradeSkillUIConfig configUI, UpgradeSkillConfig config)
+  public void Init(UpgradeSkillUIConfig configUI, UpgradeSkillConfig config, int index)
   {
     elementIconTitle.text = configUI.elementIconTitle;
     elemIcon.sprite = configUI.elementIcon;
@@ -28,7 +28,7 @@ public class UpgradeCardUI : MonoBehaviour
     description.text = configUI.description;
     tip.text = configUI.tip;
     background.sprite = configUI.background;
-    number.text = "1";
+    number.text = index.ToString();
     tip.color = configUI.elementColor;
     this.config = config;
   }

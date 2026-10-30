@@ -28,7 +28,7 @@ public class MeteorSkill : IdolSkill
   void Start()
   {
 
-    warningSkill.Init(skillData.Duration, skillData.Radius);
+    warningSkill.Init(skillData);
     //meteorCollision.Init(skillData.Duration);
 
     if (warningSkill != null)
@@ -68,8 +68,9 @@ public class MeteorSkill : IdolSkill
   }
   public void Explosion()
   {
-    Vector3 vector = new Vector3(transform.position.x, 0f, transform.position.z);
-    Collider[] hits = Physics.OverlapSphere(vector, 2 * skillData.Radius, damageMask);
+    Vector3 vector = new Vector3(transform.position.x, 1f, transform.position.z);
+    Collider[] hits = Physics.OverlapSphere(vector, 4f * skillData.Radius, damageMask);
+
 
     foreach (Collider hit in hits)
     {

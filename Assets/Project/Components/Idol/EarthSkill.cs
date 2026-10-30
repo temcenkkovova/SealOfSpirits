@@ -14,7 +14,7 @@ public class EarthSkill : IdolSkill
   }
   void Start()
   {
-    skillView.Init(skillData.Duration, skillData.Radius);
+    skillView.Init(skillData);
     if (skillView != null)
       skillView.PlayWarning();
     Stun();

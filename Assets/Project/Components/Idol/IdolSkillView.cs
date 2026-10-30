@@ -12,17 +12,18 @@ public class IdolSkillView : MonoBehaviour
   private float duration;
   private float radius;
   public event Action OnWarningFinish;
+  private SkillData skillData;
   void Awake()
   {
 
   }
 
-  public void Init(float duration, float radius)
+  public void Init(SkillData skillData)
   {
-    this.duration = duration;
-    this.radius = radius;
-    fillFinalScale = fill.localScale * radius;
-    ring.localScale = ring.localScale * radius;
+    this.skillData = skillData;
+
+    fillFinalScale = fill.localScale * (skillData.Radius - 0.2f);
+    ring.localScale = ring.localScale * skillData.Radius;
   }
   void Start()
   {
@@ -35,13 +36,13 @@ public class IdolSkillView : MonoBehaviour
     ring.gameObject.SetActive(true);
     fill.localScale = Vector3.zero;
     warningSequence = DOTween.Sequence();
-    warningSequence.Append(fill.DOScale(fillFinalScale, duration).SetEase(Ease.Linear));
+    warningSequence.Append(fill.DOScale(fillFinalScale, skillData.Duration).SetEase(Ease.Linear));
 
     warningSequence.OnComplete(() =>
     {
       OnWarningFinish?.Invoke();
-      fill.gameObject.SetActive(false);
-      ring.gameObject.SetActive(false);
+      //fill.gameObject.SetActive(false);
+      //ring.gameObject.SetActive(false);
     });
 
   }

@@ -25,7 +25,7 @@ public class UpgradeControllerUI : MonoBehaviour
 
   public void ShowUpgradesPanel()
   {
-
+    int upgradeIndex = 0;
     foreach (GameObject go in gridParent)
     {
       Destroy(go);
@@ -60,9 +60,11 @@ public class UpgradeControllerUI : MonoBehaviour
 
     foreach (UpgradeSkillConfig upgradeConfig in randomConfigs)
     {
+      upgradeIndex++;
       UpgradeSkillUIConfig upgradeConfigUI = upgradeConfig.upgradeSkillUIConfig;
       UpgradeCardUI cardUI = Instantiate(upgradeCardPrefab, gridParent);
-      cardUI.Init(upgradeConfigUI, upgradeConfig);
+      cardUI.Init(upgradeConfigUI, upgradeConfig, upgradeIndex);
+
       if (cardsController != null)
         cardsController.AddNewCards(cardUI);
     }
