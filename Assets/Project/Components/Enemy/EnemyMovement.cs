@@ -1,5 +1,7 @@
-using UnityEngine;
+using System.Collections;
 using System.Collections.Generic;
+using UnityEngine;
+
 
 public class EnemyMovement : MonoBehaviour
 {
@@ -15,6 +17,12 @@ public class EnemyMovement : MonoBehaviour
   private float stopDistance = 3.5f;
   private Vector3 newAngelDirection = new Vector3();
   public bool isMoving;
+  private float initialMoveSpeed;
+
+  private float slowDuration;
+  private float slowPercentage;
+  public bool IsSlowing { get; private set; }
+  private Coroutine slowCoroutine;
   void Awake()
   {
     enemyStatus = GetComponent<EnemyStatus>();
@@ -23,6 +31,7 @@ public class EnemyMovement : MonoBehaviour
   {
     this.moveSpeed = moveSpeed;
     this.targetTr = targetTr;
+    initialMoveSpeed = moveSpeed;
   }
 
 
@@ -159,54 +168,6 @@ public class EnemyMovement : MonoBehaviour
       stepPosition = newAngelDirection;
       return stepPosition;
     }
-    // newAngelDirection = TryBypass(-120, direction);
-    // if (CanMoveTo(newAngelDirection))
-    // {
-    //   stepPosition = newAngelDirection;
-    //   return stepPosition;
-    // }
-    // newAngelDirection = TryBypass(120, direction);
-    // if (CanMoveTo(newAngelDirection))
-    // {
-    //   stepPosition = newAngelDirection;
-    //   return stepPosition;
-    // }
-    // newAngelDirection = TryBypass(180, direction);
-    // if (CanMoveTo(newAngelDirection))
-    // {
-    //   stepPosition = newAngelDirection;
-    //   return stepPosition;
-    // }
-    // newAngelDirection = TryBypass(-180, direction);
-    // if (CanMoveTo(newAngelDirection))
-    // {
-    //   stepPosition = newAngelDirection;
-    //   return stepPosition;
-    // }
-    // newAngelDirection = TryBypass(240, direction);
-    // if (CanMoveTo(newAngelDirection))
-    // {
-    //   stepPosition = newAngelDirection;
-    //   return stepPosition;
-    // }
-    // newAngelDirection = TryBypass(-240, direction);
-    // if (CanMoveTo(newAngelDirection))
-    // {
-    //   stepPosition = newAngelDirection;
-    //   return stepPosition;
-    // }
-    // newAngelDirection = TryBypass(360, direction);
-    // if (CanMoveTo(newAngelDirection))
-    // {
-    //   stepPosition = newAngelDirection;
-    //   return stepPosition;
-    // }
-    // newAngelDirection = TryBypass(-360, direction);
-    // if (CanMoveTo(newAngelDirection))
-    // {
-    //   stepPosition = newAngelDirection;
-    //   return stepPosition;
-    // }
 
     return stepPosition;
   }
@@ -239,12 +200,29 @@ public class EnemyMovement : MonoBehaviour
     if (knockbackDuration <= 0f)
     {
       IsKnockingBack = false;
-
+      if (IsSlowing && slowCoroutine == null)
+      {
+        moveSpeed *= slowPercentage;
+        slowCoroutine = StartCoroutine(slowSpeedCoroutine());
+      }
     }
 
   }
 
+  IEnumerator slowSpeedCoroutine()
+  {
+    yield return new WaitForSeconds(slowDuration);
+    moveSpeed = initialMoveSpeed;
+    IsSlowing = false;
+    slowCoroutine = null;
+  }
 
+  public void InitSlowMovement(float duration, float slowPercentage)
+  {
+    slowDuration = duration;
+    this.slowPercentage = slowPercentage;
+    IsSlowing = true;
+  }
   private void OnEnable()
   {
     activeEnemies.Add(this);
@@ -253,5 +231,7 @@ public class EnemyMovement : MonoBehaviour
   private void OnDisable()
   {
     activeEnemies.Remove(this);
+    if (slowCoroutine != null)
+      StopCoroutine(slowCoroutine);
   }
 }

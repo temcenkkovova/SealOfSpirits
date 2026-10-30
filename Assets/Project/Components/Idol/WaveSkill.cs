@@ -40,9 +40,9 @@ public class WaveSkill : IdolSkill
   {
     if (other.tag == "Enemy")
     {
-
-      other.GetComponent<EnemyMovement>().KnockBackFromWave(2f, knockSpeed, transform.forward);
-
+      EnemyMovement enemyMovement = other.GetComponent<EnemyMovement>();
+      enemyMovement.KnockBackFromWave(2f, knockSpeed, transform.forward);
+      if (skillData.IsSlowMovement) enemyMovement.InitSlowMovement(skillData.SlowDuration, skillData.SlowMovementValue);
     }
   }
 
