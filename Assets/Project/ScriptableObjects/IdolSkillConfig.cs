@@ -8,6 +8,6 @@ public class IdolSkillConfig : ScriptableObject
   public float radius;
   public float duration;
   public Sprite icon;
-  public string nameSkill;
+  public UpgradeElements nameSkill;
 
 }

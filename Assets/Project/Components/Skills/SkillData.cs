@@ -14,7 +14,7 @@ public class SkillData
   private bool startedTimer = false;
   public bool CanUseSkill { get; private set; }
   public Sprite icon;
-  public string name;
+  public UpgradeElements name;
   public event Action OnActivatedSkill;
 
   public event Action<float> OnChangeTimer;
@@ -47,11 +47,20 @@ public class SkillData
     ReduceChaosValue = newValue;
   }
 
+  public void SetNewCooldownValue(float newValue)
+  {
+    Cooldown *= 1f - newValue / 100f;
+  }
   public void SetNewSlowValue(float newValue, float slowDuration)
   {
     IsSlowMovement = true;
     SlowMovementValue = newValue;
     SlowDuration = slowDuration;
+  }
+
+  public void IncreaseDuration(float value)
+  {
+    Duration += value;
   }
   public void ActivateSkill()
   {

@@ -13,10 +13,10 @@ MonoBehaviour:
   m_Name: TornadoUIUpgrade
   m_EditorClassIdentifier: Assembly-CSharp::UpgradeSkillUIConfig
   elementIcon: {fileID: 21300000, guid: 83470550070c6144e9e2acdea14ad176, type: 3}
-  titleUpgrade: FAIR WIND
-  bonusUpgrade: '- 30 % SPEED'
-  description: After tornado the  enemies slowed for 2 seconds
-  tip: Hold enemies far away from the seal
+  titleUpgrade: Crippling Wind
+  bonusUpgrade: "\u221230% ENEMY SPEED"
+  description: Slows enemies by 30% for 2 seconds after tornado knockback
+  tip: Keep enemies away from the seal
   elementColor: {r: 0.013483422, g: 0.6326766, b: 0.9528302, a: 1}
   elementIconTitle: Air
   background: {fileID: 21300000, guid: fe4cadc3eef7e0647bb5314059cf913a, type: 3}

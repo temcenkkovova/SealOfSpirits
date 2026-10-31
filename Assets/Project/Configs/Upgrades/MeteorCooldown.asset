@@ -1,0 +1,18 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9457fbe2e8ac23d448629d7f0913e9c2, type: 3}
+  m_Name: MeteorCooldown
+  m_EditorClassIdentifier: Assembly-CSharp::UpgradeMeteorCooldown
+  upgradeSkillUIConfig: {fileID: 11400000, guid: 901930df48926864a8a52568518bd087, type: 2}
+  upgradeStat: 3
+  nameElement: 0
+  cooldownPercentage: 20

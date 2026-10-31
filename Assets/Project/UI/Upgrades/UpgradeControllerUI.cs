@@ -23,42 +23,18 @@ public class UpgradeControllerUI : MonoBehaviour
     }
   }
 
-  public void ShowUpgradesPanel()
+  public void ShowUpgradesPanel(List<UpgradeSkillConfig> upgradesList)
   {
+    if (upgradesList == null) return;
     int upgradeIndex = 0;
-    foreach (GameObject go in gridParent)
+    foreach (Transform childTr in gridParent.GetComponentInChildren<Transform>())
     {
-      Destroy(go);
+      Destroy(childTr.gameObject);
     }
     cardsController.RemoveCardsList();
     upgradePanel.SetActive(true);
-    List<UpgradeSkillConfig> randomConfigs = new List<UpgradeSkillConfig>();
-    for (int i = 0; i <= 3; i++)
-    {
-      int randomNumber = Random.Range(0, upgradeController.upgradeSkillConfigs.Count);
-      UpgradeSkillConfig config = upgradeController.upgradeSkillConfigs[randomNumber];
-      if (!randomConfigs.Contains(config))
-      {
-        randomConfigs.Add(config);
-      }
-      else
-      {
-        config = upgradeController.upgradeSkillConfigs[Random.Range(0, upgradeController.upgradeSkillConfigs.Count)];
-        if (!randomConfigs.Contains(config))
-        {
-          randomConfigs.Add(config);
-        }
-        else
-        {
-          config = upgradeController.upgradeSkillConfigs[Random.Range(0, upgradeController.upgradeSkillConfigs.Count)];
-          if (!randomConfigs.Contains(config)) randomConfigs.Add(config);
-        }
 
-      }
-    }
-
-
-    foreach (UpgradeSkillConfig upgradeConfig in randomConfigs)
+    foreach (UpgradeSkillConfig upgradeConfig in upgradesList)
     {
       upgradeIndex++;
       UpgradeSkillUIConfig upgradeConfigUI = upgradeConfig.upgradeSkillUIConfig;

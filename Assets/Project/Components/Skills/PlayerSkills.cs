@@ -52,7 +52,7 @@ public class PlayerSkills : MonoBehaviour
   {
     if (currentUseSkill.CanUseSkill)
     {
-      if (currentUseSkill.name == "Water")
+      if (currentUseSkill.name == UpgradeElements.Tornado)
       {
         Vector3 skillPosition = new Vector3(castSkillPosition.x, 0f, castSkillPosition.z);
         IdolSkill idolSkill = Instantiate(currentUseSkill.SkillPrefab, transform.position, currentUseSkill.SkillPrefab.transform.rotation);
@@ -80,15 +80,15 @@ public class PlayerSkills : MonoBehaviour
     if (skillsData[skillNumber].IsActivated)
     {
       currentUseSkill = skillsData[skillNumber];
-      if (currentUseSkill.name == "Rock")
+      if (currentUseSkill.name == UpgradeElements.Earth)
       {
         CastSkill(transform.position);
       }
-      if (currentUseSkill.name == "Meteor")
+      if (currentUseSkill.name == UpgradeElements.Meteor)
       {
         skillAimingComponent.StartAimingMeteor(currentUseSkill.Radius);
       }
-      if (currentUseSkill.name == "Water")
+      if (currentUseSkill.name == UpgradeElements.Tornado)
       {
         skillAimingComponent.StartAimingWave(currentUseSkill.Radius);
       }

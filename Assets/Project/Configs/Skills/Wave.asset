@@ -18,4 +18,4 @@ MonoBehaviour:
   radius: 3
   duration: 3
   icon: {fileID: 21300000, guid: 90aae79c66ebf53418d64d888329f9ac, type: 3}
-  nameSkill: Water
+  nameSkill: 1

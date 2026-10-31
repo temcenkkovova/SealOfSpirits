@@ -680,7 +680,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2aaf90d213b465b40a089f51af298c7b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::ActiveCard
-  button: {fileID: 0}
 --- !u!114 &7353305001728820069
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1193,8 +1192,8 @@ MonoBehaviour:
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
-    rgba: 4292730333
-  m_fontColor: {r: 0.8679245, g: 0.8679245, b: 0.8679245, a: 1}
+    rgba: 4289638062
+  m_fontColor: {r: 0.68235296, g: 0.68235296, b: 0.68235296, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
   m_fontColorGradient:

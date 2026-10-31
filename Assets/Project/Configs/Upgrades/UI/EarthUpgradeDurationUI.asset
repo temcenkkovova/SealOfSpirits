@@ -1,0 +1,22 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 51deea202976b854586e14694fe239c2, type: 3}
+  m_Name: EarthUpgradeDurationUI
+  m_EditorClassIdentifier: Assembly-CSharp::UpgradeSkillUIConfig
+  elementIcon: {fileID: 21300000, guid: c122aef4b8c5bfa47ab3016cb8d9d711, type: 3}
+  titleUpgrade: Stone Grip
+  bonusUpgrade: +1 SEC STUN DURATION
+  description: "Extends the earth ability\u2019s stun by 1 second"
+  tip: Keep enemies stunned for longer
+  elementColor: {r: 0.3019608, g: 0.58431375, b: 0.03529412, a: 1}
+  elementIconTitle: Earth
+  background: {fileID: 21300000, guid: 3d191ae6682dc714ab6f25164c60f270, type: 3}

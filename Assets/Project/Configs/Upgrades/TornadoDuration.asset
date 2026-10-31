@@ -1,0 +1,18 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3216097db8d99934fa0bf66a4804b9ec, type: 3}
+  m_Name: TornadoDuration
+  m_EditorClassIdentifier: Assembly-CSharp::UpgradeDuration
+  upgradeSkillUIConfig: {fileID: 11400000, guid: 96ff9878a21d678448836e1fa84f0a91, type: 2}
+  upgradeStat: 4
+  nameElement: 1
+  durationValue: 1
