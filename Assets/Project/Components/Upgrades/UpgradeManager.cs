@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -6,6 +7,7 @@ public class UpgradeManager : MonoBehaviour
   public List<UpgradeSkillConfig> currentUpgrades = new List<UpgradeSkillConfig>();
   public UpgradeController upgradeController;
   public PlayerSkills playerSkills;
+  public event Action<UpgradeSkillUIConfig> OnAddUpgrade;
 
   public void AddSkillUpgrade(UpgradeSkillConfig upgradeSkillConfig)
   {
@@ -26,7 +28,7 @@ public class UpgradeManager : MonoBehaviour
           }
 
           Debug.Log("Radius");
-          return;
+          break;
 
         case UpgradeStats.Chaos:
           foreach (SkillData skillData in playerSkills.skillsData)
@@ -39,7 +41,7 @@ public class UpgradeManager : MonoBehaviour
             }
           }
           Debug.Log("Chaos");
-          return;
+          break;
         case UpgradeStats.Slow:
           foreach (SkillData skillData in playerSkills.skillsData)
           {
@@ -51,7 +53,7 @@ public class UpgradeManager : MonoBehaviour
             }
           }
           Debug.Log("SLOw");
-          return;
+          break;
         case UpgradeStats.Cooldown:
           foreach (SkillData skillData in playerSkills.skillsData)
           {
@@ -64,7 +66,7 @@ public class UpgradeManager : MonoBehaviour
             }
           }
           Debug.Log("Cooldown");
-          return;
+          break;
         case UpgradeStats.Duration:
           foreach (SkillData skillData in playerSkills.skillsData)
           {
@@ -77,9 +79,11 @@ public class UpgradeManager : MonoBehaviour
             }
           }
           Debug.Log("Cooldown");
-          return;
+          break;
       }
+      Debug.Log("Hee");
       upgradeController.RemoveUpgradeConfig(upgradeSkillConfig);
+      OnAddUpgrade?.Invoke(upgradeSkillConfig.upgradeSkillUIConfig);
     }
   }
 }
