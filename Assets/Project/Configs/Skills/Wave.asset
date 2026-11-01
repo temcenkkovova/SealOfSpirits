@@ -17,5 +17,5 @@ MonoBehaviour:
   cooldown: 5
   radius: 3
   duration: 3
-  icon: {fileID: 21300000, guid: 90aae79c66ebf53418d64d888329f9ac, type: 3}
+  icon: {fileID: 21300000, guid: d9a36c98eb7ce184788ef8ec8b2da7f3, type: 3}
   nameSkill: 1

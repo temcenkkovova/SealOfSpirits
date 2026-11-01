@@ -16,14 +16,16 @@ public class SceneController : MonoBehaviour
   public void LoadGameplayScene()
   {
     SceneManager.LoadScene("Main");
-    // GamePhaseController.Instance.ChangeGamePhase(GamePhase.Ritual);
-    // GameStateController.Instance.ChangeGameState(GameState.Gameplay);
+    GamePhaseController.Instance.InitPhase();
+    GameStateController.Instance.ChangeGameState(GameState.Gameplay);
   }
 
   public void LoadMenuScene()
   {
-    SceneManager.LoadScene("Menu");
+    GameStateController.Instance.SetPause(false);
     GameStateController.Instance.ChangeGameState(GameState.Finished);
+    SceneManager.LoadScene("Menu");
+
 
   }
 

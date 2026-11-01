@@ -37,6 +37,18 @@ public class GamePhaseController : MonoBehaviour
 
 
   }
+  public void InitPhase()
+  {
+    if (IsTutorialCompletedOnce)
+    {
+      ChangeGamePhase(GamePhase.Ritual);
+      Debug.Log("Here");
+    }
+    else
+    {
+      ChangeGamePhase(GamePhase.Tutorial);
+    }
+  }
   public void ChangeGamePhase(GamePhase newPhase)
   {
     if (newPhase == CurrentGamePhase) return;
