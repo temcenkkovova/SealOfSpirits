@@ -23,9 +23,11 @@ public class EnemyMovement : MonoBehaviour
   private float slowPercentage;
   public bool IsSlowing { get; private set; }
   private Coroutine slowCoroutine;
+  private EnemyCollision enemyCollision;
   void Awake()
   {
     enemyStatus = GetComponent<EnemyStatus>();
+    enemyCollision = GetComponent<EnemyCollision>();
   }
   public void Init(Transform targetTr, float moveSpeed)
   {
@@ -40,8 +42,17 @@ public class EnemyMovement : MonoBehaviour
 
     if (IsKnockingBack)
     {
-      KnockBackMovement();
-      isMoving = false;
+      if (!enemyCollision.IsCollisionWithWall)
+      {
+        KnockBackMovement();
+        isMoving = false;
+
+      }
+      else
+      {
+        IsKnockingBack = false;
+      }
+
     }
     else
     {
