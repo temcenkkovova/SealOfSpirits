@@ -7,7 +7,9 @@ public class ArriveOrbEffect : MonoBehaviour
 {
   public Image arrivalGlow;
   private Sequence arrivalSequence;
+  private Sequence sealProgressSequence;
   private Vector3 initialScale;
+  public Transform sealProgressPanel;
 
 
   private void Awake()
@@ -29,13 +31,15 @@ public class ArriveOrbEffect : MonoBehaviour
 
     arrivalSequence.Append(arrivalGlow.DOFade(0.9f, 0.4f));
     arrivalSequence.Append(arrivalGlow.DOFade(0f, 0.16f).SetEase(Ease.InQuad));
-    arrivalSequence.Insert(
-           0f,
-           glowTr.DOScale(initialScale * 1.3f, 0.2f)
-               .SetEase(Ease.OutQuad)
+    arrivalSequence.Insert(0f, glowTr.DOScale(initialScale * 1.3f, 0.2f).SetEase(Ease.OutQuad)
        );
 
     arrivalSequence.SetLink(gameObject);
+
+    sealProgressSequence?.Kill();
+    sealProgressSequence = DOTween.Sequence();
+    sealProgressSequence.Insert(0f, sealProgressPanel.DOScale(transform.localScale * 1.1f, 0.2f).SetEase(Ease.OutQuad));
+    sealProgressSequence.Insert(0.2f, sealProgressPanel.DOScale(new Vector3(1f, 1f, 1f), 0.2f).SetEase(Ease.OutQuad));
   }
   private void ResetVisual()
   {

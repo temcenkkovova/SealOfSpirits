@@ -29,7 +29,7 @@ public class EarthSkill : IdolSkill
     {
       IStunable stunnable = hit.GetComponent<IStunable>();
       if (stunnable == null) continue;
-      stunnable.Stunned(stunDuration, skillData.IsReduceChaosActive);
+      stunnable.Stunned(skillData.Duration, skillData.IsReduceChaosActive);
     }
     Destroy(gameObject, 0.5f);
   }
