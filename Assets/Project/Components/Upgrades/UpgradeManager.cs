@@ -27,7 +27,7 @@ public class UpgradeManager : MonoBehaviour
             }
           }
 
-          Debug.Log("Radius");
+
           break;
 
         case UpgradeStats.Chaos:
@@ -40,7 +40,7 @@ public class UpgradeManager : MonoBehaviour
               skillData.SetNewReduceChaosValue(upgradeEarth.reduceChaosPercentage);
             }
           }
-          Debug.Log("Chaos");
+
           break;
         case UpgradeStats.Slow:
           foreach (SkillData skillData in playerSkills.skillsData)
@@ -52,7 +52,7 @@ public class UpgradeManager : MonoBehaviour
               skillData.SetNewSlowValue(upgradeTornado.slowPercentage, upgradeTornado.slowDuration);
             }
           }
-          Debug.Log("SLOw");
+
           break;
         case UpgradeStats.Cooldown:
           foreach (SkillData skillData in playerSkills.skillsData)
@@ -65,7 +65,7 @@ public class UpgradeManager : MonoBehaviour
               skillData.SetNewCooldownValue(upgradeCooldown.cooldownPercentage);
             }
           }
-          Debug.Log("Cooldown");
+
           break;
         case UpgradeStats.Duration:
           foreach (SkillData skillData in playerSkills.skillsData)
@@ -78,10 +78,10 @@ public class UpgradeManager : MonoBehaviour
               skillData.IncreaseDuration(upgradeDuration.durationValue);
             }
           }
-          Debug.Log("Cooldown");
+
           break;
       }
-      Debug.Log("Hee");
+
       upgradeController.RemoveUpgradeConfig(upgradeSkillConfig);
       OnAddUpgrade?.Invoke(upgradeSkillConfig.upgradeSkillUIConfig);
     }

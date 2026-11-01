@@ -8,7 +8,7 @@ public class ActiveCard : MonoBehaviour
   public event Action<bool> OnActiveCard;
   private Button button;
   private bool firstClick;
-  private bool secondClick;
+
 
   void Awake()
   {

@@ -68,42 +68,42 @@ public class WaveSystem : MonoBehaviour
     if (currentWaveTimer < 30f)
     {
       requiredFaults = 2;
-      enemiesPerInterval = 4;
+      enemiesPerInterval = 6;
     }
     else if (currentWaveTimer < 60f)
     {
       requiredFaults = 2;
-      enemiesPerInterval = 5;
+      enemiesPerInterval = 7;
     }
     else if (currentWaveTimer < 120f)
     {
       requiredFaults = 3;
-      enemiesPerInterval = 6;
+      enemiesPerInterval = 8;
     }
     else if (currentWaveTimer < 180f)
     {
       requiredFaults = 3;
-      enemiesPerInterval = 6;
+      enemiesPerInterval = 9;
     }
     else if (currentWaveTimer < 240f)
     {
       requiredFaults = 4;
-      enemiesPerInterval = 7;
+      enemiesPerInterval = 10;
     }
     else if (currentWaveTimer < 360f)
     {
       requiredFaults = 4;
-      enemiesPerInterval = 9;
+      enemiesPerInterval = 11;
     }
     else if (currentWaveTimer < 480f)
     {
       requiredFaults = 5;
-      enemiesPerInterval = 11;
+      enemiesPerInterval = 12;
     }
     else
     {
       requiredFaults = 6;
-      enemiesPerInterval = 12;
+      enemiesPerInterval = 13;
     }
     OnRequiredFaultsChanged?.Invoke(requiredFaults);
   }

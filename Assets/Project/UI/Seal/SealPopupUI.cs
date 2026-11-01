@@ -27,7 +27,7 @@ public class SealPopupUI : MonoBehaviour
 
   public void ClearCurrentPopup()
   {
-    if (currentPopup == null) return;
+    if (currentPopup == null || !isActiveAndEnabled) return;
     currentPopup.OnDestroyPopup -= ClearCurrentPopup;
     currentPopup = null;
     lastPopupPos = transform.position;
