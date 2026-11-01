@@ -13,5 +13,5 @@ MonoBehaviour:
   m_Name: MeteorSkillUI
   m_EditorClassIdentifier: Assembly-CSharp::SkillItemUIConfig
   image: {fileID: 21300000, guid: 4a00210754801714b8afcb1c34801c13, type: 3}
-  title: Learn Meteor
-  description: Move to the Fire idol
+  title: Awaken the Flame
+  description: Approach the Fire Idol and press E to learn Meteor

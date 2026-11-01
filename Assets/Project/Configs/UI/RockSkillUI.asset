@@ -13,5 +13,5 @@ MonoBehaviour:
   m_Name: RockSkillUI
   m_EditorClassIdentifier: Assembly-CSharp::SkillItemUIConfig
   image: {fileID: 21300000, guid: bc7850c6dd1ef354882a15de04e90ec7, type: 3}
-  title: Learn Rock
-  description: Move to the Earth idol
+  title: Embrace the Earth
+  description: Approach the Earth Idol and press E to learn Rock

@@ -49,7 +49,7 @@ public class MeteorSkill : IdolSkill
 
     timer += Time.deltaTime;
     Explosion();
-    if (timer >= 3f)
+    if (timer >= skillData.Duration)
     {
       isStartExplosion = false;
       rainParticle.Stop();
@@ -79,7 +79,7 @@ public class MeteorSkill : IdolSkill
       if (damageable == null) continue;
       damageable.TakeDamage(skillData.Damage);
     }
-    Destroy(gameObject, 3.2f);
+    Destroy(gameObject, skillData.Duration + 0.3f);
   }
 
   void OnDisable()
