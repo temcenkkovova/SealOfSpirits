@@ -58,7 +58,7 @@ public class UpgradeControllerUI : MonoBehaviour
     {
       upgradesRombs[i].SetActive(true);
     }
-    fillImage.fillAmount = upgradeController.upgradesTime.Length / (upgradeController.nextUpgradeTime + 1);
+    fillImage.fillAmount = (float)upgradeController.nextUpgradeTime / upgradeController.upgradesTime.Length;
     Debug.Log(upgradeController.upgradesTime.Length);
 
   }
