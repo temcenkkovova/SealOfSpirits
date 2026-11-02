@@ -10,8 +10,8 @@ public class UpgradeController : MonoBehaviour
   private bool IsShowingUpgrade = false;
   public CardsController cardsController;
 
-  private readonly float[] upgradesTime = { 30, 60, 120, 180, 240 };
-  private int nextUpgradeTime = 0;
+  public readonly float[] upgradesTime = { 10, 60, 120, 180 };
+  public int nextUpgradeTime { get; private set; } = 0;
 
   void Start()
   {

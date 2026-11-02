@@ -12,6 +12,10 @@ public class UpgradeControllerUI : MonoBehaviour
 
   public Button confirmActiveCardButton;
 
+
+  public List<GameObject> upgradesRombs = new List<GameObject>();
+  public Image fillImage;
+
   void Start()
   {
     if (upgradeController != null) upgradeController.OnShowUpgrade += ShowUpgradesPanel;
@@ -27,6 +31,11 @@ public class UpgradeControllerUI : MonoBehaviour
   {
     if (upgradesList == null) return;
     int upgradeIndex = 0;
+
+    foreach (GameObject romb in upgradesRombs)
+    {
+      romb.SetActive(false);
+    }
     foreach (Transform childTr in gridParent.GetComponentInChildren<Transform>())
     {
       Destroy(childTr.gameObject);
@@ -45,6 +54,12 @@ public class UpgradeControllerUI : MonoBehaviour
         cardsController.AddNewCards(cardUI);
     }
 
+    for (int i = 0; i < upgradeController.nextUpgradeTime; i++)
+    {
+      upgradesRombs[i].SetActive(true);
+    }
+    fillImage.fillAmount = upgradeController.upgradesTime.Length / (upgradeController.nextUpgradeTime + 1);
+    Debug.Log(upgradeController.upgradesTime.Length);
 
   }
 
