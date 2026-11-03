@@ -42,7 +42,7 @@ public class GamePhaseController : MonoBehaviour
     if (IsTutorialCompletedOnce)
     {
       ChangeGamePhase(GamePhase.Ritual);
-      Debug.Log("Here");
+
     }
     else
     {

@@ -11,7 +11,7 @@ public class EnemyCollision : MonoBehaviour
   {
     if (IsInteractMask(other.gameObject))
     {
-      Debug.Log("tt");
+
       IsCollisionWithWall = true;
 
     }
