@@ -39,6 +39,7 @@ public class EnemyMovement : MonoBehaviour
 
   void Update()
   {
+    if (GamePhaseController.Instance.CurrentGamePhase == GamePhase.Upgrade) return;
 
     if (IsKnockingBack)
     {

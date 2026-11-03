@@ -56,6 +56,7 @@ public class UpgradeController : MonoBehaviour
 
       nextUpgradeTime++;
       IsShowingUpgrade = true;
+      GamePhaseController.Instance.ChangeGamePhase(GamePhase.Upgrade);
       Time.timeScale = 0f;
       AudioListener.pause = true;
 
@@ -68,6 +69,7 @@ public class UpgradeController : MonoBehaviour
     IsShowingUpgrade = false;
     Time.timeScale = 1f;
     AudioListener.pause = false;
+    GamePhaseController.Instance.ChangeGamePhase(GamePhase.Ritual);
   }
   void OnDisable()
   {

@@ -2736,7 +2736,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 866f6f02d65000040aef95c75b268af5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::GamePhaseController
-  IsTutorialCompletedOnce: 1
+  IsTutorialCompletedOnce: 0
 --- !u!114 &614488319
 MonoBehaviour:
   m_ObjectHideFlags: 0
