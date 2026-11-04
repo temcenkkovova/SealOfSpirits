@@ -17,9 +17,4 @@ public class Dialog : MonoBehaviour
     image.sprite = config.image;
 
   }
-
-  // void OnDestroy()
-  // {
-  //   OnDestroyDialog?.Invoke();
-  // }
 }

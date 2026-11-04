@@ -36,7 +36,7 @@ public class IdolSkillView : MonoBehaviour
     ring.gameObject.SetActive(true);
     fill.localScale = Vector3.zero;
     warningSequence = DOTween.Sequence();
-    warningSequence.Append(fill.DOScale(fillFinalScale, skillData.Duration).SetEase(Ease.Linear));
+    warningSequence.Append(fill.DOScale(fillFinalScale, 2f).SetEase(Ease.Linear));
 
     warningSequence.OnComplete(() =>
     {

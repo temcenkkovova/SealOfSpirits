@@ -16,5 +16,5 @@ MonoBehaviour:
   health: 50
   moveSpeed: 2
   shieldValue: 0
-  sealAmountReward: 1.25
+  sealAmountReward: 0.7
   chaosAmount: 0.45

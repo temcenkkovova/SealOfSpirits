@@ -36,6 +36,7 @@ public class GameStateController : MonoBehaviour
   }
   public void SetPause(bool pause)
   {
+    if (GamePhaseController.Instance.CurrentGamePhase == GamePhase.Upgrade) return;
     if (IsPause == pause) return;
     IsPause = pause;
     Time.timeScale = IsPause ? 0f : 1f;

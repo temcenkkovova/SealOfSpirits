@@ -338,6 +338,7 @@ GameObject:
   - component: {fileID: 5152353460374626347}
   - component: {fileID: 8095933893551756265}
   - component: {fileID: -5690390206908132622}
+  - component: {fileID: -4462358602357756082}
   m_Layer: 7
   m_Name: FastEnemyPrefab
   m_TagString: Enemy
@@ -478,6 +479,21 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::EnemyAnimationController
   animator: {fileID: 1434312208480615031}
+--- !u!114 &-4462358602357756082
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5758999771948364293}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 27155e5e3ca9e0343b26f4b9f2ef0e0c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::EnemyCollision
+  wallLayer:
+    serializedVersion: 2
+    m_Bits: 1024
 --- !u!1001 &4795532004558800870
 PrefabInstance:
   m_ObjectHideFlags: 0

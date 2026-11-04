@@ -10,8 +10,8 @@ public class UpgradeController : MonoBehaviour
   private bool IsShowingUpgrade = false;
   public CardsController cardsController;
 
-  private readonly float[] upgradesTime = { 30, 60, 120, 180, 240 };
-  private int nextUpgradeTime = 0;
+  public readonly float[] upgradesTime = { 30, 60, 120, 160 };
+  public int nextUpgradeTime { get; private set; } = 0;
 
   void Start()
   {
@@ -56,6 +56,7 @@ public class UpgradeController : MonoBehaviour
 
       nextUpgradeTime++;
       IsShowingUpgrade = true;
+      GamePhaseController.Instance.ChangeGamePhase(GamePhase.Upgrade);
       Time.timeScale = 0f;
       AudioListener.pause = true;
 
@@ -68,6 +69,7 @@ public class UpgradeController : MonoBehaviour
     IsShowingUpgrade = false;
     Time.timeScale = 1f;
     AudioListener.pause = false;
+    GamePhaseController.Instance.ChangeGamePhase(GamePhase.Ritual);
   }
   void OnDisable()
   {

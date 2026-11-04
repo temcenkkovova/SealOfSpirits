@@ -2,7 +2,7 @@ using System;
 using UnityEngine;
 public enum GamePhase
 {
-  Tutorial, Ritual, Victory, Defeat
+  Tutorial, Ritual, Victory, Defeat, Upgrade
 }
 public class GamePhaseController : MonoBehaviour
 {
@@ -42,7 +42,7 @@ public class GamePhaseController : MonoBehaviour
     if (IsTutorialCompletedOnce)
     {
       ChangeGamePhase(GamePhase.Ritual);
-      Debug.Log("Here");
+
     }
     else
     {

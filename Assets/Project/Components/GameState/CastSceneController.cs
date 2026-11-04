@@ -23,7 +23,6 @@ public class CastSceneController : MonoBehaviour
 
   public void StartVictoryScene()
   {
-    Debug.Log("Here will be victory scene , after victory scene will be menu panel");
     GamePhaseController.Instance.ChangeGamePhase(GamePhase.Victory);
     GameStateController.Instance.ChangeGameState(GameState.Finished);
 

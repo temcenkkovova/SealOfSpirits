@@ -49,7 +49,7 @@ public class MeteorSkill : IdolSkill
 
     timer += Time.deltaTime;
     Explosion();
-    if (timer >= 3f)
+    if (timer >= skillData.Duration)
     {
       isStartExplosion = false;
       rainParticle.Stop();
@@ -69,7 +69,9 @@ public class MeteorSkill : IdolSkill
   public void Explosion()
   {
     Vector3 vector = new Vector3(transform.position.x, 1f, transform.position.z);
-    Collider[] hits = Physics.OverlapSphere(vector, 4f * skillData.Radius, damageMask);
+
+
+    Collider[] hits = Physics.OverlapSphere(vector, 3.5f * skillData.Radius, damageMask);
 
 
     foreach (Collider hit in hits)
@@ -79,7 +81,7 @@ public class MeteorSkill : IdolSkill
       if (damageable == null) continue;
       damageable.TakeDamage(skillData.Damage);
     }
-    Destroy(gameObject, 3.2f);
+    Destroy(gameObject, skillData.Duration + 0.3f);
   }
 
   void OnDisable()

@@ -20,7 +20,7 @@ public class ChaosComponent : MonoBehaviour
     if (IsTutorialStage()) return;
     totalMultiplyChaos += multiply;
 
-    currentMultiplyChaos = totalMultiplyChaos <= 6 ? totalMultiplyChaos : 6;
+    currentMultiplyChaos = totalMultiplyChaos <= maxMultiplyChaos ? totalMultiplyChaos : maxMultiplyChaos;
 
   }
   public void DecreaseChaosMultiply(float multiply)
@@ -28,7 +28,7 @@ public class ChaosComponent : MonoBehaviour
     if (IsTutorialStage()) return;
     totalMultiplyChaos -= multiply;
     if (totalMultiplyChaos < 0) totalMultiplyChaos = 0;
-    currentMultiplyChaos = totalMultiplyChaos <= 6 ? totalMultiplyChaos : 6;
+    currentMultiplyChaos = totalMultiplyChaos <= maxMultiplyChaos ? totalMultiplyChaos : maxMultiplyChaos;
   }
 
   public void ResetChaosMultiply()
