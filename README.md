@@ -1,6 +1,7 @@
 # Seal of Spirits
 
 **A 3D arena defense game built with Unity, where elemental magic is your tool for protecting a seal and completing a ritual.**
+Game is published on itch.io https://temchenko.itch.io/seal-of-spirits
 
 Hold back enemies emerging from rifts, defeat them to charge the seal, and keep chaos under control. Learn abilities from elemental idols, combine crowd control with meteor strikes, and choose upgrades as the battle intensifies. Complete the seal before chaos overwhelms it or time runs out.
 
